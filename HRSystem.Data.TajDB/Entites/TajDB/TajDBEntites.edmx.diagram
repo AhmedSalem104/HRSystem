@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66cc853fd6294ff09411a5cfbe4e1405" Name="Diagram1">
+        <EntityTypeShape EntityType="TajDBModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.ActionsLog" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BlackList" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BlackListPaus" Width="1.5" PointX="3" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BlackListReason" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Branch" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BranchesPerm" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.City" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Customer" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.CustomersImage" Width="1.5" PointX="3" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.District" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Menu" Width="1.5" PointX="5.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.MonthsName" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.MyDate" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Nationality" Width="1.5" PointX="1.5" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.OrderType" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.PaymentItem" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.PhoneGroup" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.PhoneIndex" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Religion" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Reminder" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SearchField" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SendSm" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SendSmsCustomer" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SerialNumber" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.Setting" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SmsMessage" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SmsType" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SocialState" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.sysdiagram" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.System" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.User" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.UsersEmployee" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.UsersPerm" Width="1.5" PointX="8" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.UsrGroup" Width="1.5" PointX="5.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.UsrGroupsPerm" Width="1.5" PointX="8" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.VatRatio" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BlackListOld" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.AccountMain" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.AccountSub" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.BlackListSerial" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.QryBranchesPerm" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.QryUsersPerm" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TajDBModel.SystemsUser" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="TajDBModel.FK_ActionsLog_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackList_BlackListReasons" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackList_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackList_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackList_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackList_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackListPauses_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BlackListReasons_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BranchesPerm_Branches" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_BranchesPerm_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_Districts_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_Customers_Nationalities" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_CustomersImages_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_Menus_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_UsersPerm_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_UsrGroupsPerm_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_PhoneGroups_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_PhoneIndex_PhoneGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_SendSms_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_SendSmsCustomers_SendSms" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_SmsMessages_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_SmsMessages_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_UsersPerm_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TajDBModel.FK_UsrGroupsPerm_UsrGroups" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,174 @@
+﻿@using HRSystem.Web.Infrastructure.Resources
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+                        
+
+<div class="content-header-left col-md-6 col-12 mb-2 ">
+    <h3 class="content-header-title mb-0 d-inline-block">@Resource.cities</h3>
+
+</div>
+
+<section class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-head">
+                <div class="card-header">
+
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        @*@if (ViewBag.canAdd == true)
+                        {*@
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-backdrop="false" data-target="#addCity"><i class="ft-plus white"></i> @Resource.Add</button>
+
+                        @*}
+                        else
+                        {
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-backdrop="false" data-target="#addCity" disabled><i class="ft-plus white"></i> @Resource.Add</button>
+
+                        }*@
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card-content">
+                <div class="card-body">
+                    <!--  List table -->
+                    <div class="table-responsive">
+                        <table id="cityGrid" class="table table-striped table-bordered table-hover" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="width-per-15"> CityId </th>
+                                    <th class="width-per-15"> رقم المدينة </th>
+                                    <th> اسم المدينة  </th>
+
+                                    <th class="th_width_5">@Resource.Edit</th>
+                                    <th class="th_width_5">@Resource.Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal add-->
+<div class="modal fade text-left" id="addCity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @{Html.RenderAction("Create", "City");}
+
+
+    </div>
+</div>
+
+<!-- Modal edit-->
+
+<div class="modal fade text-left" id="editCity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+    </div>
+</div>
+
+
+
+<script>
+     var Variables = {
+
+         DeleteUrl: '@Url.Action("Delete","City")'
+
+
+    };
+    $(document).ready(function () {
+    
+            $("#cityGrid").DataTable({
+
+                "processing": true, // for show progress bar
+                "serverSide": false, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "pageLength": 5,
+                "language": {
+                    "emptyTable": "لا يوجد سجلات.",
+                    "processing": '<div class="loader-wrapper"><div class= "loader-container" ><div class="ball-pulse loader-primary"><div></div><div></div><div></div></div></div> </div> '
+
+
+                },
+
+                "ajax": {
+                    "url": "/City/GetCityList",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "columnDefs":
+                    [{
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [3],
+                        "searchable": false,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [4],
+                        "searchable": false,
+                        "orderable": false
+                    }],
+
+                "columns": [
+                    { "data": "CityId", "name": "CityId", "autoWidth": true },
+                    { "data": "CityId", "name": "CityId", "autoWidth": true },
+                    { "data": "CityName", "name": "CityName", "autoWidth": true },
+
+                    {
+
+                        "render": function (data, type, row, meta)
+                        {
+                            return "<a class='btn btn-icon btn-outline-primary'' title='تعديل' href='#' onclick=Edit('" + row.CityId + "');><i class='ft-edit-1'></i></a>";
+
+                        }
+                    },
+                    {
+                        data: null, render: function (data, type, row) {
+                            return "<a href='#' class='deleteItem btn btn-icon btn-outline-danger' title='حذف' onclick=Delete('" + row.CityId + "','" + 'cityGrid' + "');> <i class='ft-trash'></i></a>";
+                        }
+                    },
+
+                ]
+
+            });
+
+      
+    });
+
+    function Edit(CityId) {
+         $.ajax({
+            url: '@Url.Action("Edit", "City")',
+            type: 'GET',
+             async: false,
+             data: { id: CityId },
+            success: function (data) {
+
+                $("#editCity .modal-dialog").html(data);
+
+                $('#editCity').modal('show');
+
+
+             }
+             ,
+             error: function (err) {
+                 console.log('error:' + err);
+             }
+        });
+    }
+
+
+</script>  

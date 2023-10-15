@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0EEDD8C7-7C2A-47F0-9FA2-C5E4A5B34507}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRSystem.Services</RootNamespace>
+    <AssemblyName>HRSystem.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\NewRealEstate\RealEstate\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\NewRealEstate\RealEstate\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\NewRealEstate\RealEstate\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\NewRealEstate\RealEstate\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DecisionAbsenceDeductionService\DecisionAbsenceDeductionService.cs" />
+    <Compile Include="DecisionAbsenceDeductionService\IDecisionAbsenceDeductionService.cs" />
+    <Compile Include="BirthVacDecService\BirthVacDecService.cs" />
+    <Compile Include="BirthVacDecService\IBirthVacDecService.cs" />
+    <Compile Include="DecisionEndStopHandService\DecisionEndStopHandService.cs" />
+    <Compile Include="DecisionEndStopHandService\IDecisionEndStopHandService.cs" />
+    <Compile Include="DecisionStopHandService\DecisionStopHandService.cs" />
+    <Compile Include="DecisionStopHandService\IDecisionStopHandService.cs" />
+    <Compile Include="DecisionNewJobService\DecisionNewJobService.cs" />
+    <Compile Include="DecisionNewJobService\IDecisionNewJobService.cs" />
+    <Compile Include="DecisionMoveEmpService\DecisionMoveEmpService.cs" />
+    <Compile Include="DecisionMoveEmpService\IDecisionMoveEmpService.cs" />
+    <Compile Include="DTO\DecisionAbsenceDeductionDetialsDTO.cs" />
+    <Compile Include="DTO\DecisionAbsenceDeductionDTO.cs" />
+    <Compile Include="DTO\BirthVacDecDTO.cs" />
+    <Compile Include="DTO\DecisionEndStopHandDTO.cs" />
+    <Compile Include="DTO\DecisionStopHandDTO.cs" />
+    <Compile Include="DTO\DecisionNewJobDTO.cs" />
+    <Compile Include="DTO\DecisionMoveEmpDTO.cs" />
+    <Compile Include="DTO\DecisionChangeJobDTO.cs" />
+    <Compile Include="DTO\EmployeeListForDecisionEndStopHandDTO.cs" />
+    <Compile Include="EmployeesService\EmployeesService.cs" />
+    <Compile Include="EmployeesService\IEmployeesService.cs" />
+    <Compile Include="DecisionChangeJobService\DecisionChangeJobService.cs" />
+    <Compile Include="DecisionChangeJobService\IDecisionChangeJobService.cs" />
+    <Compile Include="DecisionWorkersService\DecisionWorkersService.cs" />
+    <Compile Include="DecisionWorkersService\IDecisionWorkersService.cs" />
+    <Compile Include="DecisionEmploymentService\DecisionEmploymentService.cs" />
+    <Compile Include="DecisionEmploymentService\IDecisionEmploymentService.cs" />
+    <Compile Include="DecisionLongLegationService\DecisionLongLegationService.cs" />
+    <Compile Include="DecisionLongLegationService\IDecisionLongLegationService.cs" />
+    <Compile Include="DTO\DecisionWorkerDTO.cs" />
+    <Compile Include="DTO\DecisionEmploymentDTO.cs" />
+    <Compile Include="DTO\EmployeeInfoDTO.cs" />
+    <Compile Include="DTO\DecisionLongLegationDTO.cs" />
+    <Compile Include="JobsService\JobsService.cs" />
+    <Compile Include="JobsService\IJobsService.cs" />
+    <Compile Include="CityService\CityService.cs" />
+    <Compile Include="CityService\ICityService.cs" />
+    <Compile Include="LoginService\ILoginService.cs" />
+    <Compile Include="LoginService\LoginService.cs" />
+    <Compile Include="BankService\IBankService.cs" />
+    <Compile Include="BankService\BankService.cs" />
+    <Compile Include="NationalityService\NationalityService.cs" />
+    <Compile Include="NationalityService\INationalityService.cs" />
+    <Compile Include="PaySlipsService\PaySlipsService.cs" />
+    <Compile Include="PaySlipsService\IPaySlipsService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService\IUserService.cs" />
+    <Compile Include="UserService\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HRSystem.Data.TajDB\HRSystem.Data.TajDB.csproj">
+      <Project>{34a6fc6f-982c-452f-af60-7fd504a9ac3a}</Project>
+      <Name>HRSystem.Data.TajDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRSystem.Data\HRSystem.Data.csproj">
+      <Project>{ee964b3a-3f80-4b5b-970f-f1a9d9478902}</Project>
+      <Name>HRSystem.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

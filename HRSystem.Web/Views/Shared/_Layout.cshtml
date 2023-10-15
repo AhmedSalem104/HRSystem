@@ -1,0 +1,112 @@
+﻿@using HRSystem.Web.Infrastructure
+
+@{
+
+    object languague = 0;
+    //if (HelperMethods.globalData.UserCode == null)
+    //{
+    //    Response.Redirect(Url.Action("Index", "Login") + "/");
+
+    //}
+    //else
+    //{
+    //    languague = Session["Language"];
+    //    if (Convert.ToString(languague) == "en")
+    //    {
+    //    }
+    //    else
+    //    {
+    //    }
+    //}
+}
+
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    <link href="~/Content/modern-admin/vendors/css/forms/toggle/bootstrap-switch.min.css" rel="stylesheet" />
+    <link href="~/Content/modern-admin/vendors/css/forms/toggle/switchery.min.css" rel="stylesheet" />
+    <link href="~/Content/modern-admin/css/plugins/forms/switch.css" rel="stylesheet" />
+    <link href="~/Content/modern-admin/css-rtl/core/colors/palette-switch.css" rel="stylesheet" />
+    <title>
+        نظام  الموارد البشرية
+    </title>
+    @Styles.Render("~/Content/css")
+
+
+
+
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <!-- BEGIN: Header-->
+    @Html.Partial("_HeaderNavbar")
+    <!-- END: Header-->
+    <!-- BEGIN: Main Menu-->
+    @*@{Html.RenderAction("GetMainMenu", "MainMenu");}*@
+
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                @Html.Partial("_ConfirmationMessage")
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2019 <a class="text-bold-800 grey darken-2" href="https://1.envato.market/modern_admin" target="_blank">PIXINVENT</a></span><span class="float-md-right d-none d-lg-block">Hand-crafted & Made with<i class="ft-heart pink"></i><span id="scroll-top"></span></span></p>
+    </footer>
+    @Scripts.Render("~/Scripts/js")
+
+    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-ui.css">
+    <link href="~/Content/modern-admin/vendors/chosen/chosen.min.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/jquery.dirtyforms.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/App/Common.js"></script>
+    <script src="~/Content/modern-admin/vendors/chosen/chosen.jquery.min.js"></script>
+
+
+
+    <script src="~/Content/modern-admin/vendors/js/forms/toggle/bootstrap-switch.min.js"></script>
+    <script src="~/Content/modern-admin/vendors/js/forms/toggle/switchery.min.js"></script>
+    <script src="~/Content/modern-admin/vendors/js/forms/toggle/bootstrap-checkbox.min.js"></script>
+    <script src="~/Content/modern-admin/js/scripts/forms/switch.js"></script>
+
+    <script type="text/javascript">
+
+
+
+        $('.main-menu.menu-fixed').find('[href="' + window.location.pathname + '"]').parent().addClass('active');
+        $(function () {
+
+
+
+            $('form').dirtyForms({
+
+            });
+
+        })</script>
+    <!-- END: Footer-->
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

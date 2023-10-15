@@ -1,0 +1,222 @@
+﻿@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model HRSystem.Web.Models.CompanyInfoViewModel
+
+
+@Html.HiddenFor(model => model.Id)
+@*@Html.HiddenFor(model => model.IsDeleted)*@
+
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        اسم الجهة
+    </label>
+    <div class="col-md-6">
+        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+
+    </div>
+
+</div>
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        اسم الادارة
+    </label>
+    <div class="col-md-6">
+        @Html.TextBoxFor(model => model.DepartmentName, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        رئيس البلدية
+    </label>
+    <div class="col-md-6">
+        @Html.TextBoxFor(model => model.BaladyaManager, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.BaladyaManager, "", new { @class = "text-danger" })
+
+    </div>
+
+</div>
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        رئيس القسم
+    </label>
+    <div class="col-md-6">
+        @Html.TextBoxFor(model => model.InvestmentManager, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.InvestmentManager, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-3">
+
+        @Html.CheckBoxFor(model => model.UpdateAnnualRent, new { @class = "form-control ", @type = "CheckBox" })
+        @Html.ValidationMessageFor(model => model.UpdateAnnualRent, "", new { @class = "text-danger" })
+
+    </div>
+    <label class="col-md-3 label-control">
+        تعديل الايجار الثانوي فى العقارات
+    </label>
+
+</div>
+
+<div class="form-group row">
+
+    <div class="col-md-3">
+        @Html.CheckBoxFor(model => model.RealEstateSync, new { @class = "form-control ", @type = "CheckBox" })
+
+        @Html.ValidationMessageFor(model => model.RealEstateSync, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-3 label-control">
+        تعديل بيانات الاراضي فى العقود
+    </label>
+
+</div>
+
+<div class="form-group row">
+
+    <div class="col-md-3">
+        @Html.CheckBoxFor(model => model.WarningsSms, new { @class = "form-control ", @type = "CheckBox" })
+
+        @Html.ValidationMessageFor(model => model.WarningsSms, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-4 label-control">
+        ارسال رسائل جوال للاشعارات والانذارات الجديدة
+    </label>
+
+</div>
+<div class="form-group row">
+
+    <label class="col-md-3 label-control">
+        ارسال رسائل الجوال كل
+    </label>
+    <div class="col-md-3">
+        @Html.TextBoxFor(model => model.SmsDirectMin, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.SmsDirectMin, "", new { @class = "text-danger" })
+
+    </div>
+
+</div>
+<div class="form-group row">
+
+    <label class="col-md-3 label-control">
+        تنبيه بالاقساط المستحقة خلال 30 يوم
+    </label>
+    <div class="col-md-3">
+        @Html.TextBoxFor(model => model.InstAlarmDays, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.InstAlarmDays, "", new { @class = "text-danger" })
+
+    </div>
+    <label class="col-md-3 label-control">
+        تنبيه بالعقود التى اقترب انتهائها خلال
+    </label>
+    <div class="col-md-3">
+        @Html.TextBoxFor(model => model.EndedContractAlarmDays, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.EndedContractAlarmDays, "", new { @class = "text-danger" })
+    </div>
+</div>
+<script type="text/javascript">
+    //$(function () {
+
+    //    $('#IdIssueDateH').calendarsPicker({
+    //        calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+    //        onSelect: function () {
+    //            var date = $('#IdIssueDateH').val();
+
+
+    //            var dateFormat = moment(date, 'iYYYY/iM/iD');
+    //            var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+    //            $('#IdIssueDate').val(toGregoriandate);
+    //            var CurrentDate = moment(new Date()).format("YYYY/MM/DD");
+
+    //            var IssueDate = $('#IdIssueDate').val();
+
+    //            if (IssueDate > CurrentDate) {
+    //                $('#IdIssueDateH').focus();
+    //                $("#validateIssueDate").removeAttr("hidden");
+    //            }
+    //            else {
+    //                $("#validateIssueDate").attr("hidden", true);
+    //            }
+    //        }
+
+    //    });
+
+    //    $('#IdEndDateH').calendarsPicker({
+    //        calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+    //        onSelect: function () {
+    //            var date = $('#IdEndDateH').val();
+
+
+    //            var dateFormat = moment(date, 'iYYYY/iM/iD');
+    //            var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+    //            $('#IdEndDate').val(toGregoriandate);
+    //            var EndDate = $('#IdEndDate').val();
+    //            var CurrentDate = moment(new Date()).format("YYYY/MM/DD");
+    //            var IssueDate = $('#IdIssueDate').val();
+    //            if ( IssueDate!="" && EndDate <= IssueDate || EndDate <= CurrentDate) {
+    //                $('#IdEndDateH').focus();
+    //                $("#validateEndDate").removeAttr("hidden");
+    //            }
+    //            else {
+    //                $("#validateEndDate").attr("hidden", true);
+    //            }
+
+    //        }
+
+    //    });
+    //    $('#CommRegDateH').calendarsPicker({
+    //        calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+    //        onSelect: function () {
+    //            var date = $('#CommRegDateH').val();
+
+
+    //            var dateFormat = moment(date, 'iYYYY/iM/iD');
+    //            var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+    //            $('#CommRegDate').val(toGregoriandate);
+    //        }
+
+    //    });
+
+
+
+
+    //});
+
+    function TypeIdOnChange() {
+
+        var selectedValue = document.getElementById('TypeId').value;
+        if (selectedValue == '1') {
+
+            $("#IdTypeId").focus();
+            $("#validateIdType").removeAttr("hidden");
+
+
+
+        }
+    }
+    function IdTypeOnChange() {
+        $("#validateIdType").attr("hidden", true);
+        $("#validateIdNo").removeAttr("hidden");
+        $("#IdNo").focus();
+
+    }
+    $('#IdNo').focusout(function () {
+        $("#validateIdNo").attr("hidden", true);
+    });
+
+</script>

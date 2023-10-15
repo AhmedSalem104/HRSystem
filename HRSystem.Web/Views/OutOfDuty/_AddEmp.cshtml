@@ -1,0 +1,287 @@
+﻿0@model  EmployeesPortal.Web.Models.smsCustomerDtoViewModel
+@using EmployeesPortal.Web.Infrastructure.Resources
+
+
+@using (Html.BeginForm("GetCusomerData", "SendSms", FormMethod.Post,  new { @class = "form-horizontal", @id = "create" }))
+{
+<div class="modal-content">
+    <div class="modal-header bg-info white">
+        <h4 class="modal-title white" id="myModalLabel11">أضف موظف للطلب</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @*@Html.HiddenFor(a => a.CustomerId);*@
+
+<div class="modal-body">
+
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            الموظف
+        </label>
+        <div class="col-lg-9">
+
+            @Html.DropDownListFor(model => model.CustomerId, (IEnumerable
+                                                                         <SelectListItem>)ViewData["User"], "اختر الموظف", new { @class = "form-control " })
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            الأسم
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.CustomerName, new { @id = "EmpName", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            المرتبة
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Address, new { @id = "Mrt", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            الدرجة
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Address, new { @id = "Drg", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            أصل الراتب
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Mobile, new { @id = "Rat", @class = "form-control", @readonly = "readonly" })
+
+            @*@Html.TextBoxFor(a => a.TypeId, new { @id = "Nkl", @class = "hidden form-control", @readonly = "readonly" })*@
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            النقل
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Mobile, new { @id = "Nkl", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            بدل النقل
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Mobile, new { @id = "BdlNkl", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            النسبة اليومية
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Mobile, new { @id = "DayRatio", @class = " form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            إجمالى كلى
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Mobile, new { @id = "Total", @class = "form-control", @readonly = "readonly" })
+
+
+        </div>
+    </div>
+
+
+
+</div>
+<div class="modal-footer">
+    <button id="sub" type="button" class="btn btn-outline-info">اضافة</button>
+
+    <button type="button" class="btn grey btn-outline-danger" data-dismiss="modal">@Resource.Close</button>
+</div>
+
+</div>
+
+
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#CustomerId").chosen({
+            width: "100%"
+        });
+        $("#CustomerId").chosen().change(function () {
+            $.ajax({
+                url: '@Url.Action("GetEmpData", "OutOfDuty")',
+                method: "Get",
+                //contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: {
+                    EmpId: $("#CustomerId").val(),
+
+                },
+                success: function (result) {
+                    $("#EmpName").val(result.EmpName);
+                    $("#Mrt").val(result.ClassName);
+                    $("#Drg").val(result.DegreeID);
+                    $("#Rat").val(result.StartSalary);
+                    $("#Nkl").val(result.TransportAllow);
+                    $("#DayRatio").val(result.DayRatio);
+
+                    //Normal Days
+                    var NormalDays = $("#Period").val();
+                    var NormalHours = $("#periodHours").val();
+                    var NormalMinutes = $("#periodMinits").val();
+                    var SumNormal = 0;
+                    var SumVac = 0;
+                    var TransportAllow = 0;
+                    var TotalDays = 0;
+                    //Vac Days
+                    var VacDays = $("#VacPeriod").val();
+                    var VacHours = $("#VacHours").val();
+                    var VacMinutes = $("#VacMinutes").val();
+
+                    var SumNormalHourss = NormalDays * (NormalHours + (NormalMinutes / 60));
+                    var divideNormalMinutes = (NormalMinutes / 60);
+                    var NormalHoursMinutes = parseInt(NormalHours) + parseInt(divideNormalMinutes);
+                    var SumNormalHours = NormalDays * NormalHoursMinutes;
+                    var SumVacHours = VacDays * (VacHours + (VacMinutes / 60));
+                    var SumHours = SumNormalHours + SumVacHours;
+                    NormalDays = NormalDays - result.VacationDays - result.LegationsDays;
+                    //SumNormalHours = NormalDays * (NormalHours + (NormalMinutes / 60));
+                    var TransAllow = result.TransportAllow;
+                    if ($("#CustomerId").val() == 0 || $("#CustomerId").val() == "") {
+                        alert("يوجد خطأ فى كود الموظف");
+                        return;
+                    }
+                     //Calc Normal Days Share
+                    if (SumNormalHours >= result.MaxHours && result.OutOfDutyNoLimit == "0") {
+                        SumNormal = $("#Rat").val() * $("#DayRatio").val()
+                    }
+                    else {
+                        SumNormal = (SumNormalHours / 155) * result.StartSalary;
+                    }
+                   
+                    //CalC Vac Days Share
+                    if (SumVacHours >= result.MaxHours) {
+                        SumVac = $("#Rat").val() * $("#DayRatio").val()
+
+                    }
+                    else {
+                        SumVac = (VacHours / 155) * result.StartSalary;
+                    }
+                    //Calc Transport Allow
+                    if (result.StopTransAll == "1" && result.StopTransAllow == "1") {
+                        TransportAllow = 0;
+                    }
+                    else {
+
+                        TransportAllow = (result.TransportAllow / 30) * NormalDays;
+                        TransportAllow += (result.TransportAllow / 30) * VacDays;
+                    }
+
+                   
+                    TotalDays = TransportAllow +SumNormal + SumVac;
+                    
+                    $("#BdlNkl").val(TransportAllow.toFixed(2));
+                    $("#Total").val(TotalDays.toFixed(2))
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            })
+        });
+        $("#sub").click(function () {
+            var i = 1;
+            var IsValid = true;
+            var CustomerId = document.getElementById('CustomerId').value;
+            var EmpName = document.getElementById('EmpName').value;
+            var Mrt = document.getElementById('Mrt').value;
+            var Drg = document.getElementById('Drg').value;
+            var Rat = document.getElementById('Rat').value;
+            var Nkl = document.getElementById('Nkl').value;
+            var BdlNkl = document.getElementById('BdlNkl').value;
+            var Total = document.getElementById('Total').value;
+            var EgmaDays = Total - BdlNkl;
+                $('#Empslist tr:not(:first-child)').each(function () {
+                    $(this).find('td').each(function () {
+                        if ($(this).find('.CustomerId').val() == CustomerId) {
+                            IsValid = false;
+                        }
+                    })
+                    i++;
+                })
+                if (IsValid) {
+                    var table = document.getElementById("Empslist");
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    var cell7 = row.insertCell(6);
+                    var cell8 = row.insertCell(7);
+                    var cell9 = row.insertCell(8);
+                    var cell10 = row.insertCell(9);
+
+                    cell1.innerHTML = '<input type="text"  class="form-control CustomerId" readonly value = "' + CustomerId + '">';
+                    cell2.innerHTML = '<input type="text"  class="form-control CustomerName" readonly value = "' + EmpName + '">';
+                 
+                    cell3.innerHTML = '<input type="text"  class="form-control Mrt" readonly value = "' + Mrt + '">';
+                    cell4.innerHTML = '<input type="text"  class="form-control Drg" readonly value = "' + Drg + '">';
+                    cell5.innerHTML = '<input type="text"  class="form-control Rat" readonly value = "' + Rat + '">';
+                    cell6.innerHTML = '<input type="text"  class="form-control Nkl" readonly value = "' + Nkl + '">';
+
+                    cell7.innerHTML = '<input type="text"  class="form-control Drg" readonly value = "' + BdlNkl + '">';
+                    cell8.innerHTML = '<input type="text"  class="form-control Rat" readonly value = "' + EgmaDays + '">';
+                    cell9.innerHTML = '<input type="text"  class="form-control  Total" readonly value = "' + Total + '">';
+                    cell10.innerHTML = '<button id="btnremove-1" type="button" class="btn btn-sm btn-danger visible" ><i class="ft-trash"></i> </button>';
+                    //$("#users").("," + CustomerId);
+                    $("#CustomerId").val("");
+                    $("#EmpName").val("");
+                    $("#Mrt").val("");
+                    $("#Drg").val("");
+                    $("#Rat").val("");
+                    $("#Nkl").val("");
+                    $("#DayRatio").val("");
+                    $("#BdlNkl").val("");
+                    $("#Total").val("");
+
+                    document.getElementById("CustomerId").selectedIndex = 0;;
+                }
+                else {
+                    alert("تمت إضافة هذا الموظف مسبقا");
+                }
+             
+            
+           
+        })
+    })
+
+</script>
+
+
+
+

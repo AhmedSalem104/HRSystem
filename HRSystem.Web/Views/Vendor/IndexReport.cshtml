@@ -1,0 +1,200 @@
+﻿@using HRSystem.Web.Infrastructure.Resources
+@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model HRSystem.Web.Models.VendorViewModel
+@{
+    ViewBag.Title = "";
+}
+
+<div class="content-header-left col-md-6 col-12 mb-2 ">
+    <h3 class="content-header-title mb-0 d-inline-block">تقرير الموردين</h3>
+
+</div>
+<div class="row">
+    <div class="col-lg-12 col-xs-12">
+        <div class="users-list-filter px-1">
+            <div class="card row  py-2 mb-2" >
+                <div style="margin-right:110px;" class="col-12 col-sm-6 col-lg-12">
+                    <div class="form-group row">
+                        <label style="margin-top:8px;" for="users-list-verified" class="">المورد</label>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.Id, (IEnumerable
+                               <SelectListItem>)ViewData["Vendor"], "---اختار---", new { @class = "form-control ", @id = "VendorId" })
+                        </div>
+                        <label style="margin-top:8px;" for="users-list-verified" class="">تصنيف المورد  </label>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.VendorClassificationId, (IEnumerable
+                               <SelectListItem>)ViewData["VendorClassification"], "---اختار---", new { @class = "form-control ", @id = "VendorClassificationId" })
+                        </div>
+
+
+                        <div class=" text-center">
+
+                            <button class="btn btn-blue btn-small" id="btnSearch"><i class="la la-search"></i> عرض</button>
+
+                            <a class="btn btn-outline-success btn-min-width box-shadow-2 target='_blank' btn-small" id="btnPrint"><i class="la la-print"></i> طباعة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-head">
+                <div class="card-header">
+
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+                    <div class="heading-elements">
+
+
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="card-content">
+                <div class="card-body">
+                    <!--  List table -->
+                    <div class="table-responsive">
+                        <table id="VendorReportGrid" class="table table-striped table-bordered table-hover" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th> رقم المورد </th>
+                                    <th> اسم المورد  </th>
+                                    <th>  تصنيف المورد  </th>
+                                    <th> هاتف 1 </th>
+
+                                    <th> هاتف 2 </th>
+                                    <th> الفاكس</th>
+                                    <th> العنوان</th>
+
+                                    <th> طباعة </th>
+
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#VendorReportGrid").DataTable({
+
+                "processing": true, // for show progress bar
+                "serverSide": false, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "pageLength": 8,
+                "language": {
+                    "emptyTable": "لا يوجد سجلات.",
+                    "processing": '<div class="loader-wrapper"><div class= "loader-container" ><div class="ball-pulse loader-primary"><div></div><div></div><div></div></div></div> </div> '
+
+
+                },
+
+
+                "columnDefs":
+                    [{
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    }
+                    ],
+
+                "columns": [
+                    { "data": "Id", "name": "Id", "autoWidth": true },
+                    { "data": "VendorNo", "name": "VendorNo", "autoWidth": true },
+                    { "data": "SupplierName", "name": "SupplierName", "autoWidth": true },
+
+                    { "data": "VendorClassificationName", "name": "VendorClassificationName", "autoWidth": true },
+                    { "data": "Phone", "name": "Phone", "autoWidth": true },
+                    { "data": "Mobile", "name": "Mobile", "autoWidth": true },
+                    { "data": "Fax", "name": "Fax", "autoWidth": true },
+
+                    { "data": "Address", "name": "Address", "autoWidth": true },
+
+
+                    {
+                        "render": function (data, type, row, meta) {
+                            return "<a class='btn btn-icon btn-outline-primary'' title='طباعة' target='_blank' href='@Url.Action("Print", "Vendor")?ids=" + row.Id + "'><i class='la la-print'></i></a>";
+                        }
+                    },
+
+                ]
+
+       });
+
+    });
+
+    $("#btnSearch").on("click", function () {
+        var VendorId = $("#VendorId").val();
+        var VendorClassificationId = $("#VendorClassificationId").val();
+
+        var table = $('#VendorReportGrid').DataTable();
+        table.ajax.url("/Vendor/SearchVendorsReport?VendorId=" + VendorId + "&VendorClassificationId=" + VendorClassificationId   )
+
+            table.ajax.reload();
+
+    });
+    $("#btnPrint").on("click", function () {
+        var ids = [];
+        table = $('#VendorReportGrid').DataTable();
+        if (table.rows().count() === 0) {
+            Swal.fire({
+                type: "warning",
+                title: '',
+                text: 'من فضلك اعرض بيانات المورد اولا',
+                confirmButtonClass: 'btn btn-success',
+            })
+        }
+        else {
+
+        table.rows().every(function () {
+            var data = this.data();
+            var id = data.Id;
+            ids.push(id);
+
+        });
+
+            window.open('/Vendor/VendorsReportPrint?ids=' + ids, '');
+
+
+        }
+    });
+
+    $(function () {
+        $("#VendorId").chosen({
+            width: "100%"
+        });
+        $("#VendorClassificationId").chosen({
+            width: "100%"
+        });
+
+
+    });
+
+</script>
+

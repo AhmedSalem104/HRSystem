@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.footerChannel = exports.bodySendMessageChannel = exports.bodyChannel = exports.titleChannel = exports.dialogChannel = void 0;
+var katamari_1 = require("@ephox/katamari");
+var dialogChannel = katamari_1.Id.generate('update-dialog');
+exports.dialogChannel = dialogChannel;
+var titleChannel = katamari_1.Id.generate('update-title');
+exports.titleChannel = titleChannel;
+var bodyChannel = katamari_1.Id.generate('update-body');
+exports.bodyChannel = bodyChannel;
+var footerChannel = katamari_1.Id.generate('update-footer');
+exports.footerChannel = footerChannel;
+var bodySendMessageChannel = katamari_1.Id.generate('body-send-message');
+exports.bodySendMessageChannel = bodySendMessageChannel;

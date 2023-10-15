@@ -1,0 +1,883 @@
+﻿@using EmployeesPortal.Web.Infrastructure.Extensions
+@using EmployeesPortal.Web.Infrastructure
+
+@model EmployeesPortal.Web.Models.OutOfDutyViewModel
+
+
+@Html.HiddenFor(model => model.OutOfDutyGroupSerial)
+
+@if (Model.OutOfDutyGroupSerial != 0)
+{
+
+
+
+    if (Model.ToDate != null)
+    {
+        <input id="ToDatee" hidden value="@Model.ToDate.Date">
+
+    }
+
+
+
+    if (Model.Date != null)
+    {
+        <input id="Datee" hidden value="@Model.Date.Date">
+
+    }
+
+
+    if (Model.FromDate != null)
+    {
+        <input id="FromDatee" hidden value="@Model.FromDate.Date">
+
+    }
+
+
+}
+else
+{
+    <input id="ToDatee" hidden value="1">
+    <input id="Datee" hidden value="1">
+    <input id="FromDatee" hidden value="1">
+
+
+}
+
+
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- Basic form layout section start -->
+        <section id="basic-form-layouts">
+            <div class="row match-height">
+                <div class="col-md-12">
+                    <div class="card" style="border:1px">
+                        <div class="card-header">
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    @*<li><a data-action="close"><i class="ft-x"></i></a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+
+                                <div class="form-body">
+                                    <h4 class="form-section"><i class="ft-user"></i> بيانات الطلب</h4>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="projectinput5">  تاريخ القرار </label>
+
+                                                <i class="la la-calendar"></i>
+
+                                                @Html.TextBoxFor(model => model.DateH, new { @class = "form-control", @Id = "DateH" })
+                                                @Html.ValidationMessageFor(model => model.DateH, "", new { @class = "text-danger" })
+
+                                                @Html.TextBoxFor(model => model.Date, new { @class = "hidden", @Id = "Date" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userinput1">عدد المرفقات</label>
+
+                                                @Html.TextBoxFor(model => model.EnclosureCount, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userinput1">الأعمال المتوقعة<span style="color:red">*</span></label>
+
+                                                @Html.TextAreaFor(model => model.ExpectedWorks, new { @class = "form-control" })
+
+                                                @Html.ValidationMessageFor(model => model.ExpectedWorks, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userinput2">علما بأن الاعمال الموضحة لسعادتكم هى أعمال لا يمكن انجازها خلال اوقات الدوام الرسمية</label>
+                                                @Html.CheckBox("DailyTrans", new { @name = "DailyTrans", @id = "DailyTrans", @class = "form-check-input" })
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr style="border: none; height: 20px; width: 100%; height: 50px; margin-top: 0; border-bottom: 1px solid #1f1209; margin: -50px auto 10px; " />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h1 style="color:blue">
+                                                    اثناء الايام العادية
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">عدد الايام العادية *<span style="color:red">*</span></label>
+
+                                                @Html.TextBoxFor(model => model.Period, new { @class = "form-control" })
+
+                                                @Html.ValidationMessageFor(model => model.Period, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">الساعات</label>
+                                                @Html.TextBoxFor(model => model.periodHours, new { @Value = "0", @class = "form-control" })
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">الدقائق</label>
+                                                @Html.TextBoxFor(model => model.periodMinits, new { @Value = "0", @class = "form-control" })
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <hr style="border: none; height: 20px; width: 100%; height: 50px; margin-top: 0; border-bottom: 1px solid #1f1209; margin: -50px auto 10px; " />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h1 style="color:blue">
+                                                    اثناء أيام العطلات
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">عدد أيام العطلات<span style="color:red">*</span></label>
+
+                                                @Html.TextBoxFor(model => model.VacPeriod, new { @class = "form-control" })
+
+                                                @Html.ValidationMessageFor(model => model.VacPeriod, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">الساعات</label>
+                                                @Html.TextBoxFor(model => model.VacHours, new { @Value = "0", @class = "form-control" })
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput1">الدقائق</label>
+                                                @Html.TextBoxFor(model => model.VacMinutes, new { @Value = "0", @class = "form-control" })
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr style="border: none; height: 20px; width: 100%; height: 50px; margin-top: 0; border-bottom: 1px solid #1f1209; margin: -50px auto 10px; " />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="projectinput5">من تاريخ<span style="color:red">*</span></label>
+
+                                                <i class="la la-calendar"></i>
+
+
+                                                @Html.TextBoxFor(model => model.FromDateH, new { @class = "form-control", @Id = "DateFromH" })
+                                                @Html.ValidationMessageFor(model => model.FromDateH, "", new { @class = "text-danger" })
+
+                                                @Html.TextBoxFor(model => model.FromDate, new { @class = "hidden", @Id = "DateFrom" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="projectinput5"> إلى تاريخ<span style="color:red">*</span></label>
+
+                                                <i class="la la-calendar"></i>
+
+
+                                                @Html.TextBoxFor(model => model.ToDateH, new { @class = "form-control", @Id = "ToDateH", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.ToDateH, "", new { @class = "text-danger" })
+
+                                                @Html.TextBoxFor(model => model.ToDate, new { @class = "hidden", @Id = "ToDate" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="userinput2">جهة العمل</label>
+                                                @Html.TextBoxFor(a => a.Location, new { @class = "Days form-control" })
+                                                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="projectinput6">البيان </label>
+                                                @Html.TextBoxFor(a => a.Description, new { @id = "Description", @class = "ApprovedBy form-control" })
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="projectinput6">ملاحظات أيام العمل </label>
+                                                @Html.TextBoxFor(a => a.WorkDaysNotes, new { @id = "WorkDaysNotes", @class = "WalkLine form-control" })
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="projectinput6">ملاحظات   </label>
+                                                @Html.TextBoxFor(a => a.Notes, new { @id = "Notes", @class = "WalkLine form-control" })
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>-->
+                @*<li><a data-action="close"><i class="ft-x"></i></a></li>*@
+                <!--</ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+
+                        <div class="card-text">
+                        </div>
+
+
+                        <div class="form-body">-->
+                @*<h4 class="form-section"><i class="la la-eye"></i> رصيد الأجازات للموظف</h4>*@
+
+
+
+                <!--</div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+        </section>
+        <!-- // Basic form layout section end -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card box-shadow-0 border-info bg-transparent ">
+            <div class="card-header card-head-inverse bg-info">
+                <h4 class="card-title text-white">الموظفين</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    @Html.Partial("_Emps")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade text-left" id="AddEmp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @{Html.RenderAction("AddEmp", "OutOfDuty");}
+
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(function () {
+        $('#DateH').calendarsPicker({
+            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+            onSelect: function () {
+                var date = $('#DateH').val();
+
+
+                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                $('#Date').val(toGregoriandate);
+                var CurrentDate = moment(new Date()).format("YYYY/MM/DD");
+
+                var IssueDate = $('#DateH').val();
+
+            }
+
+        });
+        $("#UsersIds").chosen({
+            width: "100%"
+        });
+
+        $("#EmpsVal").hide();
+    });
+
+
+   
+    $(function () {
+        $('#ToDateH').calendarsPicker({
+            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+            onSelect: function () {
+                var date = $('#ToDateH').val();
+
+
+                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                $('#ToDate').val(toGregoriandate);
+                var CurrentDate = moment(new Date()).format("YYYY/MM/DD");
+
+                var IssueDate = $('#ToDate').val();
+
+            }
+
+        });
+
+    });
+    $(function () {
+        $('#FromDateH').calendarsPicker({
+            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+            onSelect: function () {
+                var date = $('#FromDateH').val();
+
+
+                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                $('#FromDate').val(toGregoriandate);
+                var CurrentDate = moment(new Date()).format("YYYY/MM/DD");
+
+                var IssueDate = $('#ToDate').val();
+
+            }
+
+        });
+
+    });
+
+
+    $(document).ready(function () {
+        if ($("#ToDatee").val() == 1) {
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+            $("#CurrentTime").val(hour + ":" + min);
+            var today = year + "-" + month + "-" + day;
+            $("#ToDate").attr("value", today);
+        }
+
+        else {
+            var date = new Date($("#ToDatee").val());
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#ToDate").attr("value", today);
+        }
+
+
+
+
+        if ($("#Datee").val() == 1) {
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#Date").attr("value", today);
+        }
+
+        else {
+            var date = new Date($("#Datee").val());
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#Date").attr("value", today);
+        }
+
+    });
+
+
+    if ($("#FromDatee").val() == 1) {
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        $("#CurrentTime").val(hour + ":" + min);
+        var today = year + "-" + month + "-" + day;
+        $("#DateFrom").attr("value", today);
+    }
+
+    else {
+        var date = new Date($("#FromDatee").val());
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        $("#DateFrom").attr("value", today);
+    }
+
+
+</script>
+@* ******************* ToDate_And_H *******************@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#ToDatee").val() == 1) {
+
+            $(function () {
+
+                $('#ToDateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#ToDateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#ToDate').val(toGregoriandate);
+                    }
+
+                });
+
+
+                $('#ToDate').calendarsPicker({
+                    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                    onSelect: function () {
+
+                        var date = $('#ToDate').val();
+                        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        $('#ToDateH').val(tohijridate);
+                    }
+                });
+
+
+            });
+        }
+        else {
+
+            $(function () {
+
+                $('#ToDateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#ToDateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#ToDate').val(toGregoriandate);
+                    }
+
+                });
+
+
+                //$('#AssignmentDate').calendarsPicker({
+                //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                //    onSelect: function () {
+
+                //        var date = $('#AssignmentDate').val();
+                //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                //        $('#AssignmentDateH').val(tohijridate);
+                //    }
+                //});
+
+
+            });
+        }
+    })
+
+
+</script>
+@* ******************* Date_And_H *******************@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#Datee").val() == 1) {
+            $(function () {
+
+                $('#DateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#Date').val(toGregoriandate);
+                    }
+
+                });
+
+
+                $('#Date').calendarsPicker({
+                    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                    onSelect: function () {
+
+                        var date = $('#Date').val();
+                        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        $('#DateH').val(tohijridate);
+                    }
+                });
+
+
+            });
+
+        }
+        else {
+            $(function () {
+
+                $('#DateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#Date').val(toGregoriandate);
+                    }
+
+                });
+
+
+                //$('#Date').calendarsPicker({
+                //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                //    onSelect: function () {
+
+                //        var date = $('#Date').val();
+                //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                //        $('#DateH').val(tohijridate);
+                //    }
+                //});
+
+
+            });
+        }
+    })
+
+    $(document).ready(function () {
+        if ($("#FromDatee").val() == 1) {
+            $(function () {
+
+                $('#DateFromH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateFromH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#DateFrom').val(toGregoriandate);
+                    }
+
+                });
+
+
+                $('#DateFrom').calendarsPicker({
+                    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                    onSelect: function () {
+
+                        var date = $('#DateFrom').val();
+                        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        $('#DateFromH').val(tohijridate);
+                    }
+                });
+
+
+            });
+
+        }
+        else {
+            $(function () {
+
+                $('#DateFrom').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateFromH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#DateFrom').val(toGregoriandate);
+                    }
+
+                });
+
+
+                //$('#Date').calendarsPicker({
+                //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                //    onSelect: function () {
+
+                //        var date = $('#Date').val();
+                //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                //        $('#DateH').val(tohijridate);
+                //    }
+                //});
+
+
+            });
+        }
+    })
+</script>
+<script type="text/javascript">
+
+   /* $(function () {*/
+
+        $(document).ready(function () {
+            $('#DateH').calendarsPicker({
+                calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                onSelect: function () {
+                    var date = $('#DateH').val();
+
+
+                    var dateFormat = moment(date, 'iYYYY/iM/iD');
+                    var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                    $('#Date').val(toGregoriandate);
+                }
+
+            });
+
+
+            $('#Date').calendarsPicker({
+                calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                onSelect: function () {
+
+                    var date = $('#Date').val();
+                    var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                    var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                    $('#DateH').val(tohijridate);
+                }
+            });
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+    @*$(document).ready(function () {
+
+        $("#DateH").click(
+            function () {
+
+                $.ajax({
+            type: "POST",
+            //contentType: "application/json; charset=utf-8",
+            cache: false,
+            url: '@Url.Action("AddDaysToDate", "Departure")',
+                    data: {date: $("#Date").val()},
+             dataType: "json",
+            success: function (result) {
+
+                $("#ToDate").val(result);
+                /* alert($("#ToDate").val())*/
+                var date = new Date(result);
+
+
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+
+                var today = year + "-" + month + "-" + day;
+                $("#ToDate").attr("value", today);
+
+
+                var datee = $('#ToDate').val();
+                var dateFormat = moment(datee).format('DD/MM/YYYY')
+
+                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                $('#ToDateH').val(tohijridate);
+            }
+        });
+
+            });
+       });*@
+    $(document).ready(function () {
+
+            $("#TarekhEltlb").val($("#DateH").val());
+            var date = new Date();
+
+
+            var hour = date.getHours()-1;
+            var min = date.getMinutes();
+
+        $("#CurrentTime").val(hour + ":" + min);
+        $("#OutType").hide();
+        
+    });
+    $("#LegationType").change(function () {
+        
+        if ($(this).val() == "2") {
+            $("#OutType").show();
+
+        }
+        else {
+            $("#OutType").hide();
+
+        }
+    })
+
+     $(document).ready(function () {
+            $("#DaysCount").keyup(function () {
+
+
+                $.ajax({
+            type: "POST",
+            //contentType: "application/json; charset=utf-8",
+            cache: false,
+            url: '@Url.Action("AddDaysToDate", "LegationTraining")',
+                    data: { days: parseInt($(this).val()), date: $("#DateFrom").val()},
+             dataType: "json",
+            success: function (result) {
+
+                $("#ToDate").val(result);
+                /* alert($("#ToDate").val())*/
+                var date = new Date(result);
+
+
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+
+                var today = year + "-" + month + "-" + day;
+                $("#ToDate").attr("value", today);
+
+
+                var datee = $('#ToDate').val();
+                var dateFormat = moment(datee).format('DD/MM/YYYY')
+
+                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                $('#ToDateH').val(tohijridate);
+            }
+        });
+
+            });
+       });
+
+</script>

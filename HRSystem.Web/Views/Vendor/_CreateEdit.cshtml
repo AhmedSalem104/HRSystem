@@ -1,0 +1,171 @@
+﻿@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model HRSystem.Web.Models.VendorViewModel
+
+ 
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.IsDeleted)
+@{
+
+    var x = Model.Id;
+ }
+
+<div class="form-group row">
+
+    @if (x == null)
+    {
+        <label class="col-md-2 label-control">
+            رقم المورد
+        </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(a => a.VendorNo, new { @id = "VendorNo", @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.VendorNo, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+
+    }
+    else
+    {
+        <label class="col-md-2 label-control">
+            رقم المورد
+        </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(a => a.VendorNo, new { @id = "VendorNo", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VendorNo, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+
+
+    }
+
+    <label class="col-md-2 label-control">
+        اسم المورد
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.SupplierName, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.SupplierName, "", new { @class = "text-danger" })
+
+
+
+    </div>
+
+</div>
+
+
+
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        تصنيف المورد
+    </label>
+    <div class="input-group col-md-4">
+        @Html.DropDownListFor(model => model.VendorClassificationId, (IEnumerable
+       <SelectListItem>)ViewData["VendorClassification"], "---اختار---", new { @class = "form-control ", @Id = "VendorClassificationId" })
+        @Html.ValidationMessageFor(model => model.VendorClassificationId, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        الهاتف
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.VendorNo, "", new { @class = "text-danger" })
+
+
+    </div>
+
+
+</div>
+
+@*<div class="form-group row">
+
+
+
+    <div class="col-md-4">
+        @Html.CheckBoxFor(model => model.Block, new { @class = "form-control ", @type = "CheckBox" })
+
+        @Html.ValidationMessageFor(model => model.Block, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        حظر
+    </label>
+
+
+    <div class="col-md-4">
+        @Html.CheckBoxFor(model => model.IsVendorAndCustomer, new { @class = "form-control ", @type = "CheckBox" })
+
+        @Html.ValidationMessageFor(model => model.IsVendorAndCustomer, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        العميل هو المورد
+    </label>
+
+
+
+</div>*@
+
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        الموبيل
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.VendorNo, "", new { @class = "text-danger" })
+    </div>
+
+    <label class="col-md-2 label-control">
+        رصيد افتتاحي دائن<span class="text-danger">*</span>
+    </label>
+    <div class="col-md-4">
+
+        @Html.TextBoxFor(model => model.OpenBalnceCridt, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.OpenBalnceCridt, "", new { @class = "text-danger" })
+    </div>
+
+
+
+</div>
+
+<div class="form-group row">
+
+
+
+    <label class="col-md-2 label-control">
+        رصيد افتتاحي مدين
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.OpenBalnceDept, new { @class = "form-control " })
+
+        @Html.ValidationMessageFor(model => model.OpenBalnceDept, "", new { @class = "text-danger" })
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+    $(function () {
+        $("#VendorClassificationId").chosen({
+            width: "100%"
+        });
+
+
+
+    });
+
+</script>

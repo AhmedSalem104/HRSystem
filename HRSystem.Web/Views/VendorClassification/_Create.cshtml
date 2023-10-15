@@ -1,0 +1,86 @@
+﻿@model  HRSystem.Web.Models.VendorClassificationViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+
+
+
+
+@using (Html.BeginForm("Create", "VendorClassification", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+{
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">اضافة تصنيف</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    رقم التصنيف
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.VendorClaasificationNo, new { @id = "VendorClaasificationNo", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VendorClaasificationNo, "", new { @class = "text-danger" })
+                    <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    اسم التصنيف
+
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "Name", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">@Resource.Close</button>
+            <button  id="sub" type="submit" class="btn btn-outline-info">@Resource.save</button>
+        </div>
+
+    </div>
+
+
+}
+
+
+<script type="text/javascript">
+
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    $("#VendorClaasificationNo").keyup(function () {
+
+        var selectedValue = document.getElementById('VendorClaasificationNo').value;
+
+                $.ajax({
+                        type: "POST",
+                    url: '/VendorClassification/CheckvendorClassificationNo',
+                    data: { vendorClassificationNo: parseInt(selectedValue) },
+                        dataType: 'json',
+                        success: function (result) {
+                                if (result == false) {
+                                    $("#sub").attr("disabled", true);
+                                    $("#validateColCode").removeAttr("hidden");
+
+                                }
+                                else {
+                                    $("#sub").attr("disabled", false);
+                                    $("#validateColCode").attr("hidden", true);
+                                }
+                        },
+                });
+        });
+
+</script>
+
+
+

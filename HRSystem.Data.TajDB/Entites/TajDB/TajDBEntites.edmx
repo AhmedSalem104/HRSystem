@@ -1,0 +1,2910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TajDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActionsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Table" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Record" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MachineName" Type="varchar" MaxLength="50" />
+          <Property Name="FormName" Type="varchar" MaxLength="50" />
+          <Property Name="DateTimeH" Type="varchar" MaxLength="20" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="BlackListSerial" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="BlackListSerial" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ReasonId" Type="tinyint" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="CancelUserId" Type="varchar" MaxLength="20" />
+          <Property Name="CancelDate" Type="smalldatetime" />
+          <Property Name="CancelDateH" Type="varchar" MaxLength="10" />
+          <Property Name="VlnYear" Type="smallint" />
+          <Property Name="VlnSerial" Type="int" />
+          <Property Name="PauseUserId" Type="varchar" MaxLength="20" />
+          <Property Name="PauseDate" Type="smalldatetime" />
+          <Property Name="PauseDateH" Type="varchar" MaxLength="10" />
+          <Property Name="ClctYear" Type="smallint" />
+          <Property Name="ClctSerial" Type="int" />
+          <Property Name="FineUploaded" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.BlackListOld' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BlackListOld">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="BlackListSerial" />
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="DateH" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="BlackListSerial" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ReasonId" Type="tinyint" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="CancelUserId" Type="varchar" MaxLength="20" />
+          <Property Name="CancelDate" Type="smalldatetime" />
+          <Property Name="CancelDateH" Type="varchar" MaxLength="10" />
+          <Property Name="VlnYear" Type="smallint" />
+          <Property Name="VlnSerial" Type="int" />
+          <Property Name="PauseUserId" Type="varchar" MaxLength="20" />
+          <Property Name="PauseDate" Type="smalldatetime" />
+          <Property Name="PauseDateH" Type="varchar" MaxLength="10" />
+          <Property Name="ReasonTypeId" Type="tinyint" />
+          <Property Name="ClctYear" Type="smallint" />
+          <Property Name="ClctSerial" Type="int" />
+        </EntityType>
+        <EntityType Name="BlackListPauses">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PauseUserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PauseDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="PauseDateH" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlackListReasons">
+          <Key>
+            <PropertyRef Name="ReasonId" />
+          </Key>
+          <Property Name="ReasonId" Type="tinyint" Nullable="false" />
+          <Property Name="ReasonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="smallint" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactsDepr" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BranchesPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BranchId" Type="smallint" Nullable="false" />
+          <Property Name="DefaultBranch" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="smallint" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Default" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="TypeId" Type="tinyint" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdNo" Type="varchar" MaxLength="20" />
+          <Property Name="IdEndDate" Type="smalldatetime" />
+          <Property Name="IdEndDateH" Type="varchar" MaxLength="10" />
+          <Property Name="IdTypeId" Type="tinyint" />
+          <Property Name="IdCity" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="Job" Type="varchar" MaxLength="50" />
+          <Property Name="NatId" Type="smallint" />
+          <Property Name="ReligionId" Type="smallint" />
+          <Property Name="BirthDate" Type="smalldatetime" />
+          <Property Name="BirthDateH" Type="varchar" MaxLength="10" />
+          <Property Name="BirthDateG" Type="smalldatetime" />
+          <Property Name="BirthDateGH" Type="varchar" MaxLength="10" />
+          <Property Name="EMail" Type="varchar" MaxLength="30" />
+          <Property Name="CommercialRegister" Type="varchar" MaxLength="30" />
+          <Property Name="CommRegCity" Type="varchar" MaxLength="30" />
+          <Property Name="CommRegDate" Type="smalldatetime" />
+          <Property Name="CommRegDateH" Type="varchar" MaxLength="10" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+          <Property Name="PostBox" Type="varchar" MaxLength="10" />
+          <Property Name="PBoxCity" Type="varchar" MaxLength="30" />
+          <Property Name="BlackList" Type="bit" Nullable="false" />
+          <Property Name="WorkerPicture" Type="image" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Representative" Type="varchar" MaxLength="50" />
+          <Property Name="ReprsnPosition" Type="varchar" MaxLength="50" />
+          <Property Name="OldIdNo" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="15" />
+          <Property Name="FamilyMemCount" Type="varchar" MaxLength="20" />
+          <Property Name="IdIssueDate" Type="smalldatetime" />
+          <Property Name="IdIssueDateH" Type="varchar" MaxLength="10" />
+          <Property Name="OldIdNoEndDate" Type="smalldatetime" />
+          <Property Name="OldIdNoEndDateH" Type="varchar" MaxLength="10" />
+          <Property Name="MobileCCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="District" Type="varchar" MaxLength="50" />
+          <Property Name="Street" Type="varchar" MaxLength="50" />
+          <Property Name="Uploaded" Type="bit" Nullable="false" />
+          <Property Name="IdPicture" Type="image" />
+          <Property Name="WorkerPictureURL" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fn_CustDetails" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomersImages">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="LineNo" />
+          </Key>
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="LineNo" Type="smallint" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="DateH" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="smallint" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityId" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="MenuId" Type="smallint" Nullable="false" />
+          <Property Name="ParentId" Type="smallint" Nullable="false" />
+          <Property Name="Caption" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormName" Type="varchar" MaxLength="50" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortCutKeys" Type="varchar" MaxLength="50" />
+          <Property Name="LastSub" Type="bit" Nullable="false" />
+          <Property Name="Parameter" Type="varchar" MaxLength="10" />
+          <Property Name="FormCaledarType" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MonthsNames">
+          <Key>
+            <PropertyRef Name="MonthNo" />
+          </Key>
+          <Property Name="MonthNo" Type="tinyint" Nullable="false" />
+          <Property Name="MothHjName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MonthGrName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MonthGrNameE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MyDates">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="BioStarDate" Type="bigint" />
+          <Property Name="UmElQuraDate" Type="varchar" MaxLength="10" />
+          <Property Name="MonthUmElQura" Type="tinyint" />
+          <Property Name="YearUmElQura" Type="smallint" />
+          <Property Name="HijriDate" Type="varchar" MaxLength="10" />
+          <Property Name="MonthHijri" Type="tinyint" />
+          <Property Name="YearHijri" Type="smallint" />
+          <Property Name="WeekDay" Type="tinyint" />
+          <Property Name="YearUm2" Type="smallint" />
+          <Property Name="UmElQuraDate2" Type="varchar" MaxLength="10" />
+          <Property Name="HijriDate2" Type="varchar" MaxLength="10" />
+          <Property Name="YearUm4" Type="smallint" />
+          <Property Name="UmElQuraDate4" Type="varchar" MaxLength="10" />
+          <Property Name="HijriDate4" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Nationalities">
+          <Key>
+            <PropertyRef Name="NatId" />
+          </Key>
+          <Property Name="NatId" Type="smallint" Nullable="false" />
+          <Property Name="NatName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsSaudi" Type="bit" Nullable="false" />
+          <Property Name="IdNoCheck" Type="bit" Nullable="false" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+          <Property Name="EMP_NATIONALITY" Type="varchar" MaxLength="3" />
+          <Property Name="Uploaded" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTypes">
+          <Key>
+            <PropertyRef Name="OrderTypeId" />
+          </Key>
+          <Property Name="OrderTypeId" Type="smallint" Nullable="false" />
+          <Property Name="OrderTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentItems">
+          <Key>
+            <PropertyRef Name="PaymentItemId" />
+          </Key>
+          <Property Name="PaymentItemId" Type="int" Nullable="false" />
+          <Property Name="PaymentItemName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountMainId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountSubId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneGroups">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PhoneGroupId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhoneGroupId" Type="tinyint" Nullable="false" />
+          <Property Name="PhoneGroupName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneIndex">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PhoneIndexId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhoneIndexId" Type="smallint" Nullable="false" />
+          <Property Name="PhoneIndexName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneGroupId" Type="tinyint" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Phone1" Type="varchar" MaxLength="20" />
+          <Property Name="Phone2" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile2" Type="varchar" MaxLength="20" />
+          <Property Name="Email1" Type="varchar" MaxLength="50" />
+          <Property Name="Email2" Type="varchar" MaxLength="50" />
+          <Property Name="WebSite" Type="varchar" MaxLength="50" />
+          <Property Name="Notes" Type="varchar" MaxLength="500" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Religions">
+          <Key>
+            <PropertyRef Name="ReligionID" />
+          </Key>
+          <Property Name="ReligionID" Type="tinyint" Nullable="false" />
+          <Property Name="ReligionName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ReminderId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ReminderId" Type="smallint" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="StartDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="StartDateH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EndDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="EndDateH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hour" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Priority" Type="tinyint" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="SearchFields">
+          <Key>
+            <PropertyRef Name="Field" />
+            <PropertyRef Name="SearchField" />
+          </Key>
+          <Property Name="Field" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SearchField" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Caption" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Table" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="tinyint" />
+          <Property Name="Selected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendSms">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="Serial" Type="int" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SmsTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="SmsText" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="SenderId" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendSmsCustomers">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="Serial" />
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="Serial" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SerialNumbers">
+          <Key>
+            <PropertyRef Name="SerialNumber" />
+          </Key>
+          <Property Name="SerialNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PcName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PcKey" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="smallint" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="SystemDate" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ShowCurrencies" Type="bit" Nullable="false" />
+          <Property Name="ShowWeather" Type="bit" Nullable="false" />
+          <Property Name="ShowNews" Type="bit" Nullable="false" />
+          <Property Name="RefreshInterval" Type="tinyint" />
+          <Property Name="MaximizeForms" Type="bit" Nullable="false" />
+          <Property Name="ProdK" Type="varchar" MaxLength="20" />
+          <Property Name="SmsSender" Type="varchar" MaxLength="10" />
+          <Property Name="SmsService" Type="bit" Nullable="false" />
+          <Property Name="SMS_Contracts" Type="varchar" MaxLength="200" />
+          <Property Name="SMS_Inst" Type="varchar" MaxLength="200" />
+          <Property Name="SMS_Licenses" Type="varchar" MaxLength="200" />
+          <Property Name="SMS_EndedLicenses" Type="varchar" MaxLength="200" />
+          <Property Name="SMSUser" Type="varchar" MaxLength="20" />
+          <Property Name="SMSPass" Type="varchar" MaxLength="20" />
+          <Property Name="mobily_ws" Type="bit" Nullable="false" />
+          <Property Name="Bg" Type="image" />
+          <Property Name="SearchRows" Type="smallint" />
+          <Property Name="PasswordExpDays" Type="smallint" />
+          <Property Name="EtaSync" Type="bit" Nullable="false" />
+          <Property Name="HealthSync" Type="bit" Nullable="false" />
+          <Property Name="EngLicensesSync" Type="bit" Nullable="false" />
+          <Property Name="SmsProvider" Type="tinyint" Nullable="false" />
+          <Property Name="SMSCollecting" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SmsMessages">
+          <Key>
+            <PropertyRef Name="SmsId" />
+          </Key>
+          <Property Name="SmsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="Sent" Type="tinyint" Nullable="false" />
+          <Property Name="ETAUserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Result" Type="tinyint" Nullable="false" />
+          <Property Name="SentTime" Type="smalldatetime" />
+          <Property Name="SuddenFPSerial" Type="int" />
+          <Property Name="ResultMsg" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="SmsTypes">
+          <Key>
+            <PropertyRef Name="SmsTypeId" />
+          </Key>
+          <Property Name="SmsTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="SmsTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialState">
+          <Key>
+            <PropertyRef Name="SocialStateID" />
+          </Key>
+          <Property Name="SocialStateID" Type="tinyint" Nullable="false" />
+          <Property Name="SocialStateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SocialStateNameE" Type="varchar" MaxLength="30" />
+          <Property Name="EMP_MTL_STATUS" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Systems">
+          <Key>
+            <PropertyRef Name="SystemId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="SystemName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DBName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+          <Property Name="NotActive" Type="bit" Nullable="false" />
+          <Property Name="AlertTime" Type="tinyint" Nullable="false" />
+          <Property Name="IgnoreAutoSerial" Type="bit" Nullable="false" />
+          <Property Name="OnlyMenuId" Type="smallint" />
+          <Property Name="LogH" Type="bit" Nullable="false" />
+          <Property Name="SigImg" Type="image" />
+          <Property Name="PasswordChangeDate" Type="smalldatetime" />
+          <Property Name="CanDblQuantity" Type="bit" Nullable="false" />
+          <Property Name="UserImageURL" Type="nvarchar" MaxLength="100" />
+          <Property Name="SendLongSMS" Type="bit" Nullable="false" />
+          <Property Name="PassCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UsersEmployees">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeId" Type="smallint" Nullable="false" />
+          <Property Name="Supervisor" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="MenuId" Type="smallint" Nullable="false" />
+          <Property Name="Open" Type="bit" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Insert" Type="bit" Nullable="false" />
+          <Property Name="Update" Type="bit" Nullable="false" />
+          <Property Name="Delete" Type="bit" Nullable="false" />
+          <Property Name="Print" Type="bit" Nullable="false" />
+          <Property Name="UsrGroupId" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="UsrGroups">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UsrGroupId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="UsrGroupId" Type="tinyint" Nullable="false" />
+          <Property Name="UsrGroupName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsrGroupsPerm">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UsrGroupId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="UsrGroupId" Type="tinyint" Nullable="false" />
+          <Property Name="MenuId" Type="smallint" Nullable="false" />
+          <Property Name="Open" Type="bit" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Insert" Type="bit" Nullable="false" />
+          <Property Name="Update" Type="bit" Nullable="false" />
+          <Property Name="Delete" Type="bit" Nullable="false" />
+          <Property Name="Print" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VatRatio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromDate" Type="datetime" Nullable="false" />
+          <Property Name="ToDate" Type="datetime" Nullable="false" />
+          <Property Name="Ratio" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.AccountMain' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountMain">
+          <Key>
+            <PropertyRef Name="AccountMainId" />
+            <PropertyRef Name="AccountMainName" />
+          </Key>
+          <Property Name="AccountMainId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountMainName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.AccountSub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountSub">
+          <Key>
+            <PropertyRef Name="AccountMainId" />
+            <PropertyRef Name="AccountSubId" />
+            <PropertyRef Name="AccountSubName" />
+            <PropertyRef Name="Minimum" />
+            <PropertyRef Name="Maximum" />
+          </Key>
+          <Property Name="AccountMainId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountSubId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountSubName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Minimum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Maximum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.BlackListSerial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BlackListSerial">
+          <Key>
+            <PropertyRef Name="BlackListSerial" />
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="DateH" />
+          </Key>
+          <Property Name="BlackListSerial" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DateH" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.QryBranchesPerm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QryBranchesPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.QryUsersPerm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QryUsersPerm">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TajDB.dbo.SystemsUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SystemsUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="SystemId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SystemId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActionsLog_Systems">
+          <End Role="Systems" Type="Self.Systems" Multiplicity="1" />
+          <End Role="ActionsLog" Type="Self.ActionsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="ActionsLog">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_BlackListReasons">
+          <End Role="BlackListReasons" Type="Self.BlackListReasons" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlackListReasons">
+              <PropertyRef Name="ReasonId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="ReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Systems">
+          <End Role="Systems" Type="Self.Systems" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="CancelUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackListPauses_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BlackListPauses" Type="Self.BlackListPauses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="BlackListPauses">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackListReasons_Systems">
+          <End Role="Systems" Type="Self.Systems" Multiplicity="1" />
+          <End Role="BlackListReasons" Type="Self.BlackListReasons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="BlackListReasons">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchesPerm_Branches">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BranchesPerm" Type="Self.BranchesPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="BranchesPerm">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchesPerm_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BranchesPerm" Type="Self.BranchesPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BranchesPerm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Nationalities">
+          <End Role="Nationalities" Type="Self.Nationalities" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationalities">
+              <PropertyRef Name="NatId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="NatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomersImages_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomersImages" Type="Self.CustomersImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomersImages">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Systems">
+          <End Role="Systems" Type="Self.Systems" Multiplicity="1" />
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneGroups_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PhoneGroups" Type="Self.PhoneGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PhoneGroups">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneIndex_PhoneGroups">
+          <End Role="PhoneGroups" Type="Self.PhoneGroups" Multiplicity="1" />
+          <End Role="PhoneIndex" Type="Self.PhoneIndex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneGroups">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PhoneGroupId" />
+            </Principal>
+            <Dependent Role="PhoneIndex">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PhoneGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendSms_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SendSms" Type="Self.SendSms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SendSms">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendSmsCustomers_SendSms">
+          <End Role="SendSms" Type="Self.SendSms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SendSmsCustomers" Type="Self.SendSmsCustomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendSms">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SendSmsCustomers">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="Serial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmsMessages_Systems">
+          <End Role="Systems" Type="Self.Systems" Multiplicity="1" />
+          <End Role="SmsMessages" Type="Self.SmsMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="SmsMessages">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmsMessages_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="SmsMessages" Type="Self.SmsMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SmsMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPerm_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersPerm" Type="Self.UsersPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="UsersPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPerm_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersPerm" Type="Self.UsersPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersPerm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsrGroupsPerm_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1" />
+          <End Role="UsrGroupsPerm" Type="Self.UsrGroupsPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="UsrGroupsPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsrGroupsPerm_UsrGroups">
+          <End Role="UsrGroups" Type="Self.UsrGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsrGroupsPerm" Type="Self.UsrGroupsPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsrGroups">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="UsrGroupId" />
+            </Principal>
+            <Dependent Role="UsrGroupsPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="UsrGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DayNameAr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="DayNo" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="HijriMonthsDiff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="smallint">
+          <Parameter Name="StartDateH" Type="varchar" Mode="In" />
+          <Parameter Name="EndDateH" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Taf" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="Number" Type="numeric" Mode="In" />
+          <Parameter Name="Tale" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="TajDBModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionsLog" EntityType="Self.ActionsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlackList" EntityType="Self.BlackList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlackListPauses" EntityType="Self.BlackListPauses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlackListReasons" EntityType="Self.BlackListReasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchesPerm" EntityType="Self.BranchesPerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomersImages" EntityType="Self.CustomersImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonthsNames" EntityType="Self.MonthsNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MyDates" EntityType="Self.MyDates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentItems" EntityType="Self.PaymentItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneGroups" EntityType="Self.PhoneGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneIndex" EntityType="Self.PhoneIndex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religions" EntityType="Self.Religions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reminder" EntityType="Self.Reminder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchFields" EntityType="Self.SearchFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendSms" EntityType="Self.SendSms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendSmsCustomers" EntityType="Self.SendSmsCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerialNumbers" EntityType="Self.SerialNumbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsMessages" EntityType="Self.SmsMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsTypes" EntityType="Self.SmsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialState" EntityType="Self.SocialState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Systems" EntityType="Self.Systems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersEmployees" EntityType="Self.UsersEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersPerm" EntityType="Self.UsersPerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsrGroups" EntityType="Self.UsrGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsrGroupsPerm" EntityType="Self.UsrGroupsPerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VatRatio" EntityType="Self.VatRatio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlackListOld" EntityType="Self.BlackListOld" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BlackListOld].[SystemId] AS [SystemId], 
+    [BlackListOld].[BlackListSerial] AS [BlackListSerial], 
+    [BlackListOld].[CustomerId] AS [CustomerId], 
+    [BlackListOld].[Date] AS [Date], 
+    [BlackListOld].[DateH] AS [DateH], 
+    [BlackListOld].[ReasonId] AS [ReasonId], 
+    [BlackListOld].[UserId] AS [UserId], 
+    [BlackListOld].[Notes] AS [Notes], 
+    [BlackListOld].[CancelUserId] AS [CancelUserId], 
+    [BlackListOld].[CancelDate] AS [CancelDate], 
+    [BlackListOld].[CancelDateH] AS [CancelDateH], 
+    [BlackListOld].[VlnYear] AS [VlnYear], 
+    [BlackListOld].[VlnSerial] AS [VlnSerial], 
+    [BlackListOld].[PauseUserId] AS [PauseUserId], 
+    [BlackListOld].[PauseDate] AS [PauseDate], 
+    [BlackListOld].[PauseDateH] AS [PauseDateH], 
+    [BlackListOld].[ReasonTypeId] AS [ReasonTypeId], 
+    [BlackListOld].[ClctYear] AS [ClctYear], 
+    [BlackListOld].[ClctSerial] AS [ClctSerial]
+    FROM [dbo].[BlackListOld] AS [BlackListOld]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AccountMain" EntityType="Self.AccountMain" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccountMain].[AccountMainId] AS [AccountMainId], 
+    [AccountMain].[AccountMainName] AS [AccountMainName]
+    FROM [dbo].[AccountMain] AS [AccountMain]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AccountSub" EntityType="Self.AccountSub" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccountSub].[AccountMainId] AS [AccountMainId], 
+    [AccountSub].[AccountSubId] AS [AccountSubId], 
+    [AccountSub].[AccountSubName] AS [AccountSubName], 
+    [AccountSub].[Minimum] AS [Minimum], 
+    [AccountSub].[Maximum] AS [Maximum]
+    FROM [dbo].[AccountSub] AS [AccountSub]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BlackListSerial" EntityType="Self.BlackListSerial" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BlackListSerial].[BlackListSerial] AS [BlackListSerial], 
+    [BlackListSerial].[CustomerId] AS [CustomerId], 
+    [BlackListSerial].[CustomerName] AS [CustomerName], 
+    [BlackListSerial].[DateH] AS [DateH]
+    FROM [dbo].[BlackListSerial] AS [BlackListSerial]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QryBranchesPerm" EntityType="Self.QryBranchesPerm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QryBranchesPerm].[UserId] AS [UserId]
+    FROM [dbo].[QryBranchesPerm] AS [QryBranchesPerm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QryUsersPerm" EntityType="Self.QryUsersPerm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QryUsersPerm].[SystemId] AS [SystemId], 
+    [QryUsersPerm].[UserId] AS [UserId]
+    FROM [dbo].[QryUsersPerm] AS [QryUsersPerm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemsUsers" EntityType="Self.SystemsUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemsUsers].[UserId] AS [UserId], 
+    [SystemsUsers].[UserName] AS [UserName], 
+    [SystemsUsers].[SystemId] AS [SystemId]
+    FROM [dbo].[SystemsUsers] AS [SystemsUsers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ActionsLog_Systems" Association="Self.FK_ActionsLog_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="ActionsLog" EntitySet="ActionsLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_BlackListReasons" Association="Self.FK_BlackList_BlackListReasons">
+            <End Role="BlackListReasons" EntitySet="BlackListReasons" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Customers" Association="Self.FK_BlackList_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Systems" Association="Self.FK_BlackList_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Users" Association="Self.FK_BlackList_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Users1" Association="Self.FK_BlackList_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackListPauses_Customers" Association="Self.FK_BlackListPauses_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BlackListPauses" EntitySet="BlackListPauses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackListReasons_Systems" Association="Self.FK_BlackListReasons_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="BlackListReasons" EntitySet="BlackListReasons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchesPerm_Branches" Association="Self.FK_BranchesPerm_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="BranchesPerm" EntitySet="BranchesPerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchesPerm_Users" Association="Self.FK_BranchesPerm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BranchesPerm" EntitySet="BranchesPerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Nationalities" Association="Self.FK_Customers_Nationalities">
+            <End Role="Nationalities" EntitySet="Nationalities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomersImages_Customers" Association="Self.FK_CustomersImages_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CustomersImages" EntitySet="CustomersImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Cities" Association="Self.FK_Districts_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Systems" Association="Self.FK_Menus_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneGroups_Users" Association="Self.FK_PhoneGroups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PhoneGroups" EntitySet="PhoneGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneIndex_PhoneGroups" Association="Self.FK_PhoneIndex_PhoneGroups">
+            <End Role="PhoneGroups" EntitySet="PhoneGroups" />
+            <End Role="PhoneIndex" EntitySet="PhoneIndex" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendSms_Users" Association="Self.FK_SendSms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SendSms" EntitySet="SendSms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendSmsCustomers_SendSms" Association="Self.FK_SendSmsCustomers_SendSms">
+            <End Role="SendSms" EntitySet="SendSms" />
+            <End Role="SendSmsCustomers" EntitySet="SendSmsCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmsMessages_Systems" Association="Self.FK_SmsMessages_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="SmsMessages" EntitySet="SmsMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmsMessages_Users" Association="Self.FK_SmsMessages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SmsMessages" EntitySet="SmsMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPerm_Menus" Association="Self.FK_UsersPerm_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="UsersPerm" EntitySet="UsersPerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPerm_Users" Association="Self.FK_UsersPerm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersPerm" EntitySet="UsersPerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsrGroupsPerm_Menus" Association="Self.FK_UsrGroupsPerm_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="UsrGroupsPerm" EntitySet="UsrGroupsPerm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsrGroupsPerm_UsrGroups" Association="Self.FK_UsrGroupsPerm_UsrGroups">
+            <End Role="UsrGroups" EntitySet="UsrGroups" />
+            <End Role="UsrGroupsPerm" EntitySet="UsrGroupsPerm" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TajDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActionsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Table" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Record" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTimeH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="System" Relationship="Self.FK_ActionsLog_Systems" FromRole="ActionsLog" ToRole="Systems" />
+        </EntityType>
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="BlackListSerial" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="BlackListSerial" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReasonId" Type="Byte" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CancelUserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CancelDate" Type="DateTime" Precision="0" />
+          <Property Name="CancelDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="VlnYear" Type="Int16" />
+          <Property Name="VlnSerial" Type="Int32" />
+          <Property Name="PauseUserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PauseDate" Type="DateTime" Precision="0" />
+          <Property Name="PauseDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ClctYear" Type="Int16" />
+          <Property Name="ClctSerial" Type="Int32" />
+          <Property Name="FineUploaded" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BlackListReason" Relationship="Self.FK_BlackList_BlackListReasons" FromRole="BlackList" ToRole="BlackListReasons" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_BlackList_Customers" FromRole="BlackList" ToRole="Customers" />
+          <NavigationProperty Name="System" Relationship="Self.FK_BlackList_Systems" FromRole="BlackList" ToRole="Systems" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BlackList_Users" FromRole="BlackList" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_BlackList_Users1" FromRole="BlackList" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="BlackListPaus">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PauseUserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PauseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PauseDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_BlackListPauses_Customers" FromRole="BlackListPauses" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="BlackListReason">
+          <Key>
+            <PropertyRef Name="ReasonId" />
+          </Key>
+          <Property Name="ReasonId" Type="Byte" Nullable="false" />
+          <Property Name="ReasonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="BlackLists" Relationship="Self.FK_BlackList_BlackListReasons" FromRole="BlackListReasons" ToRole="BlackList" />
+          <NavigationProperty Name="System" Relationship="Self.FK_BlackListReasons_Systems" FromRole="BlackListReasons" ToRole="Systems" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int16" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactsDepr" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BranchesPerms" Relationship="Self.FK_BranchesPerm_Branches" FromRole="Branches" ToRole="BranchesPerm" />
+        </EntityType>
+        <EntityType Name="BranchesPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchId" Type="Int16" Nullable="false" />
+          <Property Name="DefaultBranch" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_BranchesPerm_Branches" FromRole="BranchesPerm" ToRole="Branches" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BranchesPerm_Users" FromRole="BranchesPerm" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int16" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Default" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_Cities" FromRole="Cities" ToRole="Districts" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="TypeId" Type="Byte" Nullable="false" />
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdEndDate" Type="DateTime" Precision="0" />
+          <Property Name="IdEndDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IdTypeId" Type="Byte" />
+          <Property Name="IdCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NatId" Type="Int16" />
+          <Property Name="ReligionId" Type="Int16" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="BirthDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDateG" Type="DateTime" Precision="0" />
+          <Property Name="BirthDateGH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CommercialRegister" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CommRegCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CommRegDate" Type="DateTime" Precision="0" />
+          <Property Name="CommRegDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PostBox" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PBoxCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BlackList" Type="Boolean" Nullable="false" />
+          <Property Name="WorkerPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Representative" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReprsnPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OldIdNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyMemCount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdIssueDate" Type="DateTime" Precision="0" />
+          <Property Name="IdIssueDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OldIdNoEndDate" Type="DateTime" Precision="0" />
+          <Property Name="OldIdNoEndDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MobileCCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Uploaded" Type="Boolean" Nullable="false" />
+          <Property Name="IdPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="WorkerPictureURL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fn_CustDetails" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="BlackLists" Relationship="Self.FK_BlackList_Customers" FromRole="Customers" ToRole="BlackList" />
+          <NavigationProperty Name="BlackListPauses" Relationship="Self.FK_BlackListPauses_Customers" FromRole="Customers" ToRole="BlackListPauses" />
+          <NavigationProperty Name="Nationality" Relationship="Self.FK_Customers_Nationalities" FromRole="Customers" ToRole="Nationalities" />
+          <NavigationProperty Name="CustomersImages" Relationship="Self.FK_CustomersImages_Customers" FromRole="Customers" ToRole="CustomersImages" />
+        </EntityType>
+        <EntityType Name="CustomersImage">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="LineNo" />
+          </Key>
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LineNo" Type="Int16" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="DateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomersImages_Customers" FromRole="CustomersImages" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int16" Nullable="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityId" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Districts_Cities" FromRole="Districts" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="MenuId" Type="Int16" Nullable="false" />
+          <Property Name="ParentId" Type="Int16" Nullable="false" />
+          <Property Name="Caption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortCutKeys" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastSub" Type="Boolean" Nullable="false" />
+          <Property Name="Parameter" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FormCaledarType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="System" Relationship="Self.FK_Menus_Systems" FromRole="Menus" ToRole="Systems" />
+          <NavigationProperty Name="UsersPerms" Relationship="Self.FK_UsersPerm_Menus" FromRole="Menus" ToRole="UsersPerm" />
+          <NavigationProperty Name="UsrGroupsPerms" Relationship="Self.FK_UsrGroupsPerm_Menus" FromRole="Menus" ToRole="UsrGroupsPerm" />
+        </EntityType>
+        <EntityType Name="MonthsName">
+          <Key>
+            <PropertyRef Name="MonthNo" />
+          </Key>
+          <Property Name="MonthNo" Type="Byte" Nullable="false" />
+          <Property Name="MothHjName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MonthGrName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MonthGrNameE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MyDate">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BioStarDate" Type="Int64" />
+          <Property Name="UmElQuraDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MonthUmElQura" Type="Byte" />
+          <Property Name="YearUmElQura" Type="Int16" />
+          <Property Name="HijriDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MonthHijri" Type="Byte" />
+          <Property Name="YearHijri" Type="Int16" />
+          <Property Name="WeekDay" Type="Byte" />
+          <Property Name="YearUm2" Type="Int16" />
+          <Property Name="UmElQuraDate2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HijriDate2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YearUm4" Type="Int16" />
+          <Property Name="UmElQuraDate4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HijriDate4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Nationality">
+          <Key>
+            <PropertyRef Name="NatId" />
+          </Key>
+          <Property Name="NatId" Type="Int16" Nullable="false" />
+          <Property Name="NatName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsSaudi" Type="Boolean" Nullable="false" />
+          <Property Name="IdNoCheck" Type="Boolean" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_NATIONALITY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Uploaded" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Nationalities" FromRole="Nationalities" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="OrderTypeId" />
+          </Key>
+          <Property Name="OrderTypeId" Type="Int16" Nullable="false" />
+          <Property Name="OrderTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentItem">
+          <Key>
+            <PropertyRef Name="PaymentItemId" />
+          </Key>
+          <Property Name="PaymentItemId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountMainId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountSubId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneGroup">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PhoneGroupId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneGroupId" Type="Byte" Nullable="false" />
+          <Property Name="PhoneGroupName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_PhoneGroups_Users" FromRole="PhoneGroups" ToRole="Users" />
+          <NavigationProperty Name="PhoneIndexes" Relationship="Self.FK_PhoneIndex_PhoneGroups" FromRole="PhoneGroups" ToRole="PhoneIndex" />
+        </EntityType>
+        <EntityType Name="PhoneIndex">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PhoneIndexId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneIndexId" Type="Int16" Nullable="false" />
+          <Property Name="PhoneIndexName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneGroupId" Type="Byte" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="PhoneGroup" Relationship="Self.FK_PhoneIndex_PhoneGroups" FromRole="PhoneIndex" ToRole="PhoneGroups" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="ReligionID" />
+          </Key>
+          <Property Name="ReligionID" Type="Byte" Nullable="false" />
+          <Property Name="ReligionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Religion1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ReminderId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReminderId" Type="Int16" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Priority" Type="Byte" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SearchField">
+          <Key>
+            <PropertyRef Name="Field" />
+            <PropertyRef Name="SearchField1" />
+          </Key>
+          <Property Name="Field" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SearchField1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Caption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Table" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order" Type="Byte" />
+          <Property Name="Selected" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendSm">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="Serial" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SmsTypeId" Type="Byte" Nullable="false" />
+          <Property Name="SmsText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SendSms_Users" FromRole="SendSms" ToRole="Users" />
+          <NavigationProperty Name="SendSmsCustomers" Relationship="Self.FK_SendSmsCustomers_SendSms" FromRole="SendSms" ToRole="SendSmsCustomers" />
+        </EntityType>
+        <EntityType Name="SendSmsCustomer">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="Serial" />
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="Serial" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SendSm" Relationship="Self.FK_SendSmsCustomers_SendSms" FromRole="SendSmsCustomers" ToRole="SendSms" />
+        </EntityType>
+        <EntityType Name="SerialNumber">
+          <Key>
+            <PropertyRef Name="SerialNumber1" />
+          </Key>
+          <Property Name="SerialNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PcName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PcKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int16" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShowCurrencies" Type="Boolean" Nullable="false" />
+          <Property Name="ShowWeather" Type="Boolean" Nullable="false" />
+          <Property Name="ShowNews" Type="Boolean" Nullable="false" />
+          <Property Name="RefreshInterval" Type="Byte" />
+          <Property Name="MaximizeForms" Type="Boolean" Nullable="false" />
+          <Property Name="ProdK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SmsSender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SmsService" Type="Boolean" Nullable="false" />
+          <Property Name="SMS_Contracts" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_Inst" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_Licenses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_EndedLicenses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SMSUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SMSPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mobily_ws" Type="Boolean" Nullable="false" />
+          <Property Name="Bg" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SearchRows" Type="Int16" />
+          <Property Name="PasswordExpDays" Type="Int16" />
+          <Property Name="EtaSync" Type="Boolean" Nullable="false" />
+          <Property Name="HealthSync" Type="Boolean" Nullable="false" />
+          <Property Name="EngLicensesSync" Type="Boolean" Nullable="false" />
+          <Property Name="SmsProvider" Type="Byte" Nullable="false" />
+          <Property Name="SMSCollecting" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SmsMessage">
+          <Key>
+            <PropertyRef Name="SmsId" />
+          </Key>
+          <Property Name="SmsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sent" Type="Byte" Nullable="false" />
+          <Property Name="ETAUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Result" Type="Byte" Nullable="false" />
+          <Property Name="SentTime" Type="DateTime" Precision="0" />
+          <Property Name="SuddenFPSerial" Type="Int32" />
+          <Property Name="ResultMsg" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="System" Relationship="Self.FK_SmsMessages_Systems" FromRole="SmsMessages" ToRole="Systems" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SmsMessages_Users" FromRole="SmsMessages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="SmsType">
+          <Key>
+            <PropertyRef Name="SmsTypeId" />
+          </Key>
+          <Property Name="SmsTypeId" Type="Byte" Nullable="false" />
+          <Property Name="SmsTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialState">
+          <Key>
+            <PropertyRef Name="SocialStateID" />
+          </Key>
+          <Property Name="SocialStateID" Type="Byte" Nullable="false" />
+          <Property Name="SocialStateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SocialStateNameE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_MTL_STATUS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="System">
+          <Key>
+            <PropertyRef Name="SystemId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="SystemName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ActionsLogs" Relationship="Self.FK_ActionsLog_Systems" FromRole="Systems" ToRole="ActionsLog" />
+          <NavigationProperty Name="BlackLists" Relationship="Self.FK_BlackList_Systems" FromRole="Systems" ToRole="BlackList" />
+          <NavigationProperty Name="BlackListReasons" Relationship="Self.FK_BlackListReasons_Systems" FromRole="Systems" ToRole="BlackListReasons" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_Menus_Systems" FromRole="Systems" ToRole="Menus" />
+          <NavigationProperty Name="SmsMessages" Relationship="Self.FK_SmsMessages_Systems" FromRole="Systems" ToRole="SmsMessages" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NotActive" Type="Boolean" Nullable="false" />
+          <Property Name="AlertTime" Type="Byte" Nullable="false" />
+          <Property Name="IgnoreAutoSerial" Type="Boolean" Nullable="false" />
+          <Property Name="OnlyMenuId" Type="Int16" />
+          <Property Name="LogH" Type="Boolean" Nullable="false" />
+          <Property Name="SigImg" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PasswordChangeDate" Type="DateTime" Precision="0" />
+          <Property Name="CanDblQuantity" Type="Boolean" Nullable="false" />
+          <Property Name="UserImageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SendLongSMS" Type="Boolean" Nullable="false" />
+          <Property Name="PassCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BlackLists" Relationship="Self.FK_BlackList_Users" FromRole="Users" ToRole="BlackList" />
+          <NavigationProperty Name="BlackLists1" Relationship="Self.FK_BlackList_Users1" FromRole="Users" ToRole="BlackList" />
+          <NavigationProperty Name="BranchesPerms" Relationship="Self.FK_BranchesPerm_Users" FromRole="Users" ToRole="BranchesPerm" />
+          <NavigationProperty Name="PhoneGroups" Relationship="Self.FK_PhoneGroups_Users" FromRole="Users" ToRole="PhoneGroups" />
+          <NavigationProperty Name="SendSms" Relationship="Self.FK_SendSms_Users" FromRole="Users" ToRole="SendSms" />
+          <NavigationProperty Name="SmsMessages" Relationship="Self.FK_SmsMessages_Users" FromRole="Users" ToRole="SmsMessages" />
+          <NavigationProperty Name="UsersPerms" Relationship="Self.FK_UsersPerm_Users" FromRole="Users" ToRole="UsersPerm" />
+        </EntityType>
+        <EntityType Name="UsersEmployee">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int16" Nullable="false" />
+          <Property Name="Supervisor" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="MenuId" Type="Int16" Nullable="false" />
+          <Property Name="Open" Type="Boolean" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="Insert" Type="Boolean" Nullable="false" />
+          <Property Name="Update" Type="Boolean" Nullable="false" />
+          <Property Name="Delete" Type="Boolean" Nullable="false" />
+          <Property Name="Print" Type="Boolean" Nullable="false" />
+          <Property Name="UsrGroupId" Type="Byte" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_UsersPerm_Menus" FromRole="UsersPerm" ToRole="Menus" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UsersPerm_Users" FromRole="UsersPerm" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UsrGroup">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UsrGroupId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="UsrGroupId" Type="Byte" Nullable="false" />
+          <Property Name="UsrGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UsrGroupsPerms" Relationship="Self.FK_UsrGroupsPerm_UsrGroups" FromRole="UsrGroups" ToRole="UsrGroupsPerm" />
+        </EntityType>
+        <EntityType Name="UsrGroupsPerm">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UsrGroupId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="UsrGroupId" Type="Byte" Nullable="false" />
+          <Property Name="MenuId" Type="Int16" Nullable="false" />
+          <Property Name="Open" Type="Boolean" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="Insert" Type="Boolean" Nullable="false" />
+          <Property Name="Update" Type="Boolean" Nullable="false" />
+          <Property Name="Delete" Type="Boolean" Nullable="false" />
+          <Property Name="Print" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_UsrGroupsPerm_Menus" FromRole="UsrGroupsPerm" ToRole="Menus" />
+          <NavigationProperty Name="UsrGroup" Relationship="Self.FK_UsrGroupsPerm_UsrGroups" FromRole="UsrGroupsPerm" ToRole="UsrGroups" />
+        </EntityType>
+        <EntityType Name="VatRatio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ratio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlackListOld">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="BlackListSerial" />
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="DateH" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="BlackListSerial" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReasonId" Type="Byte" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CancelUserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CancelDate" Type="DateTime" Precision="0" />
+          <Property Name="CancelDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="VlnYear" Type="Int16" />
+          <Property Name="VlnSerial" Type="Int32" />
+          <Property Name="PauseUserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PauseDate" Type="DateTime" Precision="0" />
+          <Property Name="PauseDateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonTypeId" Type="Byte" />
+          <Property Name="ClctYear" Type="Int16" />
+          <Property Name="ClctSerial" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AccountMain">
+          <Key>
+            <PropertyRef Name="AccountMainId" />
+            <PropertyRef Name="AccountMainName" />
+          </Key>
+          <Property Name="AccountMainId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountMainName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountSub">
+          <Key>
+            <PropertyRef Name="AccountMainId" />
+            <PropertyRef Name="AccountSubId" />
+            <PropertyRef Name="AccountSubName" />
+            <PropertyRef Name="Minimum" />
+            <PropertyRef Name="Maximum" />
+          </Key>
+          <Property Name="AccountMainId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountSubId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountSubName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Minimum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Maximum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlackListSerial">
+          <Key>
+            <PropertyRef Name="BlackListSerial1" />
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="DateH" />
+          </Key>
+          <Property Name="BlackListSerial1" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QryBranchesPerm">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QryUsersPerm">
+          <Key>
+            <PropertyRef Name="SystemId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemsUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="SystemId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SystemId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActionsLog_Systems">
+          <End Role="Systems" Type="Self.System" Multiplicity="1" />
+          <End Role="ActionsLog" Type="Self.ActionsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="ActionsLog">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_BlackListReasons">
+          <End Role="BlackListReasons" Type="Self.BlackListReason" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlackListReasons">
+              <PropertyRef Name="ReasonId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="ReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Systems">
+          <End Role="Systems" Type="Self.System" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackList_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="CancelUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackListPauses_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BlackListPauses" Type="Self.BlackListPaus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="BlackListPauses">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlackListReasons_Systems">
+          <End Role="Systems" Type="Self.System" Multiplicity="1" />
+          <End Role="BlackListReasons" Type="Self.BlackListReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="BlackListReasons">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchesPerm_Branches">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BranchesPerm" Type="Self.BranchesPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="BranchesPerm">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchesPerm_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BranchesPerm" Type="Self.BranchesPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BranchesPerm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="1" />
+          <End Role="Districts" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Nationalities">
+          <End Role="Nationalities" Type="Self.Nationality" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationalities">
+              <PropertyRef Name="NatId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="NatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomersImages_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomersImages" Type="Self.CustomersImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomersImages">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Systems">
+          <End Role="Systems" Type="Self.System" Multiplicity="1" />
+          <End Role="Menus" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPerm_Menus">
+          <End Role="Menus" Type="Self.Menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersPerm" Type="Self.UsersPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="UsersPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsrGroupsPerm_Menus">
+          <End Role="Menus" Type="Self.Menu" Multiplicity="1" />
+          <End Role="UsrGroupsPerm" Type="Self.UsrGroupsPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="UsrGroupsPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneGroups_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="PhoneGroups" Type="Self.PhoneGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PhoneGroups">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneIndex_PhoneGroups">
+          <End Role="PhoneGroups" Type="Self.PhoneGroup" Multiplicity="1" />
+          <End Role="PhoneIndex" Type="Self.PhoneIndex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneGroups">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PhoneGroupId" />
+            </Principal>
+            <Dependent Role="PhoneIndex">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PhoneGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendSms_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="SendSms" Type="Self.SendSm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SendSms">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendSmsCustomers_SendSms">
+          <End Role="SendSms" Type="Self.SendSm" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SendSmsCustomers" Type="Self.SendSmsCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendSms">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SendSmsCustomers">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="Serial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmsMessages_Systems">
+          <End Role="Systems" Type="Self.System" Multiplicity="1" />
+          <End Role="SmsMessages" Type="Self.SmsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Systems">
+              <PropertyRef Name="SystemId" />
+            </Principal>
+            <Dependent Role="SmsMessages">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmsMessages_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="SmsMessages" Type="Self.SmsMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SmsMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPerm_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersPerm" Type="Self.UsersPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersPerm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsrGroupsPerm_UsrGroups">
+          <End Role="UsrGroups" Type="Self.UsrGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsrGroupsPerm" Type="Self.UsrGroupsPerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsrGroups">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="UsrGroupId" />
+            </Principal>
+            <Dependent Role="UsrGroupsPerm">
+              <PropertyRef Name="SystemId" />
+              <PropertyRef Name="UsrGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TajDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="ActionsLogs" EntityType="Self.ActionsLog" />
+          <EntitySet Name="BlackLists" EntityType="Self.BlackList" />
+          <EntitySet Name="BlackListPauses" EntityType="Self.BlackListPaus" />
+          <EntitySet Name="BlackListReasons" EntityType="Self.BlackListReason" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="BranchesPerms" EntityType="Self.BranchesPerm" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomersImages" EntityType="Self.CustomersImage" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="MonthsNames" EntityType="Self.MonthsName" />
+          <EntitySet Name="MyDates" EntityType="Self.MyDate" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationality" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
+          <EntitySet Name="PaymentItems" EntityType="Self.PaymentItem" />
+          <EntitySet Name="PhoneGroups" EntityType="Self.PhoneGroup" />
+          <EntitySet Name="PhoneIndexes" EntityType="Self.PhoneIndex" />
+          <EntitySet Name="Religions" EntityType="Self.Religion" />
+          <EntitySet Name="Reminders" EntityType="Self.Reminder" />
+          <EntitySet Name="SearchFields" EntityType="Self.SearchField" />
+          <EntitySet Name="SendSms" EntityType="Self.SendSm" />
+          <EntitySet Name="SendSmsCustomers" EntityType="Self.SendSmsCustomer" />
+          <EntitySet Name="SerialNumbers" EntityType="Self.SerialNumber" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="SmsMessages" EntityType="Self.SmsMessage" />
+          <EntitySet Name="SmsTypes" EntityType="Self.SmsType" />
+          <EntitySet Name="SocialStates" EntityType="Self.SocialState" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Systems" EntityType="Self.System" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersEmployees" EntityType="Self.UsersEmployee" />
+          <EntitySet Name="UsersPerms" EntityType="Self.UsersPerm" />
+          <EntitySet Name="UsrGroups" EntityType="Self.UsrGroup" />
+          <EntitySet Name="UsrGroupsPerms" EntityType="Self.UsrGroupsPerm" />
+          <EntitySet Name="VatRatios" EntityType="Self.VatRatio" />
+          <EntitySet Name="BlackListOlds" EntityType="Self.BlackListOld" />
+          <EntitySet Name="AccountMains" EntityType="Self.AccountMain" />
+          <EntitySet Name="AccountSubs" EntityType="Self.AccountSub" />
+          <EntitySet Name="BlackListSerials" EntityType="Self.BlackListSerial" />
+          <EntitySet Name="QryBranchesPerms" EntityType="Self.QryBranchesPerm" />
+          <EntitySet Name="QryUsersPerms" EntityType="Self.QryUsersPerm" />
+          <EntitySet Name="SystemsUsers" EntityType="Self.SystemsUser" />
+          <AssociationSet Name="FK_ActionsLog_Systems" Association="Self.FK_ActionsLog_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="ActionsLog" EntitySet="ActionsLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_BlackListReasons" Association="Self.FK_BlackList_BlackListReasons">
+            <End Role="BlackListReasons" EntitySet="BlackListReasons" />
+            <End Role="BlackList" EntitySet="BlackLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Customers" Association="Self.FK_BlackList_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BlackList" EntitySet="BlackLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Systems" Association="Self.FK_BlackList_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="BlackList" EntitySet="BlackLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Users" Association="Self.FK_BlackList_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BlackList" EntitySet="BlackLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackList_Users1" Association="Self.FK_BlackList_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BlackList" EntitySet="BlackLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackListPauses_Customers" Association="Self.FK_BlackListPauses_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BlackListPauses" EntitySet="BlackListPauses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlackListReasons_Systems" Association="Self.FK_BlackListReasons_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="BlackListReasons" EntitySet="BlackListReasons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchesPerm_Branches" Association="Self.FK_BranchesPerm_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="BranchesPerm" EntitySet="BranchesPerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchesPerm_Users" Association="Self.FK_BranchesPerm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BranchesPerm" EntitySet="BranchesPerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Cities" Association="Self.FK_Districts_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Nationalities" Association="Self.FK_Customers_Nationalities">
+            <End Role="Nationalities" EntitySet="Nationalities" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomersImages_Customers" Association="Self.FK_CustomersImages_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CustomersImages" EntitySet="CustomersImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Systems" Association="Self.FK_Menus_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPerm_Menus" Association="Self.FK_UsersPerm_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="UsersPerm" EntitySet="UsersPerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsrGroupsPerm_Menus" Association="Self.FK_UsrGroupsPerm_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="UsrGroupsPerm" EntitySet="UsrGroupsPerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneGroups_Users" Association="Self.FK_PhoneGroups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PhoneGroups" EntitySet="PhoneGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneIndex_PhoneGroups" Association="Self.FK_PhoneIndex_PhoneGroups">
+            <End Role="PhoneGroups" EntitySet="PhoneGroups" />
+            <End Role="PhoneIndex" EntitySet="PhoneIndexes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendSms_Users" Association="Self.FK_SendSms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SendSms" EntitySet="SendSms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendSmsCustomers_SendSms" Association="Self.FK_SendSmsCustomers_SendSms">
+            <End Role="SendSms" EntitySet="SendSms" />
+            <End Role="SendSmsCustomers" EntitySet="SendSmsCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmsMessages_Systems" Association="Self.FK_SmsMessages_Systems">
+            <End Role="Systems" EntitySet="Systems" />
+            <End Role="SmsMessages" EntitySet="SmsMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmsMessages_Users" Association="Self.FK_SmsMessages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SmsMessages" EntitySet="SmsMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPerm_Users" Association="Self.FK_UsersPerm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersPerm" EntitySet="UsersPerms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsrGroupsPerm_UsrGroups" Association="Self.FK_UsrGroupsPerm_UsrGroups">
+            <End Role="UsrGroups" EntitySet="UsrGroups" />
+            <End Role="UsrGroupsPerm" EntitySet="UsrGroupsPerms" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TajDBModelStoreContainer" CdmEntityContainer="TajDBEntities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="TajDBModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionsLogs">
+            <EntityTypeMapping TypeName="TajDBModel.ActionsLog">
+              <MappingFragment StoreEntitySet="ActionsLog">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Table" ColumnName="Table" />
+                <ScalarProperty Name="Record" ColumnName="Record" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="DateTimeH" ColumnName="DateTimeH" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackLists">
+            <EntityTypeMapping TypeName="TajDBModel.BlackList">
+              <MappingFragment StoreEntitySet="BlackList">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="BlackListSerial" ColumnName="BlackListSerial" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateH" ColumnName="DateH" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CancelUserId" ColumnName="CancelUserId" />
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="CancelDateH" ColumnName="CancelDateH" />
+                <ScalarProperty Name="VlnYear" ColumnName="VlnYear" />
+                <ScalarProperty Name="VlnSerial" ColumnName="VlnSerial" />
+                <ScalarProperty Name="PauseUserId" ColumnName="PauseUserId" />
+                <ScalarProperty Name="PauseDate" ColumnName="PauseDate" />
+                <ScalarProperty Name="PauseDateH" ColumnName="PauseDateH" />
+                <ScalarProperty Name="ClctYear" ColumnName="ClctYear" />
+                <ScalarProperty Name="ClctSerial" ColumnName="ClctSerial" />
+                <ScalarProperty Name="FineUploaded" ColumnName="FineUploaded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackListPauses">
+            <EntityTypeMapping TypeName="TajDBModel.BlackListPaus">
+              <MappingFragment StoreEntitySet="BlackListPauses">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PauseUserId" ColumnName="PauseUserId" />
+                <ScalarProperty Name="PauseDate" ColumnName="PauseDate" />
+                <ScalarProperty Name="PauseDateH" ColumnName="PauseDateH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackListReasons">
+            <EntityTypeMapping TypeName="TajDBModel.BlackListReason">
+              <MappingFragment StoreEntitySet="BlackListReasons">
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="TajDBModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="ContactsDepr" ColumnName="ContactsDepr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchesPerms">
+            <EntityTypeMapping TypeName="TajDBModel.BranchesPerm">
+              <MappingFragment StoreEntitySet="BranchesPerm">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="DefaultBranch" ColumnName="DefaultBranch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="TajDBModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Default" ColumnName="Default" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TajDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="IdNo" ColumnName="IdNo" />
+                <ScalarProperty Name="IdEndDate" ColumnName="IdEndDate" />
+                <ScalarProperty Name="IdEndDateH" ColumnName="IdEndDateH" />
+                <ScalarProperty Name="IdTypeId" ColumnName="IdTypeId" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="NatId" ColumnName="NatId" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="BirthDateH" ColumnName="BirthDateH" />
+                <ScalarProperty Name="BirthDateG" ColumnName="BirthDateG" />
+                <ScalarProperty Name="BirthDateGH" ColumnName="BirthDateGH" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="CommercialRegister" ColumnName="CommercialRegister" />
+                <ScalarProperty Name="CommRegCity" ColumnName="CommRegCity" />
+                <ScalarProperty Name="CommRegDate" ColumnName="CommRegDate" />
+                <ScalarProperty Name="CommRegDateH" ColumnName="CommRegDateH" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PostBox" ColumnName="PostBox" />
+                <ScalarProperty Name="PBoxCity" ColumnName="PBoxCity" />
+                <ScalarProperty Name="BlackList" ColumnName="BlackList" />
+                <ScalarProperty Name="WorkerPicture" ColumnName="WorkerPicture" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="ReprsnPosition" ColumnName="ReprsnPosition" />
+                <ScalarProperty Name="OldIdNo" ColumnName="OldIdNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="FamilyMemCount" ColumnName="FamilyMemCount" />
+                <ScalarProperty Name="IdIssueDate" ColumnName="IdIssueDate" />
+                <ScalarProperty Name="IdIssueDateH" ColumnName="IdIssueDateH" />
+                <ScalarProperty Name="OldIdNoEndDate" ColumnName="OldIdNoEndDate" />
+                <ScalarProperty Name="OldIdNoEndDateH" ColumnName="OldIdNoEndDateH" />
+                <ScalarProperty Name="MobileCCode" ColumnName="MobileCCode" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
+                <ScalarProperty Name="IdPicture" ColumnName="IdPicture" />
+                <ScalarProperty Name="WorkerPictureURL" ColumnName="WorkerPictureURL" />
+                <ScalarProperty Name="Fn_CustDetails" ColumnName="Fn_CustDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomersImages">
+            <EntityTypeMapping TypeName="TajDBModel.CustomersImage">
+              <MappingFragment StoreEntitySet="CustomersImages">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateH" ColumnName="DateH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="TajDBModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="TajDBModel.Menu">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ShortCutKeys" ColumnName="ShortCutKeys" />
+                <ScalarProperty Name="LastSub" ColumnName="LastSub" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="FormCaledarType" ColumnName="FormCaledarType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthsNames">
+            <EntityTypeMapping TypeName="TajDBModel.MonthsName">
+              <MappingFragment StoreEntitySet="MonthsNames">
+                <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+                <ScalarProperty Name="MothHjName" ColumnName="MothHjName" />
+                <ScalarProperty Name="MonthGrName" ColumnName="MonthGrName" />
+                <ScalarProperty Name="MonthGrNameE" ColumnName="MonthGrNameE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MyDates">
+            <EntityTypeMapping TypeName="TajDBModel.MyDate">
+              <MappingFragment StoreEntitySet="MyDates">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BioStarDate" ColumnName="BioStarDate" />
+                <ScalarProperty Name="UmElQuraDate" ColumnName="UmElQuraDate" />
+                <ScalarProperty Name="MonthUmElQura" ColumnName="MonthUmElQura" />
+                <ScalarProperty Name="YearUmElQura" ColumnName="YearUmElQura" />
+                <ScalarProperty Name="HijriDate" ColumnName="HijriDate" />
+                <ScalarProperty Name="MonthHijri" ColumnName="MonthHijri" />
+                <ScalarProperty Name="YearHijri" ColumnName="YearHijri" />
+                <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+                <ScalarProperty Name="YearUm2" ColumnName="YearUm2" />
+                <ScalarProperty Name="UmElQuraDate2" ColumnName="UmElQuraDate2" />
+                <ScalarProperty Name="HijriDate2" ColumnName="HijriDate2" />
+                <ScalarProperty Name="YearUm4" ColumnName="YearUm4" />
+                <ScalarProperty Name="UmElQuraDate4" ColumnName="UmElQuraDate4" />
+                <ScalarProperty Name="HijriDate4" ColumnName="HijriDate4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nationalities">
+            <EntityTypeMapping TypeName="TajDBModel.Nationality">
+              <MappingFragment StoreEntitySet="Nationalities">
+                <ScalarProperty Name="NatId" ColumnName="NatId" />
+                <ScalarProperty Name="NatName" ColumnName="NatName" />
+                <ScalarProperty Name="IsSaudi" ColumnName="IsSaudi" />
+                <ScalarProperty Name="IdNoCheck" ColumnName="IdNoCheck" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="EMP_NATIONALITY" ColumnName="EMP_NATIONALITY" />
+                <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTypes">
+            <EntityTypeMapping TypeName="TajDBModel.OrderType">
+              <MappingFragment StoreEntitySet="OrderTypes">
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="OrderTypeName" ColumnName="OrderTypeName" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentItems">
+            <EntityTypeMapping TypeName="TajDBModel.PaymentItem">
+              <MappingFragment StoreEntitySet="PaymentItems">
+                <ScalarProperty Name="PaymentItemId" ColumnName="PaymentItemId" />
+                <ScalarProperty Name="PaymentItemName" ColumnName="PaymentItemName" />
+                <ScalarProperty Name="AccountMainId" ColumnName="AccountMainId" />
+                <ScalarProperty Name="AccountSubId" ColumnName="AccountSubId" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneGroups">
+            <EntityTypeMapping TypeName="TajDBModel.PhoneGroup">
+              <MappingFragment StoreEntitySet="PhoneGroups">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PhoneGroupId" ColumnName="PhoneGroupId" />
+                <ScalarProperty Name="PhoneGroupName" ColumnName="PhoneGroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneIndexes">
+            <EntityTypeMapping TypeName="TajDBModel.PhoneIndex">
+              <MappingFragment StoreEntitySet="PhoneIndex">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PhoneIndexId" ColumnName="PhoneIndexId" />
+                <ScalarProperty Name="PhoneIndexName" ColumnName="PhoneIndexName" />
+                <ScalarProperty Name="PhoneGroupId" ColumnName="PhoneGroupId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="TajDBModel.Religion">
+              <MappingFragment StoreEntitySet="Religions">
+                <ScalarProperty Name="ReligionID" ColumnName="ReligionID" />
+                <ScalarProperty Name="ReligionName" ColumnName="ReligionName" />
+                <ScalarProperty Name="Religion1" ColumnName="Religion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reminders">
+            <EntityTypeMapping TypeName="TajDBModel.Reminder">
+              <MappingFragment StoreEntitySet="Reminder">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReminderId" ColumnName="ReminderId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StartDateH" ColumnName="StartDateH" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EndDateH" ColumnName="EndDateH" />
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchFields">
+            <EntityTypeMapping TypeName="TajDBModel.SearchField">
+              <MappingFragment StoreEntitySet="SearchFields">
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="SearchField1" ColumnName="SearchField" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Table" ColumnName="Table" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Selected" ColumnName="Selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendSms">
+            <EntityTypeMapping TypeName="TajDBModel.SendSm">
+              <MappingFragment StoreEntitySet="SendSms">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateH" ColumnName="DateH" />
+                <ScalarProperty Name="SmsTypeId" ColumnName="SmsTypeId" />
+                <ScalarProperty Name="SmsText" ColumnName="SmsText" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendSmsCustomers">
+            <EntityTypeMapping TypeName="TajDBModel.SendSmsCustomer">
+              <MappingFragment StoreEntitySet="SendSmsCustomers">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerialNumbers">
+            <EntityTypeMapping TypeName="TajDBModel.SerialNumber">
+              <MappingFragment StoreEntitySet="SerialNumbers">
+                <ScalarProperty Name="SerialNumber1" ColumnName="SerialNumber" />
+                <ScalarProperty Name="PcName" ColumnName="PcName" />
+                <ScalarProperty Name="PcKey" ColumnName="PcKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="TajDBModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="ShowCurrencies" ColumnName="ShowCurrencies" />
+                <ScalarProperty Name="ShowWeather" ColumnName="ShowWeather" />
+                <ScalarProperty Name="ShowNews" ColumnName="ShowNews" />
+                <ScalarProperty Name="RefreshInterval" ColumnName="RefreshInterval" />
+                <ScalarProperty Name="MaximizeForms" ColumnName="MaximizeForms" />
+                <ScalarProperty Name="ProdK" ColumnName="ProdK" />
+                <ScalarProperty Name="SmsSender" ColumnName="SmsSender" />
+                <ScalarProperty Name="SmsService" ColumnName="SmsService" />
+                <ScalarProperty Name="SMS_Contracts" ColumnName="SMS_Contracts" />
+                <ScalarProperty Name="SMS_Inst" ColumnName="SMS_Inst" />
+                <ScalarProperty Name="SMS_Licenses" ColumnName="SMS_Licenses" />
+                <ScalarProperty Name="SMS_EndedLicenses" ColumnName="SMS_EndedLicenses" />
+                <ScalarProperty Name="SMSUser" ColumnName="SMSUser" />
+                <ScalarProperty Name="SMSPass" ColumnName="SMSPass" />
+                <ScalarProperty Name="mobily_ws" ColumnName="mobily_ws" />
+                <ScalarProperty Name="Bg" ColumnName="Bg" />
+                <ScalarProperty Name="SearchRows" ColumnName="SearchRows" />
+                <ScalarProperty Name="PasswordExpDays" ColumnName="PasswordExpDays" />
+                <ScalarProperty Name="EtaSync" ColumnName="EtaSync" />
+                <ScalarProperty Name="HealthSync" ColumnName="HealthSync" />
+                <ScalarProperty Name="EngLicensesSync" ColumnName="EngLicensesSync" />
+                <ScalarProperty Name="SmsProvider" ColumnName="SmsProvider" />
+                <ScalarProperty Name="SMSCollecting" ColumnName="SMSCollecting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsMessages">
+            <EntityTypeMapping TypeName="TajDBModel.SmsMessage">
+              <MappingFragment StoreEntitySet="SmsMessages">
+                <ScalarProperty Name="SmsId" ColumnName="SmsId" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Sent" ColumnName="Sent" />
+                <ScalarProperty Name="ETAUserName" ColumnName="ETAUserName" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+                <ScalarProperty Name="SuddenFPSerial" ColumnName="SuddenFPSerial" />
+                <ScalarProperty Name="ResultMsg" ColumnName="ResultMsg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsTypes">
+            <EntityTypeMapping TypeName="TajDBModel.SmsType">
+              <MappingFragment StoreEntitySet="SmsTypes">
+                <ScalarProperty Name="SmsTypeId" ColumnName="SmsTypeId" />
+                <ScalarProperty Name="SmsTypeName" ColumnName="SmsTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialStates">
+            <EntityTypeMapping TypeName="TajDBModel.SocialState">
+              <MappingFragment StoreEntitySet="SocialState">
+                <ScalarProperty Name="SocialStateID" ColumnName="SocialStateID" />
+                <ScalarProperty Name="SocialStateName" ColumnName="SocialStateName" />
+                <ScalarProperty Name="SocialStateNameE" ColumnName="SocialStateNameE" />
+                <ScalarProperty Name="EMP_MTL_STATUS" ColumnName="EMP_MTL_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TajDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Systems">
+            <EntityTypeMapping TypeName="TajDBModel.System">
+              <MappingFragment StoreEntitySet="Systems">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TajDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NotActive" ColumnName="NotActive" />
+                <ScalarProperty Name="AlertTime" ColumnName="AlertTime" />
+                <ScalarProperty Name="IgnoreAutoSerial" ColumnName="IgnoreAutoSerial" />
+                <ScalarProperty Name="OnlyMenuId" ColumnName="OnlyMenuId" />
+                <ScalarProperty Name="LogH" ColumnName="LogH" />
+                <ScalarProperty Name="SigImg" ColumnName="SigImg" />
+                <ScalarProperty Name="PasswordChangeDate" ColumnName="PasswordChangeDate" />
+                <ScalarProperty Name="CanDblQuantity" ColumnName="CanDblQuantity" />
+                <ScalarProperty Name="UserImageURL" ColumnName="UserImageURL" />
+                <ScalarProperty Name="SendLongSMS" ColumnName="SendLongSMS" />
+                <ScalarProperty Name="PassCode" ColumnName="PassCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersEmployees">
+            <EntityTypeMapping TypeName="TajDBModel.UsersEmployee">
+              <MappingFragment StoreEntitySet="UsersEmployees">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersPerms">
+            <EntityTypeMapping TypeName="TajDBModel.UsersPerm">
+              <MappingFragment StoreEntitySet="UsersPerm">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Insert" ColumnName="Insert" />
+                <ScalarProperty Name="Update" ColumnName="Update" />
+                <ScalarProperty Name="Delete" ColumnName="Delete" />
+                <ScalarProperty Name="Print" ColumnName="Print" />
+                <ScalarProperty Name="UsrGroupId" ColumnName="UsrGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsrGroups">
+            <EntityTypeMapping TypeName="TajDBModel.UsrGroup">
+              <MappingFragment StoreEntitySet="UsrGroups">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="UsrGroupId" ColumnName="UsrGroupId" />
+                <ScalarProperty Name="UsrGroupName" ColumnName="UsrGroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsrGroupsPerms">
+            <EntityTypeMapping TypeName="TajDBModel.UsrGroupsPerm">
+              <MappingFragment StoreEntitySet="UsrGroupsPerm">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="UsrGroupId" ColumnName="UsrGroupId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Insert" ColumnName="Insert" />
+                <ScalarProperty Name="Update" ColumnName="Update" />
+                <ScalarProperty Name="Delete" ColumnName="Delete" />
+                <ScalarProperty Name="Print" ColumnName="Print" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VatRatios">
+            <EntityTypeMapping TypeName="TajDBModel.VatRatio">
+              <MappingFragment StoreEntitySet="VatRatio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackListOlds">
+            <EntityTypeMapping TypeName="TajDBModel.BlackListOld">
+              <MappingFragment StoreEntitySet="BlackListOld">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="BlackListSerial" ColumnName="BlackListSerial" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateH" ColumnName="DateH" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CancelUserId" ColumnName="CancelUserId" />
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="CancelDateH" ColumnName="CancelDateH" />
+                <ScalarProperty Name="VlnYear" ColumnName="VlnYear" />
+                <ScalarProperty Name="VlnSerial" ColumnName="VlnSerial" />
+                <ScalarProperty Name="PauseUserId" ColumnName="PauseUserId" />
+                <ScalarProperty Name="PauseDate" ColumnName="PauseDate" />
+                <ScalarProperty Name="PauseDateH" ColumnName="PauseDateH" />
+                <ScalarProperty Name="ReasonTypeId" ColumnName="ReasonTypeId" />
+                <ScalarProperty Name="ClctYear" ColumnName="ClctYear" />
+                <ScalarProperty Name="ClctSerial" ColumnName="ClctSerial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountMains">
+            <EntityTypeMapping TypeName="TajDBModel.AccountMain">
+              <MappingFragment StoreEntitySet="AccountMain">
+                <ScalarProperty Name="AccountMainId" ColumnName="AccountMainId" />
+                <ScalarProperty Name="AccountMainName" ColumnName="AccountMainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountSubs">
+            <EntityTypeMapping TypeName="TajDBModel.AccountSub">
+              <MappingFragment StoreEntitySet="AccountSub">
+                <ScalarProperty Name="AccountMainId" ColumnName="AccountMainId" />
+                <ScalarProperty Name="AccountSubId" ColumnName="AccountSubId" />
+                <ScalarProperty Name="AccountSubName" ColumnName="AccountSubName" />
+                <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+                <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackListSerials">
+            <EntityTypeMapping TypeName="TajDBModel.BlackListSerial">
+              <MappingFragment StoreEntitySet="BlackListSerial">
+                <ScalarProperty Name="BlackListSerial1" ColumnName="BlackListSerial" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="DateH" ColumnName="DateH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QryBranchesPerms">
+            <EntityTypeMapping TypeName="TajDBModel.QryBranchesPerm">
+              <MappingFragment StoreEntitySet="QryBranchesPerm">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QryUsersPerms">
+            <EntityTypeMapping TypeName="TajDBModel.QryUsersPerm">
+              <MappingFragment StoreEntitySet="QryUsersPerm">
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemsUsers">
+            <EntityTypeMapping TypeName="TajDBModel.SystemsUser">
+              <MappingFragment StoreEntitySet="SystemsUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TajDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TajDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TajDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TajDBModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TajDBModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TajDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TajDBModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

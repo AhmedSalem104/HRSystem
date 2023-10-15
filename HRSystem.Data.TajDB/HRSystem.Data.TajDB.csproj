@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34A6FC6F-982C-452F-AF60-7FD504A9AC3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRSystem.DataTajDB</RootNamespace>
+    <AssemblyName>HRSystem.DataTajDB</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=2.3.55.2, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.2\lib\net45\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entites\TajDB\AccountMain.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\AccountSub.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\ActionsLog.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BlackList.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BlackListOld.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BlackListPaus.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BlackListReason.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BlackListSerial.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Branch.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\BranchesPerm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\City.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Customer.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\CustomersImage.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\C__EFMigrationsHistory.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\District.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Menu.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\MonthsName.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\MyDate.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Nationality.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\OrderType.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\PaymentItem.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\PhoneGroup.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\PhoneIndex.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\QryBranchesPerm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\QryUsersPerm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Religion.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Reminder.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SearchField.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SendSm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SendSmsCustomer.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SerialNumber.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\Setting.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SmsMessage.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SmsType.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SocialState.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\sysdiagram.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\System.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\SystemsUser.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\TajDBEntites.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TajDBEntites.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\TajDBEntites.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\TajDBEntites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TajDBEntites.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\User.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\UsersEmployee.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\UsersPerm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\UsrGroup.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\UsrGroupsPerm.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\TajDB\VatRatio.cs">
+      <DependentUpon>TajDBEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Entites\TajDB\TajDBEntites.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TajDBEntites.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entites\TajDB\TajDBEntites.edmx.diagram">
+      <DependentUpon>TajDBEntites.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entites\TajDB\TajDBEntites.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TajDBEntites.edmx</DependentUpon>
+      <LastGenOutput>TajDBEntites.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entites\TajDB\TajDBEntites.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TajDBEntites.edmx</DependentUpon>
+      <LastGenOutput>TajDBEntites.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

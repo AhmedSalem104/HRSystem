@@ -1,0 +1,862 @@
+﻿@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model  HRSystem.Web.Models.DecisionMoveEmpViewModel
+
+
+@Html.HiddenFor(model => model.DecisionMoveEmpID)
+
+@{
+
+    if (Model.Date != null)
+    {
+        <input id="Datee" hidden value="@Model.Date">
+
+    }
+    else
+    {
+        <input id="Datee" hidden value="1">
+
+
+    }
+    if (Model.LetterDate != null)
+    {
+        <input id="LetterDatee" hidden value="@Model.LetterDate">
+
+    }
+    else
+    {
+
+        <input id="LetterDatee" hidden value="1">
+
+    }
+
+    if (Model.StartDate != null)
+    {
+        <input id="StartDatee" hidden value="@Model.StartDate">
+
+    }
+    else
+    {
+
+        <input id="StartDatee" hidden value="1">
+
+    }
+
+    if (Model.StartWorkDate != null)
+    {
+        <input id="StartWorkDatee" hidden value="@Model.StartWorkDate">
+
+    }
+    else
+    {
+
+        <input id="StartWorkDatee" hidden value="1">
+
+    }
+
+    if (Model.EmpId != null)
+    {
+        <input id="EmpIdd" hidden value="@Model.EmpId">
+
+    }
+    else
+    {
+
+        <input id="EmpIdd" hidden value="1">
+
+    }
+    var V = Session["Value"];
+
+}
+
+
+<input hidden id="IdForPrint" value=@Session["Id"]>
+
+<div class="form-group row">
+
+    @if (V == "Edit")
+    {
+        <label class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionMoveEmpID, new { @id = "DecisionMoveEmpID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionMoveEmpID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+    }
+    else
+    {
+        <label hidden class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div hidden class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionMoveEmpID, new { @id = "DecisionMoveEmpID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionMoveEmpID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+
+        <label class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+
+            <input type="text" id="" placeholder=" تلقائي" disabled class="form-control">
+        </div>
+    }
+
+
+
+
+
+
+</div>
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        مسلسل
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.Serial, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.Serial, "", new { @class = "text-danger" })
+
+
+    </div>
+    <label class="col-md-2 label-control">
+        تاريخ القرار<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.DateH, new { @class = "form-control", @Id = "DateH" })
+        @Html.TextBoxFor(model => model.Date, new { @class = "hidden", @Id = "Date" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+</div>
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        عدد المرفقات<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+
+        @Html.TextBoxFor(model => model.EnclosureCount, new { @class = "form-control", @Id = "EnclosureCount" })
+        @Html.ValidationMessageFor(model => model.EnclosureCount, "", new { @class = "text-danger" })
+
+    </div>
+    <label class="col-md-2 label-control">
+        صاحب الصلاحية
+    </label>
+    <div class="input-group col-md-4">
+
+        @Html.DropDownListFor(model => model.Owner, (IEnumerable
+       <SelectListItem>)ViewData["OwnerList"], "---اختار---", new { @class = "form-control ", @Id = "OwnerId" })
+        @Html.ValidationMessageFor(model => model.Owner, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        كود الموظف<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        @Html.DropDownListFor(model => model.EmpId, (IEnumerable
+       <SelectListItem>)ViewData["Empolyee"], "---اختار---", new { @class = "form-control ", @Id = "EmpId" })
+        @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        الاسم
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="EmpName" disabled class="form-control">
+
+    </div>
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        الادارة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="DepartmentName" disabled class="form-control">
+
+    </div>
+
+    <label class="col-md-2 label-control">
+        الوظيفة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="JobName" disabled class="form-control">
+
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        الجهه
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="JobLocationName" disabled class="form-control">
+
+    </div>
+    <label class="col-md-2 label-control">
+        المرتبة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="ClassID" disabled class="form-control">
+
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        تاريخ المباشر
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="ContractDateH" disabled class="form-control">
+
+    </div>
+
+    <label class="col-md-2 label-control">
+        الدرجة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="DegreeID" disabled class="form-control">
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        اعتبارا من<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.StartDateH, new { @class = "form-control", @Id = "StartDateH" })
+        @Html.TextBoxFor(model => model.StartDate, new { @class = "hidden", @Id = "StartDate" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+    <label class="col-md-2 label-control">
+        تاريخ المباشر<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.StartWorkDateH, new { @class = "form-control", @Id = "StartWorkDateH" })
+        @Html.TextBoxFor(model => model.StartWorkDate, new { @class = "hidden", @Id = "StartWorkDate" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+
+</div>
+
+
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        رقم الخطاب
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.LetterId, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.LetterId, "", new { @class = "text-danger" })
+
+
+    </div>
+
+    <label class="col-md-2 label-control">
+        تاريخ الخطاب<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.LetterDateH, new { @class = "form-control", @Id = "LetterDateH" })
+        @Html.TextBoxFor(model => model.LetterDate, new { @class = "hidden", @Id = "LetterDate" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<div class="form-group row">
+
+
+
+
+    <label class="col-md-2 label-control">
+        الجهه المنقول اليها
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.Place, new { @class = "form-control " })
+
+
+    </div>
+
+
+</div>
+
+
+<div class="form-group row">
+
+
+
+
+    <label class="col-md-2 label-control">
+        بناء علي
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.BasedOn, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.BasedOn, "", new { @class = "text-danger" })
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<div class="form-group row">
+
+
+
+
+
+    <label class="col-md-2 label-control">
+        البيان
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.Notes, new { @class = "form-control " })
+
+
+    </div>
+
+
+
+</div>
+
+
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        بيان مكافلأة
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.PayRewardDesc, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.PayRewardDesc, "", new { @class = "text-danger" })
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+<div class="form-group row">
+
+    <div class="form-group mt-1">
+
+        @Html.CheckBoxFor(model => model.PayReward, new { @id = "switcheryColor2", @class="switchery" })
+        @Html.ValidationMessageFor(model => model.PayReward, "", new { @class = "text-danger" })
+        @*<input type="checkbox" id="switcheryColor2" class="switchery" data-color="info"  />*@
+        <label for="switcheryColor2" class="card-title ml-1">يصرف له مكافأة نهاية الخدمة</label>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+           $(document).ready(function () {
+
+                 if ($("#EmpIdd").val() == 1 || $("#EmpIdd").val() == null)
+                   {
+                    $("#EmpId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                        $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionMoveEmp")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+
+
+                            },
+                            error: function (ex) {
+                                $("#EmpName").val('');
+                                $("#JobName").val('');
+                                $("#ClassID").val('');
+                                $("#DegreeID").val('');
+                                $("#JobLocationName").val('');
+                                $("#DepartmentName").val('');
+                                $("#ContractDateH").val('');
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })
+                            }
+                        });
+                        return false;
+
+
+                 })
+                   }
+                   else {
+
+                       $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionMoveEmp")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+
+                            },
+                           error: function (ex) {
+                               $("#EmpName").val('');
+                               $("#JobName").val('');
+                               $("#ClassID").val('');
+                               $("#DegreeID").val('');
+                               $("#JobLocationName").val('');
+                               $("#DepartmentName").val('');
+                               $("#ContractDateH").val('');
+                                //Swal.fire({
+                                //    type: "warning",
+                                //    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                //    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                //    confirmButtonClass: 'btn btn-Warning',
+                                //})
+
+
+                            }
+                       });
+
+                        $("#EmpId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                        $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionMoveEmp")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+
+
+                            },
+                            error: function (ex) {
+                                $("#EmpName").val('');
+                                $("#JobName").val('');
+                                $("#ClassID").val('');
+                                $("#DegreeID").val('');
+                                $("#JobLocationName").val('');
+                                $("#DepartmentName").val('');
+                                $("#ContractDateH").val('');
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })                            }
+                        });
+                        return false;
+
+
+                 })
+               }
+     });
+
+     @* ******************* StartDate_And_H *******************@
+                     $(document).ready(function () {
+
+                         if ($("#StartDatee").val() == 1) {
+
+                    $(function () {
+
+                        $('#StartDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#StartDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#StartDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        $('#StartDate').calendarsPicker({
+                            calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                            onSelect: function () {
+
+                                var date = $('#StartDate').val();
+                                var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                                $('#StartDateH').val(tohijridate);
+                            }
+                        });
+
+
+                    });
+                }
+                else {
+
+                    $(function () {
+
+                        $('#StartDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#StartDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#StartDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        //$('#AssignmentDate').calendarsPicker({
+                        //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                        //    onSelect: function () {
+
+                        //        var date = $('#AssignmentDate').val();
+                        //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        //        $('#AssignmentDateH').val(tohijridate);
+                        //    }
+                        //});
+
+
+                    });
+                }
+                     })
+
+
+    @* ******************* StartWorkDate *******************@
+    $(document).ready(function () {
+
+        if ($("#StartWorkDatee").val() == 1) {
+
+            $(function () {
+
+                $('#StartWorkDateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#StartWorkDateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#StartWorkDate').val(toGregoriandate);
+                    }
+
+                });
+
+
+                $('#StartWorkDate').calendarsPicker({
+                    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                    onSelect: function () {
+
+                        var date = $('#StartWorkDate').val();
+                        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        $('#StartWorkDateH').val(tohijridate);
+                    }
+                });
+
+
+            });
+        }
+        else {
+
+            $(function () {
+
+                $('#StartWorkDateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#StartWorkDateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#StartWorkDate').val(toGregoriandate);
+                    }
+
+                });
+
+
+                //$('#AssignmentDate').calendarsPicker({
+                //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                //    onSelect: function () {
+
+                //        var date = $('#AssignmentDate').val();
+                //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                //        $('#AssignmentDateH').val(tohijridate);
+                //    }
+                //});
+
+
+            });
+        }
+    })
+
+
+     @* ******************* Date_And_H *******************@
+    $(document).ready(function () {
+        if ($("#Datee").val() == 1) {
+            $(function () {
+
+                $('#DateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#Date').val(toGregoriandate);
+                    }
+
+                });
+
+
+                $('#Date').calendarsPicker({
+                    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                    onSelect: function () {
+
+                        var date = $('#Date').val();
+                        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        $('#DateH').val(tohijridate);
+                    }
+                });
+
+
+            });
+
+        }
+        else {
+            $(function () {
+
+                $('#DateH').calendarsPicker({
+                    calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                    onSelect: function () {
+                        var date = $('#DateH').val();
+
+
+                        var dateFormat = moment(date, 'iYYYY/iM/iD');
+                        var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                        $('#Date').val(toGregoriandate);
+                    }
+
+                });
+
+
+                //$('#Date').calendarsPicker({
+                //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                //    onSelect: function () {
+
+                //        var date = $('#Date').val();
+                //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                //        $('#DateH').val(tohijridate);
+                //    }
+                //});
+
+
+            });
+        }
+    })
+
+     @* ******************* LetterDatee_And_H *******************@
+                     $(document).ready(function () {
+                         if ($("#LetterDatee").val() == 1) {
+                    $(function () {
+
+                        $('#LetterDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#LetterDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#LetterDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        $('#LetterDate').calendarsPicker({
+                            calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                            onSelect: function () {
+
+                                var date = $('#LetterDate').val();
+                                var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                                $('#LetterDateH').val(tohijridate);
+                            }
+                        });
+
+
+                    });
+
+                }
+                else {
+                    $(function () {
+
+                        $('#LetterDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#LetterDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#LetterDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        //$('#Date').calendarsPicker({
+                        //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                        //    onSelect: function () {
+
+                        //        var date = $('#Date').val();
+                        //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        //        $('#DateH').val(tohijridate);
+                        //    }
+                        //});
+
+
+                    });
+                }
+            })
+
+           $(function () {
+        $("#EmpId").chosen({
+            width: "100%"
+        });
+               $("#OwnerId").chosen({
+                   width: "100%"
+               });
+               $("#JobId").chosen({
+                   width: "100%"
+               });
+
+
+
+
+    });
+
+
+</script>

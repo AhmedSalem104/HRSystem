@@ -1,0 +1,38 @@
+﻿@model  HRSystem.Web.Models.MainMenuViewModel
+@using HRSystem.Web.Infrastructure
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li>
+                <a href="/Home/Index"><i class="la la-home"></i><span class="menu-title" data-i18n="Dashboard">الرئيسية</span></a>
+
+            </li>
+            @foreach (var _Mainitem in Model.MainMenus)
+            {
+
+                foreach (var item in Model.MenuItems)
+                {
+                    if (item.SystemFunctions.Count > 0 && _Mainitem.Id == item.MainMenuId)
+                    {
+
+                        <li class=" nav-item">
+                            <a href="#"><i class="la la-file-text"></i><span class="menu-title" >@item.NameInArabic</span></a>
+                            <ul class="menu-content">
+                                @foreach (var function in item.SystemFunctions)
+                                {
+
+                                    <li >
+                                        <a class="menu-item" href="@Url.Action(function.Action, function.Controller)"><i></i><span data-i18n="eCommerce"> @function.NameInArabic</span></a>
+                                    </li>
+
+
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+
+            }
+        </ul>
+    </div>
+</div>

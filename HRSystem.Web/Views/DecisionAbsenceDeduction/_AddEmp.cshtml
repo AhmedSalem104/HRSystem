@@ -1,0 +1,274 @@
+﻿@model  HRSystem.Web.Models.DecisionAbsenceDeductionViewModel.UsersList
+@*@using EmployeesPortal.Web.Infrastructure.Resources*@
+
+
+<style>
+
+    #btnED {
+        white-space: nowrap
+    }
+</style>
+
+
+@using (Html.BeginForm("GetCusomerData", "SendSms", FormMethod.Post,  new { @class = "form-horizontal", @id = "create" }))
+{
+
+<div class="modal-content">
+    <div class="modal-header bg-info white">
+        <h4 class="modal-title white" id="myModalLabel11">أضف موظف للطلب</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @*@Html.HiddenFor(a => a.EmpId);*@
+
+<div class="modal-body">
+
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            الموظف
+        </label>
+        <div class="col-lg-9">
+            @Html.DropDownListFor(m => m.EmpId, (IEnumerable
+           <SelectListItem>)ViewData["Empolyee"], "---اختار---", new { @class = "EmpId form-control ", @id = "EmpId" })
+            @Html.ValidationMessageFor(m => m.EmpId, "", new { @class = "text-danger" })
+
+
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            الأسم
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.EmpName, new { @id = "EmpName", @class = "EmpName form-control", @readonly = "readonly" })
+
+            @*<input type="text" id="EmpName" disabled class=" EmpName form-control">*@
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            عدد ايام الغياب
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.AbsenceDays, new { @id = "AbsenceDays", @class = "AbsenceDays form-control" })
+            @*<input type="text" id="AbsenceDays"  class="AbsenceDays form-control ">*@
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            دقائق التأخير
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.DeductMinutes, new { @id = "DeductMinutes", @class = "DeductMinutes form-control" })
+
+            @*<input type="text" id="DeductMinutes"  class="DeductMinutes form-control ">*@
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            ساعات التأخير
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.DeductHoursNo, new { @id = "DeductHoursNo", @class = "DeductHoursNo form-control", @readonly = "readonly" })
+            @*<input type="text" id="DeductHoursNo"  class="DeductHoursNo form-control">*@
+
+            @*@Html.TextBoxFor(a => a.TypeId, new { @id = "DeductDays", @class = "hidden form-control", @readonly = "readonly" })*@
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            اجمالي الحسم
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.DeductDays, new { @id = "DeductDays", @class = "DeductDays form-control", @readonly = "readonly" })
+            @*<input type="text" id="DeductDays" readonly class="DeductDays form-control">*@
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 control-label">
+            بيان
+        </label>
+        <div class="col-lg-9">
+            @Html.TextBoxFor(a => a.Description, new { @id = "Description", @class = "Description form-control" })
+            @*<input type="text" id="Description"  class="Description form-control">*@
+
+
+        </div>
+    </div>
+    @Html.TextBoxFor(a => a.row, new { @id = "rowNo", @class = "rowNo form-control hidden" })
+
+    @Html.TextBoxFor(a => a.IsAdd, new { @id = "IsAdd", @class = "IsAdd form-control hidden" })
+
+
+</div>
+<div class="modal-footer">
+    <button id="sub" type="button" class="btn btn-outline-info">اضافة</button>
+
+    <button type="button" class="btn grey btn-outline-danger" data-dismiss="modal">Close</button>
+</div>
+
+</div>
+
+
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#EmpId").chosen({
+            width: "100%"
+        });
+
+        $("#AbsenceDays").keyup(function () {
+            var x = $("#AbsenceDays").val();
+            $("#DeductDays").val(x);
+
+              $(document).ready(function () {
+                
+               });
+
+           
+
+        });
+
+        $("#DeductMinutes").keyup(function () {
+           
+            var x = $("#DeductMinutes").val();
+            if (x == "")
+            {
+
+                $("#DeductHoursNo").val("");
+            }
+            else {
+                var DeductHoursNovalue = Math.floor(x / 60);
+
+                $("#DeductHoursNo").val(DeductHoursNovalue);
+            }
+          
+
+            //$(document).ready(function () {
+
+            //});
+
+
+
+        });
+        $("#EmpId").chosen().change(function () {
+            $.ajax({
+                url: '@Url.Action("GetEmployeeeNameInPopUp", "DecisionAbsenceDeduction")',
+                method: "Get",
+                //contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: {
+                    EmpNo: $("#EmpId").val(),
+
+                },
+                success: function (result) {
+                    $("#EmpName").val(result);
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            })
+        });
+        $("#sub").click(function () {
+            var i = 1;
+            var IsValid = true;
+            var EmpId = document.getElementById('EmpId').value;
+            var EmpName = document.getElementById('EmpName').value;
+            var AbsenceDays = document.getElementById('AbsenceDays').value;
+            var DeductMinutes = document.getElementById('DeductMinutes').value;
+            var DeductHoursNo = document.getElementById('DeductHoursNo').value;
+            var DeductDays = document.getElementById('DeductDays').value;
+            var Description = document.getElementById('Description').value;
+            var EmpFind = 0;
+            if ($("#IsAdd").val() == 1) {
+                $('#Empslist tr:not(:first-child)').each(function () {
+                    $(this).find('td').each(function () {
+                        if ($(this).find('.EmpId').val() == EmpId) {
+                            IsValid = false;
+
+                        }
+                    })
+                    i++;
+                })
+            }
+               
+            if (IsValid) {
+                var table = document.getElementById("Empslist");
+                if ($("#IsAdd").val() == 2) {
+
+
+                    var rowNo = $("#rowNo").val();
+                    table.deleteRow(rowNo);
+
+                    $('#AddEmp').modal('hide');
+
+                }
+                $("#IsAdd").val(1);
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    var cell7 = row.insertCell(6);
+                    var cell8 = row.insertCell(7);
+                    //var cell9 = row.insertCell(8);
+                    //var cell10 = row.insertCell(9);
+
+                    cell1.innerHTML = '<input type="text"  class="form-control  EmpId" readonly value = "' + EmpId + '">';
+                    cell2.innerHTML = '<input type="text"  class="form-control CustomerName" readonly value = "' + EmpName + '">';
+
+                    cell3.innerHTML = '<input type="text"  class="form-control AbsenceDays" readonly value = "' + AbsenceDays + '">';
+                    cell4.innerHTML = '<input type="text"  class="form-control DeductMinutes" readonly value = "' + DeductMinutes + '">';
+                    cell5.innerHTML = '<input type="text"  class="form-control DeductHoursNo" readonly value = "' + DeductHoursNo + '">';
+                    cell6.innerHTML = '<input type="text"  class="form-control DeductDays" readonly value = "' + DeductDays + '">';
+
+                    cell7.innerHTML = '<input type="text"  class="form-control Description" readonly value = "' + Description + '">';
+                    //cell8.innerHTML = '<input type="text"  class="form-control DeductHoursNo" readonly value = "' + EgmaDays + '">';
+                    //cell9.innerHTML = '<input type="text"  class="form-control  Total" readonly value = "' + Total + '">';
+
+                    cell8.innerHTML = '<button id="btnED" type="button" class="btn btn-primary btn-sm visible"><i class="ft-edit"></i></button> <button id="btnremove-1" type="button" class="btn btn-sm btn-danger visible" ><i class="ft-trash"></i> </button>';
+
+                    //$("#users").("," + EmpId);
+                    $("#EmpId").val("");
+                    $("#EmpName").val("");
+                    $("#AbsenceDays").val("");
+                    $("#DeductMinutes").val("");
+                    $("#DeductHoursNo").val("");
+                    $("#DeductDays").val("");
+
+                    $("#Description").val("");
+
+                    document.getElementById("EmpId").selectedIndex = 0;;
+                }
+                else {
+                    alert("تمت إضافة هذا الموظف مسبقا");
+
+                }
+
+
+
+        })
+    })
+
+</script>
+
+
+
+

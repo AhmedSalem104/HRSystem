@@ -1,0 +1,262 @@
+﻿@model HRSystem.Web.Models.DecisionAbsenceDeductionViewModel
+
+<script src="~/Scripts/jquery.validate.js"></script>
+
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@*@if (Model.DecisionAbsenceDeductionID != 0)
+{
+    if (Model.SmsEmpsList.Count() != 0)
+    {
+        <input id="EmpId" hidden value="@Model.SmsEmpsList.Count()">
+
+    }
+    else
+    {
+        <input id="EmpId" hidden value="1">
+
+
+    }
+
+
+}*@
+<div class="table-responsive">
+    <table id="Empslist" class="table table-bordered mb-0">
+        <thead>
+            <tr>
+
+                <th class="col-lg-1">رقم الموظف</th>
+                <th class="col-lg-4">أسم الموظف</th>
+                <th class="col-lg-1">عدد ايام الغياب</th>
+                <th class="col-lg-1">دقائق التاخير</th>
+                <th class="col-lg-1"> ساعات التاخير</th>
+                <th class="col-lg-1">اجمالي الحسم </th>
+                <th class="col-lg-8">بيان</th>
+
+
+                <th style="width:60px;">
+                    <button id='btnAddRow' type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success visible" data-target="#AddEmp">
+                        Add
+                    </button>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (int i = 0; i < Model.EmpsList.Count; i++)
+            {
+
+            <tr>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].EmpId, new { @class = "EmpId form-control ", @readonly = "readonly", @id = "Serial" })
+
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].EmpName, new { @class = "CustomerName form-control ", @readonly = "readonly", @id = "Serial" })
+
+                    @*@Html.DropDownListFor(m => m.EmpsList[i].EmpId, (IEnumerable
+            <SelectListItem>)ViewData["Empolyee"], "---اختار---", new { @class = "form-control ", @id = "ddlServices" })
+                       @Html.ValidationMessageFor(m => m.EmpsList[i].EmpId, "", new { @class = "text-danger" })*@
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].AbsenceDays, new { @class = "AbsenceDays form-control ", @readonly = "readonly", @id = "Serial" })
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].DeductMinutes, new { @class = "DeductMinutes form-control ", @readonly = "readonly", @id = "Serial" })
+
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].DeductHoursNo, new { @class = "DeductHoursNo form-control ", @readonly = "readonly", @id = "Serial" })
+
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].DeductDays, new { @class = "DeductDays form-control ", @readonly = "readonly", @id = "Serial" })
+
+
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmpsList[i].Description, new { @class = "Description form-control ", @readonly = "readonly", @id = "Serial" })
+
+                </td>
+
+              
+
+                <td style="width: 100px; white-space: nowrap">
+                    <button id="EditEmp" type="button" class="btn btn-sm btn-primary visible" data-target="#EditEmp">
+                        <i class='ft-edit'></i>
+                    </button>
+
+                    <button id='btnremove-@i' type="button" class="btn btn-sm btn-danger visible">
+                        <i class='ft-trash'></i>
+                    </button>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    //$(document).ready(function () {
+    //    var colCount = $("#Empslist tr th").length;
+    //    alert(colCount);
+    //    $("#EmpCount").val(colCount)
+    //})
+   
+
+    $('#Empslist').on('click', '.btn-primary', function () {
+        var row = $(this).parents('tr');
+        var rowNo = 0;
+        if ($("#IsAddH").val() == 1) {
+            rowNo = $(this).closest('tr').index();
+
+        }
+        else {
+            rowNo = $(this).closest('tr').index()+1;
+
+        }
+        var EmpId = row.find("td:eq(0) input[type='text']").val();
+        var EmpName = row.find("td:eq(1) input[type='text']").val();
+        var AbsenceDays = row.find("td:eq(2) input[type='text']").val();
+
+        var DeductMinutes = row.find("td:eq(3) input[type='text']").val();
+        var DeductHoursNo = row.find("td:eq(4) input[type='text']").val();
+        var DeductDays = row.find("td:eq(5) input[type='text']").val();
+        var Description = row.find("td:eq(6) input[type='text']").val();
+         $.ajax({
+            url: '@Url.Action("ShowPopUpEdit", "DecisionAbsenceDeduction")',
+            type: 'GET',
+             async: false,
+             data: { EmpId: EmpId, EmpName: EmpName, AbsenceDays: AbsenceDays, AbsenceDays: AbsenceDays, DeductMinutes: DeductMinutes, DeductHoursNo: DeductHoursNo, DeductDays: DeductDays, Description: Description, row: rowNo},
+            success: function (result) {
+                $("#AddEmp .modal-dialog").html(result);
+
+                $('#AddEmp').modal('show');
+
+
+             }
+             ,
+             error: function (err) {
+                 console.log('error:' + err);
+             }
+        });
+    });
+
+    $('#Empslist').on('click', '.btn-danger', function () {
+        $(this).parents('tr').remove();
+        var count = $("#count").text();
+        var countt = count.match(/\d+/)[0];
+        var lastCount = parseInt(countt) - 1;
+        var lastCountStr = " - " + lastCount;
+        $("#EmpCount").text(lastCountStr);
+    });
+
+    @*$('#Empslist').on('click', '.btn-primary', function () {
+        //$(this).parents('tr').remove();
+        var IsValid = true;
+        //var msg = $('#SmsText').val();
+
+        //var CustomerId = $(this).parents('tr').find('.CustomerId').val();
+
+        //var Period = $('#Period').val();
+
+        //var Amount = $('#AmountPaid').val();
+        //if (msg == null || msg == "") {
+        //    alert("أدخل نص الرسالة أولا");
+        //    IsValid = false;
+        //}
+        //else if (Period == null || Period == "") {
+        //    alert("أدخل المدة أولا");
+        //    IsValid = false;
+        //}
+        //else if (Amount == null || Amount == "") {
+        //    alert("أدخل المبلغ أولا");
+        //    IsValid = false;
+        //}
+        if (IsValid) {
+               $.ajax({
+            url: '@Url.Action("GetSmsMessage", "SendSms")',
+            type: 'GET',
+             async: false,
+              data: { msg: msg, CustomerId: CustomerId, Period: Period, Amount: Amount },
+            success: function (data) {
+
+                $("#showMessage .modal-dialog").html(data);
+
+                $('#showMessage').modal('show');
+
+
+             }
+             ,
+             error: function (err) {
+                 console.log('error:' + err);
+             }
+        });
+        }
+
+
+    });*@
+    function AddItem(btn) {
+
+        var table;
+        table = document.getElementById('Empslist');
+        var rows = table.getElementsByTagName('tr');
+        var rowOuterHtml = rows[rows.length - 1].outerHTML;
+
+        var lastrowIdx = rows.length - 2;
+
+        var nextrowIdx = eval(lastrowIdx) + 1;
+
+        rowOuterHtml = rowOuterHtml.replaceAll('_' + lastrowIdx + '_', '_' + nextrowIdx + '_');
+        rowOuterHtml = rowOuterHtml.replaceAll('[' + lastrowIdx + ']', '[' + nextrowIdx + ']');
+        rowOuterHtml = rowOuterHtml.replaceAll('-' + lastrowIdx, '-' + nextrowIdx);
+
+        var newRow = table.insertRow();
+
+        newRow.innerHTML = rowOuterHtml;
+        var removebtn = document.getElementsByTagName("button");
+        for (var cnt = 0; cnt < removebtn.length; cnt++) {
+
+
+            if (removebtn[cnt].id != "btnremove-0") {
+                removebtn[cnt].hidden = false;
+
+            }
+        }
+        var x = document.getElementsByTagName("INPUT");
+
+        for (var cnt = 0; cnt < x.length; cnt++) {
+
+            if (x[cnt].type == "number" && x[cnt].id.indexOf('_' + nextrowIdx + '_') > 0)
+                x[cnt].value = 0;
+
+        }
+
+
+    }
+    function rebindvalidators() {
+
+
+        var $form = $("#create");
+
+        $form.unbind();
+
+        $form.data("validator", null);
+
+        $.validator.unobtrusive.parse($form);
+
+        $form.validate($form.data("unobtrusiveValidation").options);
+
+    }
+    //$(function () {
+
+    //    $("#ddlCompanion").chosen({
+    //        width: "100%"
+    //    });
+    //});
+</script>

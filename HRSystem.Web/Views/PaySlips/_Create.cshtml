@@ -1,0 +1,99 @@
+﻿@model  HRSystem.Web.Models.PaySlipViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+
+
+
+
+@using (Html.BeginForm("Create", "PaySlips", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+{
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">اضافة المسير</h4>
+            <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            @Html.HiddenFor(model => model.PaySlipID)
+
+            <div class="form-group row">
+            <label class="col-lg-3 control-label">
+                رقم المسير
+            </label>
+            <div class="col-lg-9">
+                <input type="text" id="PaySlipID" class="form-control" name="phone" placeholder="تلقائي" readonly />
+
+                @*@Html.TextBoxFor(a => a.PaySlipID, new { @id = "PaySlipID", @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.PaySlipID, "", new { @class = "text-danger" })
+                <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>*@
+            </div>
+        </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    اسم  المسير
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.PaySlipName, new { htmlAttributes = new { @id = "NatName", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.PaySlipName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    ترميز المسير 
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.EmploymentTypeCode, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmploymentTypeCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+          
+
+
+        </div>
+        <div class="modal-footer">
+            <button id="sub" type="submit" class="btn btn-outline-info">@Resource.save</button>
+            <button type="button" class="btn grey btn-outline-red" data-dismiss="modal">@Resource.Close</button>
+        </div>
+
+    </div>
+
+
+}
+
+
+<script type="text/javascript">
+
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    $("#PaySlipID").keyup(function () {
+
+        var selectedValue = document.getElementById('PaySlipID').value;
+
+                $.ajax({
+                        type: "POST",
+                    url: '/PaySlips/CheckBankNo',
+                    data: { bankNo: parseInt(selectedValue) },
+                        dataType: 'json',
+                        success: function (result) {
+                                if (result == false) {
+                                    $("#sub").attr("disabled", true);
+                                    $("#validateColCode").removeAttr("hidden");
+
+                                }
+                                else {
+                                    $("#sub").attr("disabled", false);
+                                    $("#validateColCode").attr("hidden", true);
+                                }
+                        },
+                });
+        });
+
+</script>
+
+
+

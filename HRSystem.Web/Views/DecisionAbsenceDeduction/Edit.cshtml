@@ -1,0 +1,205 @@
+﻿@using HRSystem.Web.Infrastructure.Resources
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+    <h3 class="content-header-title d-inline-block">تعديل </h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+        </div>
+    </div>
+</div>
+<section id="horizontal-form-layouts">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a class="btn btn-icon btn-outline-primary" onclick="edit();"><i class="ft-edit"></i>Edit</a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collpase show">
+                    <div class="card-body">
+                        @*@using (Html.BeginForm("Edit", "DecisionAbsenceDeduction", FormMethod.Post, new { @class = "form-horizontal", @id = "edit" }))
+                        {*@
+                            <div class="form form-horizontal" role="form">
+                                <div class="form-body">
+
+                                    @Html.Partial("_CreateEdit")
+                                   
+                                    <div class="form-actions text-center">
+
+                                        <button id="SaveEdit" type="submit" name="submit" class="btn btn-primary" value="SaveEdit">
+                                            <i class="la la-check-square-o"></i> @Resource.save
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-red" onclick="window.close();"> <i class="ft-x"></i>@Resource.Close</button>
+
+
+                                    </div>
+                                    
+
+
+                                </div>
+                            </div>
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+
+    $("#SaveEdit").click(function () {
+        var table = document.getElementById("Empslist");
+        //alert("testdasfdzsgysrdfxghdgukfiuofg")
+
+        var isValid = true;
+
+        var SmsEmpsList = [];
+        $("#Empslist tr:not(:first-child)").each(function () {
+
+            var item = {
+                EmpId: $('.EmpId', this).val(),
+                EmpId: $('.EmpId', this).val(),
+                AbsenceDays: $('.AbsenceDays', this).val(),
+                DeductMinutes: $('.DeductMinutes', this).val(),
+                DeductHoursNo: $('.DeductHoursNo', this).val(),
+                DeductDays: $('.DeductDays', this).val(),
+                Description: $('.Description', this).val(),
+
+            }
+            SmsEmpsList.push(item);
+        });
+
+
+
+        if (SmsEmpsList.length < 1) {
+            alert('لابد من اختيار موظف واحد على الأقل')
+
+            isValid = false;
+
+        }
+
+        //if (document.getElementById("SmsTypeId").value == 0 || document.getElementById("SmsTypeId").value == null) {
+        //    alert('أختر نوع الرسالة')
+
+        //    isValid = false;
+        //}
+        //else if (document.getElementById("SmsText").value == "" || document.getElementById("SmsText").value == null) {
+
+        //    alert('أدخل نص الرسالة')
+
+        //    isValid = false;
+        //}
+        else if (table.rows.length <= 1) {
+
+            alert('لابد من وجود  موظف واحد على الأقل')
+
+            isValid = false;
+        }
+
+
+        if (isValid == false) {
+            alert('لم يتم الحفظ ...!')
+
+
+        }
+        if (isValid) {
+            var data = {
+                DecisionAbsenceDeductionID: $("#DecisionAbsenceDeductionID").val(),
+                DateH: $("#DateH").val(),
+                Date: $("#Date").val(),
+                Year: $("#Year").val(),
+                EmpCount: $("#EmpCount").val(),
+                EnclosureCount: $("#EnclosureCount").val(),
+                Serial: $("#Serial").val(),
+                Owner: $("#OwnerId").val(),
+                DepartmentId: $("#DepartmentId").val(),
+
+
+                LetterId: $("#LetterId").val(),
+                LetterDateH: $("#LetterDateH").val(),
+                LetterDate: $("#LetterDate").val(),
+                AbsenceMonthNo: $("#AbsenceMonthNo").val(),
+
+                AbsenceMonth: $("#AbsenceMonth").val(),
+                DeductMonthNo: $("#DeductMonthNo").val(),
+                DeductMonth: $("#DeductMonth").val(),
+                Notes: $("#Notes").val(),
+                Reason: $("#Reason").val(),
+
+                EmpsList: SmsEmpsList
+            }
+
+
+
+
+            //AddOrderAndDetails
+            $.ajax({
+                type: 'POST',
+                url: '/DecisionAbsenceDeduction/Edit',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (data) {
+
+
+                    $(window).off('beforeunload');
+
+                    window.location.reload();
+
+                }
+
+            });
+
+        }
+
+
+    });
+
+    $(document).ready(function () {
+        $("#edit :input").prop("disabled", true);
+        $('#DepartmentId').prop('disabled', true).trigger("chosen:updated");
+        $('#OwnerId').prop('disabled', true).trigger("chosen:updated");
+
+
+        $(".btn-red").prop("disabled", false);
+        loadCarData();
+        $('#servicedetails > tbody  > tr').each(function (index, tr) {
+            var selectedVal = $(this).find('#Code').val();
+            $('#ddlServices', tr).val(selectedVal);
+            var removebtn = document.getElementsByTagName("button");
+            for (var cnt = 0; cnt < removebtn.length; cnt++) {
+
+
+                if (removebtn[cnt].id != "btnremove-0") {
+                    removebtn[cnt].hidden = false;
+
+                }
+            }
+        });
+
+    });
+    function edit() {
+        $("#edit :input").prop("disabled", false);
+        $('#DepartmentId').prop('disabled', false).trigger("chosen:updated");
+        $('#OwnerId').prop('disabled', false).trigger("chosen:updated");
+
+
+    }
+
+
+
+</script>

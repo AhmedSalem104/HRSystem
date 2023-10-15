@@ -1,0 +1,30 @@
+﻿@using HRSystem.Web.Infrastructure.ValidationMessage
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+@if (TempData.ContainsKey("Toastr"))
+{
+    var messageContainer = TempData["Toastr"] as ValidateMessageContainer;
+     if (messageContainer != null)
+    {
+        <script>
+    $(document).ready(function ()
+    {
+               toastr.options.closeButton = '@messageContainer.ShowCloseButton';
+                toastr.options.newestOnTop = '@messageContainer.ShowNewestOnTop';
+
+                @foreach (var message in messageContainer.ValisateMessages)
+                {
+                    string toastTypeValue = message.MessageType.ToString("F").ToLower();
+                    @: var optionsOverride = { "positionClass": "toast-top-center"};
+                            if (message.IsSticky)
+                    {
+                        @:optionsOverride.timeOut = 500;
+                                @:optionsOverride.extendedTimeout = 0;
+                            }
+                    @:toastr['@toastTypeValue']('@message.Message', '@message.Title', optionsOverride);
+                        }
+    });
+        </script>
+    }
+}

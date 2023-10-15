@@ -1,0 +1,469 @@
+﻿@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model  HRSystem.Web.Models.DecisionAbsenceDeductionViewModel
+
+
+@Html.HiddenFor(model => model.DecisionAbsenceDeductionID)
+
+@{
+
+    if (Model.Date != null)
+    {
+        <input id="Datee" hidden value="@Model.Date.Value.Date">
+
+    }
+    else
+    {
+        <input id="Datee" hidden value="1">
+
+
+    }
+    if (Model.LetterDate != null)
+    {
+        <input id="LetterDatee" hidden value="@Model.LetterDate.Value.Date">
+
+    }
+    else
+    {
+
+        <input id="LetterDatee" hidden value="1">
+
+    }
+
+
+
+    if (Model.Owner != null)
+    {
+        <input id="OwnerIdd" hidden value="@Model.Owner">
+
+    }
+    else
+    {
+
+        <input id="OwnerIdd" hidden value="1">
+
+    }
+
+
+    var V = Session["Value"];
+}
+
+
+
+
+
+<input hidden id="IdForPrint" value=@Session["Id"]>
+@*<div class="form-horizontal">*@
+<div class="form-group row">
+
+    @if (V == "Edit")
+    {
+        <label class="col-md-2 label-control ">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionAbsenceDeductionID, new { @id = "DecisionAbsenceDeductionID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionAbsenceDeductionID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+    }
+    else
+    {
+        <label hidden class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div hidden class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionAbsenceDeductionID, new { @id = "DecisionAbsenceDeductionID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionAbsenceDeductionID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+
+        <label class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+
+            <input type="text" id="" placeholder=" تلقائي" disabled class="form-control">
+        </div>
+
+
+    }
+
+    @Html.TextBoxFor(model => model.IsAddH, new { @class = "form-control hidden", @Id = "IsAddH" })
+
+    <label class="col-md-2 label-control">
+        تاريخ القرار<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.DateH, new { @class = "form-control", @Id = "DateH" })
+        @Html.TextBoxFor(model => model.Date, new { @class = "hidden", @Id = "Date" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        السنة المالية 
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.Year, new { @id = "Year", @class = "form-control" ,Value = ViewBag.Year })
+        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        عدد الموظفين  <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.EmpCount, new { @id = "EmpCount", @class = "form-control", @readonly= "readonly" })
+        @Html.ValidationMessageFor(model => model.EmpCount, "", new { @class = "text-danger" })
+    </div>
+
+
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        عدد المرفقات<span class="text-danger">*</span>
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.EnclosureCount, new { @id = "EnclosureCount", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EnclosureCount, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        رقم القرار <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.Serial, new { @id = "Serial", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Serial, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        صاحب الصلاحية <span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        @Html.DropDownListFor(model => model.Owner, (IEnumerable
+       <SelectListItem>)ViewData["OwnerList"], "---اختار---", new { @class = "form-control ", @Id = "OwnerId" })
+        @Html.ValidationMessageFor(model => model.Owner, "", new { @class = "text-danger" })
+    </div>
+
+    <label class="col-md-2 label-control">
+        الادارة <span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        @Html.DropDownListFor(model => model.DepartmentId, (IEnumerable
+       <SelectListItem>)ViewData["DepartmentList"], "---اختار---", new { @class = "form-control ", @Id = "DepartmentId" })
+        @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+    </div>
+
+</div>
+<div class="form-group row">
+
+
+
+    <label class="col-md-2 label-control">
+        رقم الخطاب<span class="text-danger">*</span>
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.LetterId, new { @id = "LetterId", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.LetterId, "", new { @class = "text-danger" })
+    </div>
+
+    <label class="col-md-2 label-control">
+        تاريخ الخطاب   <span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.LetterDateH, new { @class = "form-control", @Id = "LetterDateH" })
+        @Html.TextBoxFor(model => model.LetterDate, new { @class = "hidden", @Id = "LetterDate" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        شهر الغياب <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-2">
+        @Html.TextBoxFor(a => a.AbsenceMonthNo, new { @id = "AbsenceMonthNo", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AbsenceMonthNo, "", new { @class = "text-danger" })
+    </div>
+  
+    <div class="col-md-8">
+        @Html.TextBoxFor(a => a.AbsenceMonth, new { @id = "AbsenceMonth", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AbsenceMonth, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        شهر الحسم <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-2">
+        @Html.TextBoxFor(a => a.DeductMonthNo, new { @id = "DeductMonthNo", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DeductMonthNo, "", new { @class = "text-danger" })
+    </div>
+  
+    <div class="col-md-8">
+        @Html.TextBoxFor(a => a.DeductMonth, new { @id = "DeductMonth", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DeductMonth, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        البيان  <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(a => a.Notes, new { @id = "Notes", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+    </div>
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        سبب الحسم  <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(a => a.Reason, new { @id = "Reason", @class = "form-control" })
+
+        @Html.TextBoxFor(a => a.DecisionAbsenceDeductionID, new { @id = "DecisionAbsenceDeductionID",@hidden="hidden", @class = "form-control" })
+
+
+
+        @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card box-shadow-0 border-info bg-transparent ">
+            <div class="card-header card-head-inverse bg-info">
+                <h4 class="card-title text-white">الموظفين</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    @Html.Partial("_Emps")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade text-left" id="AddEmp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11" aria-hidden="true">
+    <div class="modal-dialog" role="document"> 
+        @{Html.RenderAction("AddEmp", "DecisionAbsenceDeduction");}
+    </div>
+</div>
+<script type="text/javascript">
+
+
+
+
+
+                       $(document).ready(function () {
+               $("#AbsenceMonthNo").keyup(function () {
+                $.ajax({
+                    //contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    url: '@Url.Action("AbsenceMonthNoChange", "DecisionAbsenceDeduction")',
+                    data: { MonthNo: $("#AbsenceMonthNo").val()},
+                     dataType: "json",
+                    success: function (result) {
+
+                        $("#AbsenceMonth").val(result);
+
+                    }
+                 });
+               });
+
+               $("#DeductMonthNo").keyup(function () {
+                $.ajax({
+                    //contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    url: '@Url.Action("AbsenceMonthNoChange", "DecisionAbsenceDeduction")',
+                    data: { MonthNo: $("#DeductMonthNo").val()},
+                     dataType: "json",
+                    success: function (result) {
+
+                        $("#DeductMonth").val(result);
+
+                    }
+                 });
+           });
+
+     });
+
+     @* ******************* Date_And_H *******************@
+                     $(document).ready(function () {
+                if ($("#Datee").val() == 1) {
+                    $(function () {
+
+                        $('#DateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#DateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#Date').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        $('#Date').calendarsPicker({
+                            calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                            onSelect: function () {
+
+                                var date = $('#Date').val();
+                                var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                                $('#DateH').val(tohijridate);
+                            }
+                        });
+
+
+                    });
+
+                }
+                else {
+                    $(function () {
+
+                        $('#DateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#DateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#Date').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        //$('#Date').calendarsPicker({
+                        //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                        //    onSelect: function () {
+
+                        //        var date = $('#Date').val();
+                        //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        //        $('#DateH').val(tohijridate);
+                        //    }
+                        //});
+
+
+                    });
+                }
+            })
+
+     @* ******************* LetterDate_And_H *******************@
+              $(document).ready(function () {
+                if ($("#LetterDatee").val() == 1) {
+                    $(function () {
+
+                        $('#LetterDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#LetterDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#LetterDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        $('#LetterDate').calendarsPicker({
+                            calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                            onSelect: function () {
+
+                                var date = $('#LetterDate').val();
+                                var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                                $('#LetterDateH').val(tohijridate);
+                            }
+                        });
+
+
+                    });
+
+                }
+                else {
+                    $(function () {
+
+                        $('#LetterDateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#LetterDateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#LetterDate').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        //$('#Date').calendarsPicker({
+                        //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                        //    onSelect: function () {
+
+                        //        var date = $('#Date').val();
+                        //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        //        $('#DateH').val(tohijridate);
+                        //    }
+                        //});
+
+
+                    });
+                }
+              })
+
+          
+
+   
+ 
+           $(function () {
+        $("#OwnerId").chosen({
+            width: "100%"
+        });
+               $("#DepartmentId").chosen({
+                   width: "100%"
+               });
+
+
+
+    });
+
+
+</script>

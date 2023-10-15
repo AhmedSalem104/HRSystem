@@ -1,0 +1,177 @@
+﻿@using EmployeesPortal.Web.Infrastructure.Resources
+@{
+    ViewBag.Title = "Create";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+    <h3 class="content-header-title d-inline-block">تسجيل طلب خارج دوام </h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+        </div>
+    </div>
+</div>
+<section id="horizontal-form-layouts">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="">
+                <div class="">
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        @*<ul class="list-inline mb-0">
+
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
+                        </ul>*@
+                    </div>
+                </div>
+                <div class="card-content collpase show">
+                    <div class="card-body">
+                       
+                            <div class="form form-horizontal" role="form">
+                                <div class="form-body">
+
+                                    @Html.Partial("_CreateEdit")
+
+                                    <div class="form-actions text-center">
+                                        <button  class="btn btn-primary" value="Save" id="Save">
+                                            <i class="la la-check-square-o"></i> @Resource.save
+                                        </button>
+
+                                        <button type="button" class="btn btn-red" onclick="window.close();"> <i class="ft-x"></i>@Resource.Close</button>
+
+
+
+
+                                    </div>
+
+
+                                </div>
+                           </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+
+    $("#Save").click(function () {
+        if ($("#users").val() == null || $("#users").val() == "") {
+            $("#EmpsVal").show();
+
+        }
+        else {
+            $("#EmpsVal").hide();
+
+        }
+    })
+
+    $("#Save").click(function () {
+        var table = document.getElementById("Empslist");
+
+        var isValid = true;
+
+        var SmsEmpsList = [];
+        $("#Empslist tr:not(:first-child)").each(function () {
+
+            var item = {
+
+                EmpId: $('.CustomerId', this).val(),
+                Total: $('.Total', this).val(),
+
+            }
+            SmsEmpsList.push(item);
+        });
+
+
+
+        if (SmsEmpsList.length < 1) {
+               alert('لابد من اختيار موظف واحد على الأقل')
+
+                isValid = false;
+        
+        }
+
+        //if (document.getElementById("SmsTypeId").value == 0 || document.getElementById("SmsTypeId").value == null) {
+        //    alert('أختر نوع الرسالة')
+
+        //    isValid = false;
+        //}
+        //else if (document.getElementById("SmsText").value == "" || document.getElementById("SmsText").value == null) {
+
+        //    alert('أدخل نص الرسالة')
+
+        //    isValid = false;
+        //}
+        //else if (table.rows.length <= 1) {
+
+        //    alert('لابد من وجود مرسل اليه واحد على الأقل')
+
+        //    isValid = false;
+        //}
+
+
+        if (isValid == false) {
+            alert('لم يتم الحفظ ...!')
+
+
+        }
+        if (isValid) {
+            var data = {
+                DateH: $("#DateH").val(),
+                Date: $("#Date").val(),
+                EnclosureCount: $("#EnclosureCount").val(),
+                ExpectedWorks: $("#ExpectedWorks").val(),
+                Period: $("#Period").val(),
+                periodHours: $("#periodHours").val(),
+                periodMinits: $("#periodMinits").val(),
+                VacPeriod: $("#VacPeriod").val(),
+
+
+                VacHours: $("#VacHours").val(),
+                VacMinutes: $("#VacMinutes").val(),
+                FromDateH: $("#DateFromH").val(),
+                FromDate: $("#DateFrom").val(),
+
+                ToDateH: $("#ToDateH").val(),
+                ToDate: $("#ToDate").val(),
+                Location: $("#Location").val(),
+                Description: $("#Description").val(),
+                WorkDaysNotes: $("#WorkDaysNotes").val(),
+                Notes: $("#Notes").val(),
+                EmpsList: SmsEmpsList
+            }
+
+
+
+
+            //AddOrderAndDetails
+            $.ajax({
+                type: 'POST',
+                url: '/OutOfDuty/Create',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (data) {
+                    alert("تم الحفظ بنجاح")
+
+                    $(window).off('beforeunload');
+
+                    window.location.reload();
+
+                }
+
+            });
+
+        }
+
+
+    });
+</script>

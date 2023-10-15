@@ -1,0 +1,633 @@
+﻿@using HRSystem.Web.Infrastructure.Extensions
+@using HRSystem.Web.Infrastructure
+@model  HRSystem.Web.Models.DecisionEmploymentViewModel
+
+
+@Html.HiddenFor(model => model.DecisionEmploymentID)
+
+@{
+
+    if (Model.Date != null)
+    {
+        <input id="Datee" hidden value="@Model.Date.Value.Date)">
+
+    }
+    else
+    {
+        <input id="Datee" hidden value="1">
+
+
+    }
+
+
+    if (Model.EmpId != null)
+    {
+        <input id="EmpIdd" hidden value="@Model.EmpId">
+
+    }
+    else
+    {
+
+        <input id="EmpIdd" hidden value="1">
+
+    }
+
+    if (Model.JobSerial != null)
+    {
+        <input id="JobSeriall" hidden value="@Model.JobSerial">
+
+    }
+    else
+    {
+
+        <input id="JobSeriall" hidden value="1">
+
+    }
+    var V = Session["Value"];
+
+}
+
+
+<input hidden id="IdForPrint" value=@Session["Id"]>
+
+<div class="form-group row">
+
+
+  
+
+
+    @if (V == "Edit")
+    {
+        <label class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionEmploymentID, new { @id = "DecisionEmploymentID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionEmploymentID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+    }
+    else
+    {
+        <label hidden class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div hidden class="col-md-4">
+            @Html.TextBoxFor(a => a.DecisionEmploymentID, new { @id = "DecisionEmploymentID", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DecisionEmploymentID, "", new { @class = "text-danger" })
+            <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+        </div>
+
+        <label class="col-md-2 label-control">
+            رقم العملية<span class="text-danger">*</span>
+        </label>
+        <div class="col-md-4">
+
+            <input type="text" id="" placeholder=" تلقائي" disabled class="form-control">
+        </div>
+    }
+
+
+
+    <label class="col-md-2 label-control">
+        تاريخ القرار<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        <div class="input-group-text">
+            <i class="la la-calendar"></i>
+        </div>
+        @Html.TextBoxFor(model => model.DateH, new { @class = "form-control", @Id = "DateH" })
+        @Html.TextBoxFor(model => model.Date, new { @class = "hidden", @Id = "Date" })
+        @*<span id="validateDate" class="text-danger" hidden>تاريخ الاصدار يجب ان يكون  اقل من اويساوى تاريخ اليوم</span>*@
+    </div>
+
+
+</div>
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        عدد المرفقات
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(model => model.EnclosureCount, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.EnclosureCount, "", new { @class = "text-danger" })
+
+
+    </div>
+    <label class="col-md-2 label-control">
+        صاحب الصلاحية<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+
+        @Html.DropDownListFor(model => model.Owner, (IEnumerable
+    <SelectListItem>)ViewData["OwnerList"], "---اختار---", new { @class = "form-control ", @Id = "OwnerId" })
+        @Html.ValidationMessageFor(model => model.Owner, "", new { @class = "text-danger" })
+
+
+    </div>
+</div>
+<div class="form-group row">
+
+    <label class="col-md-2 label-control">
+        بناء علي
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.DependOn, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.DependOn, "", new { @class = "text-danger" })
+
+
+    </div>
+
+</div>
+<div class="form-group row">
+
+
+    <label class="col-md-2 label-control">
+        كود الموظف<span class="text-danger">*</span>
+    </label>
+    <div class="input-group col-md-4">
+        @Html.DropDownListFor(model => model.EmpId, (IEnumerable
+       <SelectListItem>)ViewData["Empolyee"], "---اختار---", new { @class = "form-control ", @Id = "EmpId" })
+        @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-2 label-control">
+        الاسم
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="EmpName" disabled class="form-control">
+
+    </div>
+
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        الادارة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="DepartmentName" disabled class="form-control">
+
+    </div>
+
+    <label class="col-md-2 label-control">
+        الوظيفة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="JobName" disabled class="form-control">
+
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        الجهه
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="JobLocationName" disabled class="form-control">
+
+    </div>
+    <label class="col-md-2 label-control">
+        المرتبة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="ClassID" disabled class="form-control">
+
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        تاريخ المباشر
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="ContractDateH" disabled class="form-control">
+
+    </div>
+
+    <label class="col-md-2 label-control">
+        الدرجة
+    </label>
+    <div class="input-group col-md-4">
+        <input type="text" id="DegreeID" disabled class="form-control">
+
+    </div>
+</div>
+
+
+
+
+<div class="form-group row">
+    <label class="col-md-2 label-control">
+        مسمي الوظيفة
+    </label>
+    <div class="input-group col-md-4">
+
+        @Html.DropDownListFor(model => model.JobSerial, (IEnumerable
+     <SelectListItem>)ViewData["FixedJob"], "---اختار---", new { @class = "form-control ", @Id = "JobId" })
+        @Html.ValidationMessageFor(model => model.JobSerial, "", new { @class = "text-danger" })
+
+    </div>
+    <label class="col-md-2 label-control">
+        الرمز التصنيفي
+    </label>
+    <div class="col-md-4">
+        @Html.TextBoxFor(a => a.ClassificationNo, new { @id = "ClassificationNo", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ClassificationNo, "", new { @class = "text-danger" })
+    </div>
+
+</div>
+<div class="form-group row">
+
+
+
+    <label class="col-md-2 label-control">
+        ملاحظات
+    </label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.Notes, new { @class = "form-control " })
+
+
+    </div>
+
+
+
+</div>
+
+<div class="form-group row">
+    <div class="col-md-5">
+        @Html.CheckBoxFor(a => a.OnTrial, new { @id = "OnTrial", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.OnTrial, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-4 text-left label-control">
+        يعتبر الموظف تحت التجربة لمدة عام من تاريخ القرار
+    </label>
+
+
+</div>
+<div class="form-group row">
+    <div class="input-group col-md-5">
+        @Html.CheckBoxFor(a => a.MonthSalary, new { @id = "MonthSalary", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MonthSalary, "", new { @class = "text-danger" })
+    </div>
+    <label class="col-md-4 text-left label-control">
+        يصرف للموظف راتب شهر
+    </label>
+
+</div>
+
+<script type="text/javascript">
+
+
+           $(document).ready(function () {
+                  if ($("#EmpIdd").val() == 1 || $("#EmpIdd").val() == null)
+                   {
+                    $("#EmpId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                        $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionLongLegation")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+                              
+
+                            },
+                            error: function (ex) {
+                                $("#EmpName").val('');
+                                $("#JobName").val('');
+                                $("#ClassID").val('');
+                                $("#DegreeID").val('');
+                                $("#JobLocationName").val('');
+                                $("#DepartmentName").val('');
+                                $("#ContractDateH").val('');
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })
+                            }
+                        });
+                        return false;
+
+
+                 })
+                   }
+                   else {
+
+                       $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionLongLegation")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+                             
+                            },
+                           error: function (ex) {
+                               $("#EmpName").val('');
+                               $("#JobName").val('');
+                               $("#ClassID").val('');
+                               $("#DegreeID").val('');
+                               $("#JobLocationName").val('');
+                               $("#DepartmentName").val('');
+                               $("#ContractDateH").val('');
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })
+
+
+                            }
+                       });
+
+                        $("#EmpId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                        $.ajax({
+                            data: { id: $("#EmpId").val() },
+                            url: '@Url.Action("GetEmployeeData", "DecisionLongLegation")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#EmpName").val(data.EmpName);
+                                    $("#JobName").val(data.JobName);
+                                    $("#ClassID").val(data.ClassID);
+                                    $("#DegreeID").val(data.DegreeID);
+                                    $("#JobLocationName").val(data.JobLocationName);
+                                    $("#DepartmentName").val(data.DepartmentName);
+                                    $("#ContractDateH").val(data.ContractDateH);
+                                }
+
+
+                               
+
+                            },
+                            error: function (ex) {
+                                $("#EmpName").val('');
+                                $("#JobName").val('');
+                                $("#ClassID").val('');
+                                $("#DegreeID").val('');
+                                $("#JobLocationName").val('');
+                                $("#DepartmentName").val('');
+                                $("#ContractDateH").val('');
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الموظف ليس له بيانات  ',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })                            }
+                        });
+                        return false;
+
+
+                 })
+               }
+
+
+
+
+
+               if ($("#JobSeriall").val() == 1 || $("#JobSeriall").val() == null)
+                   {
+                   $("#JobId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                       $.ajax({
+
+                           data: { id: $("#JobId").val() },
+                            url: '@Url.Action("GetClassificationNoFromFixedJob", "DecisionEmployment")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#ClassificationNo").val(data);
+
+                                }
+
+
+                                else {
+
+
+                                    $("#ClassificationNo").val('');
+
+                                }
+
+                            },
+                           error: function (ex) {
+                               Swal.fire({
+                                   type: "warning",
+                                   title: 'عفوا هذا الوظيفة ليس لها رمز تصنيفي',
+                                   //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                   confirmButtonClass: 'btn btn-Warning',
+                               })
+                           }
+                        });
+                        return false;
+
+
+                 })
+                   }
+                   else {
+
+                       $.ajax({
+                           data: { id: $("#JobId").val() },
+                            url: '@Url.Action("GetClassificationNoFromFixedJob", "DecisionEmployment")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#ClassificationNo").val(data);
+
+                                }
+
+
+                                else {
+
+                                    $("#ClassificationNo").val('');
+
+                                }
+
+                            },
+                            error: function (ex) {
+                                Swal.fire({
+                                    type: "warning",
+                                    title: 'عفوا هذا الوظيفة ليس لها رمز تصنيفي',
+                                    //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                    confirmButtonClass: 'btn btn-Warning',
+                                })
+                            }
+                       });
+
+                   $("#JobId").chosen().change(function () {
+                    //$('#carvalidation').attr("hidden",true);
+                    $(':input[type="submit"]').prop('disabled',false);
+                       $.ajax({
+
+                           data: { id: $("#JobId").val() },
+                            url: '@Url.Action("GetClassificationNoFromFixedJob", "DecisionEmployment")',
+
+                            dataType: 'json',
+
+                            success: function (data) {
+
+                                if (data != null) {
+
+                                    $("#ClassificationNo").val(data);
+
+                                }
+
+
+                                else {
+
+
+                                    $("#ClassificationNo").val('');
+
+                                }
+
+                            },
+                           error: function (ex) {
+                               Swal.fire({
+                                   type: "warning",
+                                   title: 'عفوا هذا الوظيفة ليس لها رمز تصنيفي',
+                                   //text: 'عفوا هذا الموظف في عهدته سيارة حتي الان',
+                                   confirmButtonClass: 'btn btn-Warning',
+                               })
+                           }
+                        });
+                        return false;
+
+
+                 })
+                  }
+     });
+
+
+
+     @* ******************* Date_And_H *******************@
+                     $(document).ready(function () {
+                         if ($("#Datee").val() == 1 || $("#Datee").val() == null) {
+                    $(function () {
+
+                        $('#DateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#DateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#Date').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        $('#Date').calendarsPicker({
+                            calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                            onSelect: function () {
+
+                                var date = $('#Date').val();
+                                var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                                var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                                $('#DateH').val(tohijridate);
+                            }
+                        });
+
+
+                    });
+
+                }
+                else {
+                    $(function () {
+
+                        $('#DateH').calendarsPicker({
+                            calendar: $.calendars.instance('ummalqura', 'ar'), showTrigger: '#calImg',
+                            onSelect: function () {
+                                var date = $('#DateH').val();
+
+
+                                var dateFormat = moment(date, 'iYYYY/iM/iD');
+                                var toGregoriandate = dateFormat.format('YYYY/MM/D');
+
+                                $('#Date').val(toGregoriandate);
+                            }
+
+                        });
+
+
+                        //$('#Date').calendarsPicker({
+                        //    calendar: $.calendars.instance('', 'ar'), defaultDate: 'dd/mm/yyyy', format: 'dd/mm/yyyy', selectDefaultDate: true, showTrigger: '#calImg',
+                        //    onSelect: function () {
+
+                        //        var date = $('#Date').val();
+                        //        var dateFormat = moment(date).format('DD/MM/YYYY')
+
+                        //        var tohijridate = HijriJS.toHijri(dateFormat, "/");
+
+                        //        $('#DateH').val(tohijridate);
+                        //    }
+                        //});
+
+
+                    });
+                }
+            })
+
+
+                   $(function () {
+                        $("#EmpId").chosen({
+                            width: "100%"
+                        });
+
+                        $("#OwnerId").chosen({
+                            width: "100%"
+                        });
+                       $("#JobId").chosen({
+                           width: "100%"
+                       });
+
+                    });
+
+
+</script>

@@ -1,0 +1,96 @@
+﻿@using HRSystem.Web.Infrastructure.Resources
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+    <h3 class="content-header-title d-inline-block">تعديل </h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+        </div>
+    </div>
+</div>
+<section id="horizontal-form-layouts">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a class="btn btn-icon btn-outline-primary" onclick="edit();"><i class="ft-edit"></i>Edit</a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collpase show">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Edit", "DecisionWorker", FormMethod.Post, new { @class = "form-horizontal", @id = "edit" }))
+                        {
+                            <div class="form form-horizontal" role="form">
+                                <div class="form-body">
+
+                                    @Html.Partial("_CreateEdit")
+                                   
+                                    <div class="form-actions text-center">
+
+                                        <button type="submit" name="submit" class="btn btn-primary" value="Save">
+                                            <i class="la la-check-square-o"></i> @Resource.save
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-red" onclick="window.close();"> <i class="ft-x"></i>@Resource.Close</button>
+
+
+                                    </div>
+                                    
+
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $("#edit :input").prop("disabled", true);
+        $('#EmpId').prop('disabled', true).trigger("chosen:updated");
+        $('#OwnerId').prop('disabled', true).trigger("chosen:updated");
+        $('#Owner2Id').prop('disabled', true).trigger("chosen:updated");
+
+
+        $(".btn-red").prop("disabled", false);
+        loadCarData();
+        $('#servicedetails > tbody  > tr').each(function (index, tr) {
+            var selectedVal = $(this).find('#Code').val();
+            $('#ddlServices', tr).val(selectedVal);
+            var removebtn = document.getElementsByTagName("button");
+            for (var cnt = 0; cnt < removebtn.length; cnt++) {
+
+
+                if (removebtn[cnt].id != "btnremove-0") {
+                    removebtn[cnt].hidden = false;
+
+                }
+            }
+        });
+
+    });
+    function edit() {
+        $("#edit :input").prop("disabled", false);
+        $('#EmpId').prop('disabled', false).trigger("chosen:updated");
+        $('#OwnerId').prop('disabled', false).trigger("chosen:updated");
+        $('#Owner2Id').prop('disabled', false).trigger("chosen:updated");
+
+
+    }
+</script>

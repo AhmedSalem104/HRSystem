@@ -1,0 +1,103 @@
+﻿@using HRSystem.Web.Infrastructure.Resources
+@{
+    ViewBag.Title = "Create";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+    <h3 class="content-header-title d-inline-block">قرار طي قيد موظف</h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+        </div>
+    </div>
+</div>
+<section id="horizontal-form-layouts">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+
+                            <li>
+                                <a style="font-weight:bold;" href='@Url.Action("ClearData", "DecisionMoveEmp")' class="btn btn-outline-primary  box-shadow-2 target='_blank' btn-small" id="New"><i class="ft-file-plus"></i> سجل جديد</a>
+                            </li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collpase show">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "DecisionMoveEmp", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+                        {
+                            <div class="form form-horizontal" role="form">
+                                <div class="form-body">
+
+                                    @Html.Partial("_CreateEdit")
+
+                                    <div class="form-actions text-center">
+                                        <button id="sub" type="submit" name="submit" class="btn btn-outline-primary box-shadow-2" value="Save">
+                                            <i class="la la-check-square-o"></i> @Resource.save
+                                        </button>
+
+
+
+                                        <a id="GetIdForPrint" class="btn btn-outline-secondary  box-shadow-2" title="طباعة"><i class='ft-printer'></i>@Resource.Print</a>
+
+                                        <button type="button" class="btn btn-outline-red box-shadow-2 " onclick="window.close();"> <i class="ft-x"></i>@Resource.Close</button>
+
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    //$("#DriverNo").keyup(function () {
+
+    //    var selectedValue = document.getElementById('DriverNo').value;
+
+    //    $.ajax({
+    //        type: "POST",
+    //        url: '/Driver/CheckDriverNo',
+    //        data: { DriverNo: parseInt(selectedValue) },
+    //        dataType: 'json',
+    //        success: function (result) {
+    //            if (result == false) {
+    //                $("#sub").attr("disabled", true);
+    //                $("#validateColCode").removeAttr("hidden");
+
+    //            }
+    //            else {
+    //                $("#sub").attr("disabled", false);
+    //                $("#validateColCode").attr("hidden", true);
+    //            }
+    //        },
+    //    });
+    //});
+
+
+    $("#GetIdForPrint").click(function () {
+        var ID = $("#IdForPrint").val();
+        window.open('/DecisionMoveEmp/Print?ids=' + ID, '');
+    });
+</script>

@@ -1,0 +1,107 @@
+﻿@model  HRSystem.Web.Models.BankViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+
+
+
+
+@using (Html.BeginForm("Create", "Bank", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+{
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">اضافة بنك</h4>
+            <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            @Html.HiddenFor(model => model.BankId)
+
+            <div class="form-group row">
+            <label class="col-lg-3 control-label">
+                رقم البنك
+            </label>
+            <div class="col-lg-9">
+                
+                <input type="text" id="BankCode" class="form-control" name="phone" placeholder="تلقائي" readonly />
+                       @*@Html.TextBoxFor(a => a.BankId, new { @id = "BankCode", @class = "form-control", @readonly = "readonly" })
+                       @Html.ValidationMessageFor(model => model.BankId, "", new { @class = "text-danger" })
+                <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>*@
+            </div>
+        </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    اسم البنك بالعربي
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @id = "NatName", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    الكود المختصر
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.ShortName, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ShortName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    الاسم الانجليزي
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.BankNameE, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BankNameE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button id="sub" type="submit" class="btn btn-outline-info">@Resource.save</button>
+            <button type="button" class="btn grey btn-outline-red" data-dismiss="modal">@Resource.Close</button>
+        </div>
+
+    </div>
+
+
+}
+
+
+<script type="text/javascript">
+
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    $("#BankCode").keyup(function () {
+
+        var selectedValue = document.getElementById('BankCode').value;
+
+                $.ajax({
+                        type: "POST",
+                    url: '/Bank/CheckBankNo',
+                    data: { bankNo: parseInt(selectedValue) },
+                        dataType: 'json',
+                        success: function (result) {
+                                if (result == false) {
+                                    $("#sub").attr("disabled", true);
+                                    $("#validateColCode").removeAttr("hidden");
+
+                                }
+                                else {
+                                    $("#sub").attr("disabled", false);
+                                    $("#validateColCode").attr("hidden", true);
+                                }
+                        },
+                });
+        });
+
+</script>
+
+
+

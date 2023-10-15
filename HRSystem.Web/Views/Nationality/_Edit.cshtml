@@ -1,0 +1,58 @@
+﻿@model  HRSystem.Web.Models.NationalViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@using (Html.BeginForm("Edit", "Nationality", FormMethod.Post, new { @class = "form-horizontal", @id = "edit" }))
+{
+
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">تعديل جنسية</h4>
+            <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            @Html.HiddenFor(model => model.NatId)
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    رقم الجنسية
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.NatId, new { @id = "NatCode", @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.NatId, "", new { @class = "text-danger" })
+                    <span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    الجنسية
+
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.NatName, new { htmlAttributes = new { @id = "NatName", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.NatName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    الاسم المختصر
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.CountryCode, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-info">@Resource.save</button>
+            <button type="button" class="btn grey btn-outline-red" data-dismiss="modal">@Resource.Close</button>
+        </div>
+
+    </div>
+}

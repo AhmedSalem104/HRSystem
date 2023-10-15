@@ -1,0 +1,137 @@
+﻿@using HRSystem.Web.Infrastructure
+@using HRSystem.Web.Infrastructure.Extensions
+@model  HRSystem.Web.Models.JobViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+
+
+
+
+@using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+{
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">اضافة وظيفة</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            @Html.HiddenFor(model => model.JobID)
+
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    رقم الوظيفة
+                </label>
+                <div class="col-lg-9">
+                    <input type="text" id="JobID" class="form-control" name="phone" placeholder="تلقائي" readonly />              
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    اسم الوظيفة
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @id = "NatName", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    بدل طبيعة العمل
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.NatureAllow, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NatureAllow, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                    <label class="col-lg-3 control-label">
+                        طريقة الحساب
+                    </label>
+                    <div class="col-lg-9">
+                        @Html.DropDownListFor(model => model.DegreeCheckValueFromEnums, new SelectList(HtmlExtensions.EnumToSelectList<Enums.DegreeCheckList>(), "Value", "Text"), "---اختار---", new { @class = "form-control ", @onchange = "FuelTypeOnChange();" })
+
+                        @Html.ValidationMessageFor(model => model.DegreeCheckValueFromEnums, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    التصنيف المهني
+                </label>
+                <div class="col-lg-9">
+                    @Html.DropDownListFor(model => model.NatureAllowTypeId, new SelectList(HtmlExtensions.EnumToSelectList<Enums.NatureAllowTypeIdList>(), "Value", "Text"), "---اختار---", new { @class = "form-control ", @onchange = "FuelTypeOnChange();" })
+
+                    @Html.ValidationMessageFor(model => model.NatureAllowTypeIdList, "", new { @class = "text-danger" })
+
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    ترميز الوظيفة
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.JobClassCode, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.JobClassCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    ترميز مسمى الوظيفة
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.JobNameCode, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.JobNameCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button id="sub" type="submit" class="btn btn-outline-info">@Resource.save</button>
+            <button type="button" class="btn grey btn-outline-red" data-dismiss="modal">@Resource.Close</button>
+
+        </div>
+
+    </div>
+
+
+}
+
+
+<script type="text/javascript">
+
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    $("#JobID").keyup(function () {
+
+        var selectedValue = document.getElementById('JobID').value;
+
+        $.ajax({
+            type: "POST",
+            url: '/Job/CheckJobNo',
+            data: { bankNo: parseInt(selectedValue) },
+            dataType: 'json',
+            success: function (result) {
+                if (result == false) {
+                    $("#sub").attr("disabled", true);
+                    $("#validateColCode").removeAttr("hidden");
+
+                }
+                else {
+                    $("#sub").attr("disabled", false);
+                    $("#validateColCode").attr("hidden", true);
+                }
+            },
+        });
+    });
+
+</script>
+
+
+

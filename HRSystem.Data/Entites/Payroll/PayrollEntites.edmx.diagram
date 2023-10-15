@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1477ea559b3e428bac093ac620e2abd7" Name="Diagram1">
+        <EntityTypeShape EntityType="PayrollModel.A" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AbsenceDeduct" Width="1.5" PointX="15" PointY="307.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AbsenceDeductEmp" Width="1.5" PointX="17.25" PointY="264.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Appraisal" Width="1.5" PointX="15" PointY="312.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AppraisalsDetail" Width="1.5" PointX="17.25" PointY="272.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ApprovedPayroll" Width="1.5" PointX="15" PointY="302.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ApprovedPayrollEmp" Width="1.5" PointX="17.25" PointY="261.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceGroup" Width="1.5" PointX="0.75" PointY="266.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceGroups_9" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceGroupsTrx" Width="1.5" PointX="11.25" PointY="211.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendTrx" Width="1.5" PointX="3" PointY="267.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendTrxEmployee" Width="1.5" PointX="6" PointY="267.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendType" Width="1.5" PointX="9" PointY="242.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Bank" Width="1.5" PointX="6.75" PointY="247.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BioStarTrx" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BioStarTrx2" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BirthVacDec" Width="1.5" PointX="20.25" PointY="267.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Bonu" Width="1.5" PointX="6.75" PointY="250.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BonusCalculation" Width="1.5" PointX="20.25" PointY="258" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BonusEdit" Width="1.5" PointX="15" PointY="316.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BonusEditEmp" Width="1.5" PointX="17.25" PointY="277.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BonusList" Width="1.5" PointX="15" PointY="320.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BonusPayslip" Width="1.5" PointX="9" PointY="235.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CalcAttendanceF" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CalcAttendanceH" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Calculation" Width="1.5" PointX="11.25" PointY="235.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CalculationsApproved" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CalculationsDetail" Width="1.5" PointX="13.5" PointY="235.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Certificate" Width="1.5" PointX="6.75" PointY="256.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUT" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUTSQL" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Class" Width="1.5" PointX="4.5" PointY="261.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ContractType" Width="1.5" PointX="6.75" PointY="259.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CustomPayroll" Width="1.5" PointX="18" PointY="299.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CustomPayrollEmp" Width="1.5" PointX="20.25" PointY="274.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DeathVacationD" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecesionAbsenceNormalDeduction" Width="1.5" PointX="20.25" PointY="277.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecesionAbsenceNormalDeductionDay" Width="1.5" PointX="22.5" PointY="295.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionAbsenceDeduction" Width="1.5" PointX="9" PointY="305.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionAbsenceDeductionFooter" Width="1.5" PointX="11.25" PointY="306.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionAllowance" Width="1.5" PointX="11.25" PointY="260.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionBonu" Width="1.5" PointX="11.25" PointY="276.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionCancelDecision" Width="1.5" PointX="11.25" PointY="281.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionChangeJob" Width="1.5" PointX="23.25" PointY="266.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionCompanionVac" Width="1.5" PointX="23.25" PointY="258.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionDiscipline" Width="1.5" PointX="11.25" PointY="288.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionEmployment" Width="1.5" PointX="14.25" PointY="280.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionEmploymentFooter" Width="1.5" PointX="16.5" PointY="295.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionEndService" Width="1.5" PointX="23.25" PointY="275.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionEndStopHand" Width="1.5" PointX="11.25" PointY="311.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionExceptionVacation" Width="1.5" PointX="11.25" PointY="317.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionExpand" Width="1.5" PointX="11.25" PointY="322.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionLegation" Width="1.5" PointX="11.25" PointY="328" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionLegationEmployee" Width="1.5" PointX="13.5" PointY="329.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionLongLegation" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionMoveEmp" Width="1.5" PointX="11.25" PointY="334" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionNewJob" Width="1.5" PointX="11.25" PointY="254.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionNormalVacation" Width="1.5" PointX="14.25" PointY="251.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionNormalVacationFooter" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutyGroup" Width="1.5" PointX="15" PointY="219.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutyGroup2" Width="1.5" PointX="21.75" PointY="238.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutyGroupF" Width="1.5" PointX="17.25" PointY="258.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutyGroupF2" Width="1.5" PointX="26.25" PointY="267.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutySpend" Width="1.5" PointX="30" PointY="291.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutySpend2" Width="1.5" PointX="24" PointY="238.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutySpendF" Width="1.5" PointX="17.25" PointY="282.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutySpendF2" Width="1.5" PointX="26.25" PointY="260.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionPostmanBonu" Width="1.5" PointX="17.25" PointY="253.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionReplacementVacation" Width="1.5" PointX="26.25" PointY="274.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionResumeWork" Width="1.5" PointX="32.25" PointY="238.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSchoolVacation" Width="1.5" PointX="34.5" PointY="245.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSchoolVacationDay" Width="1.5" PointX="36.75" PointY="246.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSickVacation" Width="1.5" PointX="34.5" PointY="251.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSingleLegation" Width="1.5" PointX="23.25" PointY="252.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSingleOutOfDuty" Width="1.5" PointX="23.25" PointY="282.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionsList" Width="1.5" PointX="11.25" PointY="398.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionStopHand" Width="1.5" PointX="11.25" PointY="402.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionViolation" Width="1.5" PointX="26.25" PointY="255.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionWorker" Width="1.5" PointX="11.25" PointY="412" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionWorkerVacation" Width="1.5" PointX="26.25" PointY="281.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionYearlyIncrease" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Degree" Width="1.5" PointX="6.75" PointY="262.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Department" Width="1.5" PointX="6.75" PointY="274.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DeservedVacation" Width="1.5" PointX="11.25" PointY="423.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DialysisVecDec" Width="1.5" PointX="20.25" PointY="251.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpCard" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpCount" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpDisclaimer" Width="1.5" PointX="11.25" PointY="435.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpImage" Width="1.5" PointX="11.25" PointY="432.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Employee" Width="1.5" PointX="9" PointY="246" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmployeeService" Width="1.5" PointX="29.25" PointY="266.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmployeesTree" Width="1.5" PointX="14.25" PointY="269.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmployeesUserName" Width="1.5" PointX="11.25" PointY="449.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpPermission" Width="1.5" PointX="12" PointY="297" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpPermissionsDetail" Width="1.5" PointX="14.25" PointY="285.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpPermissionsR" Width="1.5" PointX="29.25" PointY="261.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpPermissionsRDay" Width="1.5" PointX="31.5" PointY="245.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpPromotion" Width="1.5" PointX="29.25" PointY="275.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpStatusCode" Width="1.5" PointX="6.75" PointY="277.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpTransaction" Width="1.5" PointX="6.75" PointY="280.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EndedEmployee" Width="1.5" PointX="11.25" PointY="476.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.FixedJob" Width="1.5" PointX="29.25" PointY="252.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.FPLocation" Width="1.5" PointX="27" PointY="247.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.GivingBirthVac" Width="1.5" PointX="20.25" PointY="286.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Holiday" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Hour" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.HRRegTBL" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.JobLocation" Width="1.5" PointX="6.75" PointY="283" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Job" Width="1.5" PointX="6.75" PointY="285.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.JobTransaction" Width="1.5" PointX="27" PointY="244.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.JobType" Width="1.5" PointX="3.75" PointY="274.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LeaveType" Width="1.5" PointX="9" PointY="238.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationApplication" Width="1.5" PointX="17.25" PointY="286.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationGroup" Width="1.5" PointX="11.25" PointY="501.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Legation" Width="1.5" PointX="15.75" PointY="371.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpend" Width="1.5" PointX="13.5" PointY="501" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpend2" Width="1.5" PointX="11.25" PointY="374.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpendF" Width="1.5" PointX="18.75" PointY="378.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpendF2" Width="1.5" PointX="13.5" PointY="373.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Loan" Width="1.5" PointX="24" PointY="246.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LoansTrx" Width="1.5" PointX="26.25" PointY="250.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Major" Width="1.5" PointX="6.75" PointY="290.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MarriageVac" Width="1.5" PointX="29.25" PointY="286.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MedicalExamination" Width="1.5" PointX="11.25" PointY="540.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MotherHoodVac" Width="1.5" PointX="17.25" PointY="248.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.OutOfDuty" Width="1.5" PointX="32.25" PointY="266.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Owner" Width="1.5" PointX="15" PointY="228.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PaySlipGroup" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PaySlip" Width="1.5" PointX="6.75" PointY="299.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PaySlipType" Width="1.5" PointX="4.5" PointY="300.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PermissionsSettingsD" Width="1.5" PointX="14.25" PointY="265.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PermissionsTrx" Width="1.5" PointX="14.25" PointY="272.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PermissionsType" Width="1.5" PointX="12" PointY="293.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Place" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PromotionQualified" Width="1.5" PointX="11.25" PointY="557.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PromotionQualifiedEmp" Width="1.5" PointX="13.5" PointY="401.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PublicFundsDecision" Width="1.5" PointX="11.25" PointY="562" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ReplacementVacationBalance" Width="1.5" PointX="11.25" PointY="567" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ReportName" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SalaryInfoPrintAutoNo" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SearchField" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SecurityAttSchd" Width="1.5" PointX="11.25" PointY="251.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SendSm" Width="1.5" PointX="11.25" PointY="574" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SeniorityTable" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SerialNumber" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Setting" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ShiftsTrx" Width="1.5" PointX="8.25" PointY="296" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SportsVacationD" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SuddenFP" Width="1.5" PointX="21" PointY="243.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SuddenFPD" Width="1.5" PointX="23.25" PointY="249.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.sysdiagram" Width="1.5" PointX="13.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TerminationReason" Width="1.5" PointX="6.75" PointY="293" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TmpAttendTrx" Width="1.5" PointX="32.25" PointY="257.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TmpAttendTrx2" Width="1.5" PointX="32.25" PointY="275.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TrainingTrx" Width="1.5" PointX="32.25" PointY="282.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TrainingTrxApp" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TrainingTrxAppLegationDay" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TrainingTrxLegationDay" Width="1.5" PointX="34.5" PointY="285.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransMonthe" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransToBank" Width="1.5" PointX="21" PointY="298.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransToBankEmp" Width="1.5" PointX="23.25" PointY="289" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransToBankLegation" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransToBankLegationEmp" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TravelType" Width="1.5" PointX="15" PointY="323.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.University" Width="1.5" PointX="6.75" PointY="304.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UpdateAttendTrx" Width="1.5" PointX="14.25" PointY="260.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UserInfo" Width="1.5" PointX="29.25" PointY="249.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UserSetting" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationApplication" Width="1.5" PointX="32.25" PointY="248.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationApplicationImage" Width="1.5" PointX="34.5" PointY="257.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationBalance" Width="1.5" PointX="11.25" PointY="628.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationLaw" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Vacation" Width="1.5" PointX="30" PointY="242.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationSubtraction" Width="1.5" PointX="11.25" PointY="632.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationTransferD" Width="1.5" PointX="12" PointY="301.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationTransferDEmp" Width="1.5" PointX="14.25" PointY="290.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationTrx" Width="1.5" PointX="34.5" PointY="267.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WeekDaysName" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkDay" Width="1.5" PointX="17.25" PointY="269" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkDaysTrx" Width="1.5" PointX="15" PointY="299" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkDaysTrxEmp" Width="1.5" PointX="14.25" PointY="277.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkerContract" Width="1.5" PointX="11.25" PointY="639.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkersDecision" Width="1.5" PointX="18" PointY="245.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkersDecisionsEmp" Width="1.5" PointX="20.25" PointY="248.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.YearlyIncrease" Width="1.5" PointX="24" PointY="298.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.YearlyIncreaseD" Width="1.5" PointX="26.25" PointY="289.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Attendance" Width="1.5" PointX="11.25" PointY="266" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PayslipInfo" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TmpJob" Width="1.5" PointX="18.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TransToBankLog" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ActionsLog" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceEmpView" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceGroupsAll" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendanceGroupsView" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendTrxEmployeesView" Width="1.5" PointX="13.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.AttendTrxView" Width="1.5" PointX="20.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BioStarTrxView" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BioStarTrxView2" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BlackList" Width="1.5" PointX="22.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BlackListReason" Width="1.5" PointX="22.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BlackListSerial" Width="1.5" PointX="22.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Branch" Width="1.5" PointX="22.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.BranchesPerm" Width="1.5" PointX="22.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CheckInOutDetail" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUTFirst" Width="1.5" PointX="9.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUTLast" Width="1.5" PointX="18.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUTSQLDate" Width="1.5" PointX="20.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.CHECKINOUTVIEW" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.City" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ClassificationNoView" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Customer" Width="1.5" PointX="11.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecesionAbsenceNormalDeductionView" Width="1.5" PointX="13.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionEndService_ROW_NUMBER" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionNormalVacation_ROW_NUMBER" Width="1.5" PointX="26.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionNormalVacationView" Width="1.5" PointX="26.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionOutOfDutyGroupView" Width="1.5" PointX="26.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionReplacementVacationView" Width="1.5" PointX="2.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionSingleOutOfDutyView" Width="1.5" PointX="4.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecisionWorkerVacationView" Width="1.5" PointX="6.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecResumeWorkVac" Width="1.5" PointX="8.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.DecResumeWorkVacsSearch" Width="1.5" PointX="18.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.District" Width="1.5" PointX="20.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmployeesUserNamesView" Width="1.5" PointX="26.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmpVacationBalance" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EndServiceView" Width="1.5" PointX="28.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.FixedJobsView" Width="1.5" PointX="28.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.HolidaysDatesView" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationApplicationView" Width="1.5" PointX="28.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationGroupEmpView" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpendView" Width="1.5" PointX="28.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationSpendView2" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LegationsView" Width="1.5" PointX="30.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LicenseType" Width="1.5" PointX="30.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LoansCount" Width="1.5" PointX="18.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LoansMonth" Width="1.5" PointX="30.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MedicalExaminationView" Width="1.5" PointX="20.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Menu" Width="1.5" PointX="30.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MyDate" Width="1.5" PointX="30.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Nationality" Width="1.5" PointX="8.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.OutOfDutySpendView2" Width="1.5" PointX="13.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.OutOfDutyView" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Outsider" Width="1.5" PointX="32.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PermissionsTrxView" Width="1.5" PointX="32.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PhoneGroup" Width="1.5" PointX="32.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PhoneIndex" Width="1.5" PointX="32.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QEmployee" Width="1.5" PointX="32.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryAttendance" Width="1.5" PointX="0.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryAttendanceGroupsTrx" Width="1.5" PointX="34.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryAttendTrx" Width="1.5" PointX="34.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryBranchesPerm" Width="1.5" PointX="34.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryEmployeeService" Width="1.5" PointX="34.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryHoliday" Width="1.5" PointX="34.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryMyDate" Width="1.5" PointX="34.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryPermissionsSettingsD" Width="1.5" PointX="34.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QrySecurityAttSchd" Width="1.5" PointX="34.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryShiftsTrx" Width="1.5" PointX="34.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.QryUsersPerm" Width="1.5" PointX="34.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ReceivePaySlip" Width="1.5" PointX="34.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Religion" Width="1.5" PointX="22.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Reminder" Width="1.5" PointX="34.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ReplacementVacationView" Width="1.5" PointX="24.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SmsMessage" Width="1.5" PointX="34.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SmsType" Width="1.5" PointX="34.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SocialState" Width="1.5" PointX="0.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.System" Width="1.5" PointX="2.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SystemsUser" Width="1.5" PointX="4.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UserInfoView" Width="1.5" PointX="6.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.User" Width="1.5" PointX="8.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UsersEmployee" Width="1.5" PointX="10.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UsersPerm" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacantJob" Width="1.5" PointX="36.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationApplicationsView" Width="1.5" PointX="36.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationDay" Width="1.5" PointX="36.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.Vacations_38" Width="1.5" PointX="36.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationsCountedView" Width="1.5" PointX="18.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacationTrxView" Width="1.5" PointX="36.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacBalanceAfter38" Width="1.5" PointX="36.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacBalanceBefore38" Width="1.5" PointX="36.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacBalanceRep" Width="1.5" PointX="36.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacBalanceShort" Width="1.5" PointX="34.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VacNewBalance" Width="1.5" PointX="36.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewAllEmpData" Width="1.5" PointX="20.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewBank" Width="1.5" PointX="38.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewCalcRetirementDate" Width="1.5" PointX="0.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewCountDegree" Width="1.5" PointX="2.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionAbsenceDeduction" Width="1.5" PointX="38.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionAllowance" Width="1.5" PointX="38.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionBonu" Width="1.5" PointX="10.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionCancelDecision" Width="1.5" PointX="38.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionChangeJob" Width="1.5" PointX="38.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionDiscipline" Width="1.5" PointX="22.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionEmployment" Width="1.5" PointX="24.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionEndService" Width="1.5" PointX="38.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionEndStopHand" Width="1.5" PointX="38.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionExceptionVacation" Width="1.5" PointX="4.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionExpand" Width="1.5" PointX="26.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionLegation" Width="1.5" PointX="28.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionMoveEmp" Width="1.5" PointX="34.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionNormalVacation" Width="1.5" PointX="40.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionResumeWork" Width="1.5" PointX="6.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecision" Width="1.5" PointX="40.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionSchoolVacation" Width="1.5" PointX="40.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionSickVacation" Width="1.5" PointX="12.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionStopHand" Width="1.5" PointX="40.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionWorker" Width="1.5" PointX="40.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDecisionYearlyIncrease" Width="1.5" PointX="40.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmp" Width="1.5" PointX="40.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmpClass" Width="1.5" PointX="40.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmpData" Width="1.5" PointX="0.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmpDate" Width="1.5" PointX="42.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmpID" Width="1.5" PointX="42.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmpPromotion" Width="1.5" PointX="42.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewLegation" Width="1.5" PointX="42.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewPromotionDate" Width="1.5" PointX="42.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewSalaryList" Width="1.5" PointX="42.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewSalaryListSummary" Width="1.5" PointX="42.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewVacationApplication" Width="1.5" PointX="42.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewVacationLaw" Width="1.5" PointX="42.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewVacationList" Width="1.5" PointX="42.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkDaysNextDay" Width="1.5" PointX="44.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.WorkDaysView" Width="1.5" PointX="44.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="PayrollModel.FK_AbsenceDeductEmp_AbsenceDeduct" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AbsenceDeductEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AppraisalsDetails_Appraisals" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AppraisalsDetails_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ApprovedPayroll_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ApprovedPayroll_PaySlips" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ApprovedPayrollEmps_ApprovedPayroll" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ApprovedPayrollEmps_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Attendance_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrx_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrxEmployees_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SecurityAttSchd_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx2_AttendanceGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendanceGroupsTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrx_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrx_AttendTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrx_LeaveTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrxEmployees_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrxEmployees_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_AttendTrxEmployees_JobTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeesTree_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PermissionsSettingsD_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PermissionsTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ShiftsTrx_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_UpdateAttendTrx_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkDays_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkDaysTrxEmp_AttendTrxEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Attendance_AttendTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx_AttendTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx2_AttendTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_UpdateAttendTrx_AttendTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_Banks" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BirthVacDec_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BirthVacDec_Employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BirthVacDec_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusCalculations_Bonus" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusPayslips_Bonus" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusCalculations_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusEdit_PaySlips" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusEditEmp_BonusEdit" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusEditEmp_BonusList" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_BonusEditEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_CalcAttendanceF_CalcAttendanceH" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Calculations_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_CalculationsDetails_Calculations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employee_Certificates" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Degrees_Classes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_ContractTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_CustomPayroll_PaySlips" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_CustomPayrollEmp_CustomPayroll" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_CustomPayrollEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecesionAbsenceNormalDeduction_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecesionAbsenceNormalDeduction_Employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecesionAbsenceNormalDeduction_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecesionAbsenceNormalDeductionDays_DecesionAbsenceNormalDeduction" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionAbsenceDeduction_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionAbsenceDeductionFooter_DecisionAbsenceDeduction" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionAllowance_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionBonus_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionCancelDecision_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionChangeJob_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionChangeJob_FixedJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionChangeJob_FixedJobs2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionCompanionVac_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionCompanionVac_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionCompanionVac_VacationApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionDiscipline_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEmployment_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEmployment_FixedJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEmploymentFooter_DecisionEmployment" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEndService_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEndService_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionEndStopHand_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionExceptionVacation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionExpand_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionLegation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionLegationEmployees_DecisionLegation" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionMoveEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNewJob_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNewJob_FixedJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNewJob_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNewJob_Owners2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNormalVacation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNormalVacation_Employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionNormalVacation_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTrx_DecisionNormalVacation" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutyGroupF_DecisionOutOfDutyGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpend_DecisionOutOfDutyGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutyGroup2_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutyGroupF2_DecisionOutOfDutyGroup2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpend2_DecisionOutOfDutyGroup2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutyGroupF_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutyGroupF2_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpend_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpendF_DecisionOutOfDutySpend" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_OutOfDuty_DecisionOutOfDutySpend" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpend2_DecisionOutOfDutySpend2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpendF2_DecisionOutOfDutySpend2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_OutOfDuty_OutOfDutySpendSerial2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpendF_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionOutOfDutySpendF2_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionPostmanBonus_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionPostmanBonus_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionReplacementVacation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionReplacementVacation_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionReplacementVacation_VacationApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionResumeWork_Vacations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSchoolVacation_VacationApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSchoolVacationDays_DecisionSchoolVacation" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSickVacation_VacationApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSingleLegation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSingleLegation_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSingleOutOfDuty_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionSingleOutOfDuty_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionsList_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionStopHand_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionViolations_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionViolations_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionWorkers_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionWorkerVacation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DecisionWorkerVacation_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_Degrees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPromotion_Degrees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_Degrees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employee_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PermissionsSettingsD_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SuddenFP_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DeservedVacations_DeservedVacations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DialysisVecDec_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DialysisVecDec_Employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_DialysisVecDec_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpDisclaimer_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpImages_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Attendance_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employee_JopLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employee_Jops" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employee_PaySlips" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_EmpStatusCodes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_EmpTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_Majors" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_StartJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_TerminationReasons" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Employees_Universities" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeeServices_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeesUserNames_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsDetails_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsR_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPromotion_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EndedEmployees_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_GivingBirthVac_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LeagationApplication_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Legations_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF2_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LoansTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_MarriageVac_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_MedicalExamination_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_MotherHoodVac_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_OutOfDuty_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualified_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualified_Employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualified_Employees2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualified_Employees3" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualifiedEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PublicFundsDecision_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_ReplacemntVacationBalance_Employees2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SecurityAttSchd_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SuddenFPD_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx2_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TrainingTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TransToBankEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_UserInfo_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationApplication_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationBalances_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationSubtraction_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTransferDEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTrx_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkerContracts_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkersDecisionsEmp_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_YearlyIncreaseD_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeeServices_EmpPromotion" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeeServices_EmpTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeeServices_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeeServices_LocationCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmployeesTree_JobTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsDetails_EmpPermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsDetails_PermissionsTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsR_PermissionsTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPermissionsRDays_EmpPermissionsR" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPromotion_FixedJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_EmpPromotion_FixedJobs1" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_JobLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_FixedJobs_JobTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_UserInfo_FPLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_GivingBirthVac_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Holidays_PaySlipGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Attendance_LeaveTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx_LeaveTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TmpAttendTrx2_LeaveTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_UpdateAttendTrx_LeaveTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LeagationApplication_TravelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationApplication_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpend_LegationGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF2_LegationGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Legations_LegationSpend" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Legations_LegationSpend2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Legations_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_Legations_TravelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpend_TravelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF_LegationSpend" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF2_LegationSpendF2" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LegationSpendF2_TravelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_LoansTrx_Loans" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_MarriageVac_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTrx_MarriageVac" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_MotherHoodVac_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TrainingTrx_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationApplication_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PaySlips_PaySlipTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SuddenFP_PaySlips" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PermissionsTrx_PermissionsTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_PromotionQualifiedEmp_PromotionQualified" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_SuddenFPD_SuddenFP" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TrainingTrxLegationDays" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TrainingTrxAppLegationDays_TrainingTrxApp" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TransToBankEmp_TransToBank" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_TransToBankLegationEmp_TransToBankLegation" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacApplicationImages_VacApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationApplication_Vacations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTrx_Vacations" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_VacationTransferDEmp_VacationTransferD" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkDays_WorkDaysTrx" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkDaysTrxEmp_WorkDaysTrx" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_WorkersDecisionsEmp_WorkersDecisions" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_YearlyIncreaseD_YearlyIncrease" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.BonusEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.LegationGroupEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.SendSmsEmployees" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

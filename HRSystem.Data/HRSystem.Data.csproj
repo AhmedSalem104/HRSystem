@@ -1,0 +1,1209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE964B3A-3F80-4B5B-970F-F1A9D9478902}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRSystem.Data</RootNamespace>
+    <AssemblyName>HRSystem.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=2.3.55.2, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.2\lib\net45\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entites\Payroll\A.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AbsenceDeduct.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AbsenceDeductEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ActionsLog.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Appraisal.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AppraisalsDetail.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ApprovedPayroll.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ApprovedPayrollEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Attendance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceEmpView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceGroup.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceGroupsAll.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceGroupsTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceGroupsView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendanceGroups_9.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendTrxEmployee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendTrxEmployeesView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendTrxView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\AttendType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Bank.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BioStarTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BioStarTrx2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BioStarTrxView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BioStarTrxView2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BirthVacDec.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BlackList.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BlackListReason.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BlackListSerial.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Bonu.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BonusCalculation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BonusEdit.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BonusEditEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BonusList.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BonusPayslip.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Branch.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\BranchesPerm.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CalcAttendanceF.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CalcAttendanceH.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Calculation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CalculationsApproved.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CalculationsDetail.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Certificate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUT.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CheckInOutDetail.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUTFirst.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUTLast.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUTSQL.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUTSQLDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CHECKINOUTVIEW.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\City.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Class.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ClassificationNoView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ContractType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Customer.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CustomPayroll.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\CustomPayrollEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DateDiffUmElQura_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DeathVacationD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecesionAbsenceNormalDeduction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecesionAbsenceNormalDeductionDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecesionAbsenceNormalDeductionView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionAbsenceDeduction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionAbsenceDeductionFooter.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionAllowance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionBonu.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionCancelDecision.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionChangeJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionCompanionVac.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionDiscipline.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionEmployment.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionEmploymentFooter.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionEndService.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionEndService_ROW_NUMBER.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionEndStopHand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionExceptionVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionExpand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionLegationEmployee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionLongLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionMoveEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionNewJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionNormalVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionNormalVacationFooter.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionNormalVacationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionNormalVacation_ROW_NUMBER.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutyGroup.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutyGroup2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutyGroupF.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutyGroupF2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutyGroupView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutySpend.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutySpend2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutySpendF.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionOutOfDutySpendF2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionPostmanBonu.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionReplacementVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionReplacementVacationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionResumeWork.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSchoolVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSchoolVacationDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSickVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSingleLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSingleOutOfDuty.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionSingleOutOfDutyView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionsList.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionStopHand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionViolation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionWorker.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionWorkerVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionWorkerVacationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecisionYearlyIncrease.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecResumeWorkVac.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DecResumeWorkVacsSearch.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Degree.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Department.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DeservedVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\DialysisVecDec.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\District.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpCard.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpCount.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpDisclaimer.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpImage.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Employee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmployeeService.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmployeesInfo_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmployeesTree.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmployeesUserName.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmployeesUserNamesView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpPermission.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpPermissionsDetail.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpPermissionsR.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpPermissionsRDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpPromotion.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpStatusCode.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpTransaction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EmpVacationBalance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EndedEmployee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\EndServiceView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\FixedJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\FixedJobsView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncAttendanceGroupsTrx_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncAttendanceTrx_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncAttendance_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncCountLegation_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncDates_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncEmpWorkDays_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncGetLegations_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncMyDates_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncSpeceificDates_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncSumVacationPeriod_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncSumVacations_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncVacationBalance_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncVacationLawWithDate_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncVacationLaw_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\fncWorkDays_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\FPLocation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetDecisionChangeJobForPrint_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetDecisionEmploymentForPrint_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetDecisionMoveEmpForPrint_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetDecisionNewJobForPrint_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetDecisionWorkersForPrint_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GetMonthsNames_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\GivingBirthVac.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Holiday.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\HolidaysDatesView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Hour.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\HRRegTBL.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Insert_Update_Select_Delete_Cities_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Insert_Update_Select_Delete_Nationalities_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Job.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\JobLocation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\JobTransaction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\JobType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LeaveType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Legation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationApplication.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationApplicationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationGroup.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationGroupEmpView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpend.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpend2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpendF.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpendF2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpendView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationSpendView2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LegationsView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LicenseType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Loan.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LoansCount.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LoansMonth.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\LoansTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Major.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\MarriageVac.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\MedicalExamination.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\MedicalExaminationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Menu.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\MotherHoodVac.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\MyDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Nationality.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\OutOfDuty.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\OutOfDutySpendView2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\OutOfDutyView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Outsider.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Owner.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PayrollEntites.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PayrollEntites.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PayrollEntites.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PayrollEntites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PayrollEntites.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PaySlip.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PaySlipGroup.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PayslipInfo.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PaySlipType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PermissionsSettingsD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PermissionsTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PermissionsTrxView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PermissionsType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PhoneGroup.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PhoneIndex.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Place.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PromotionQualified.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PromotionQualifiedEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\PublicFundsDecision.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QEmployee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryAttendance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryAttendanceGroupsTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryAttendTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryBranchesPerm.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryEmployeeService.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryHoliday.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryMyDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryPermissionsSettingsD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QrySecurityAttSchd.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryShiftsTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\QryUsersPerm.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ReceivePaySlip.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Religion.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Reminder.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ReplacementVacationBalance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ReplacementVacationView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ReplacementVacBalances_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ReportName.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SalaryInfoPrintAutoNo.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SearchField.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SecurityAttSchd.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SelectEmpVacations_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SendSm.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SeniorityTable.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SerialNumber.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Setting.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ShiftsTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ShortVacBalances_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SmsMessage.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SmsType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SocialState.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SplitXml_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SportsVacationD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\sp_helpdiagrams_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SuddenFP.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SuddenFPD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\sysdiagram.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\System.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\SystemsUser.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TerminationReason.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TmpAttendTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TmpAttendTrx2.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TmpJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TrainingTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TrainingTrxApp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TrainingTrxAppLegationDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TrainingTrxLegationDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransMonthe.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransToBank.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransToBankEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransToBankLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransToBankLegationEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TransToBankLog.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\TravelType.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\University.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UpdateAttendTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UpdateCities_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\User.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UserInfo.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UserInfoView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UsersEmployee.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UserSetting.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\UsersPerm.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacantJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Vacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationApplication.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationApplicationImage.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationApplicationsView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationBalance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationLaw.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationsCountedView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationSubtraction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Vacations_38.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Vacations_SelectEmpVacationsList_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\Vacations_SelectProperties_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationTransferD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationTransferDEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacationTrxView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacBalanceAfter38.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacBalanceBefore38.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacBalanceRep.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacBalanceShort.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VacNewBalance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VactionBalancesAfter38_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\VactionBalancesBefore38_Result.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewAllEmpData.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewBank.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewCalcRetirementDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewCountDegree.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecision.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionAbsenceDeduction.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionAllowance.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionBonu.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionCancelDecision.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionChangeJob.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionDiscipline.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionEmployment.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionEndService.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionEndStopHand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionExceptionVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionExpand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionMoveEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionNormalVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionResumeWork.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionSchoolVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionSickVacation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionStopHand.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionWorker.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewDecisionYearlyIncrease.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmpClass.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmpData.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmpDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmpID.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewEmpPromotion.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewLegation.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewPromotionDate.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewSalaryList.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewSalaryListSummary.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewVacationApplication.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewVacationLaw.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\ViewVacationList.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WeekDaysName.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkDaysNextDay.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkDaysTrx.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkDaysTrxEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkDaysView.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkerContract.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkersDecision.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\WorkersDecisionsEmp.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\YearlyIncrease.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entites\Payroll\YearlyIncreaseD.cs">
+      <DependentUpon>PayrollEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Entites\Payroll\PayrollEntites.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PayrollEntites.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entites\Payroll\PayrollEntites.edmx.diagram">
+      <DependentUpon>PayrollEntites.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entites\Payroll\PayrollEntites.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PayrollEntites.edmx</DependentUpon>
+      <LastGenOutput>PayrollEntites.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entites\Payroll\PayrollEntites.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PayrollEntites.edmx</DependentUpon>
+      <LastGenOutput>PayrollEntites.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

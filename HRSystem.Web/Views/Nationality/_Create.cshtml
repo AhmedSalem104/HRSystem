@@ -1,0 +1,98 @@
+﻿@model  HRSystem.Web.Models.NationalViewModel
+@using HRSystem.Web.Infrastructure.Resources
+
+
+
+
+
+@using (Html.BeginForm("Create", "Nationality", FormMethod.Post, new { @class = "form-horizontal", @id = "create" }))
+{
+    <div class="modal-content">
+        <div class="modal-header bg-info white">
+            <h4 class="modal-title white" id="myModalLabel11">اضافة جنسية</h4>
+            <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                    رقم الجنسية
+                </label>
+                <div class="col-lg-9">
+
+                    <input type="text" id="NatCode" class="form-control" name="phone" placeholder="تلقائي" readonly />
+
+                 
+                    @*<span id="validateColCode" class="text-danger" hidden>عفوا هذا الكود موجود مسبقا</span>*@
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                      الجنسية
+
+                </label>
+                <div class="col-lg-9">
+
+                    @Html.EditorFor(model => model.NatName, new { htmlAttributes = new { @id = "NatName", @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.NatName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 control-label">
+                   الاسم المختصر
+                </label>
+                <div class="col-lg-9">
+                    @Html.TextBoxFor(a => a.CountryCode, new { @id = "NatCode", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button id="sub" type="submit" class="btn btn-outline-info">@Resource.save</button>
+            <button type="button" class="btn grey btn-outline-red" data-dismiss="modal">@Resource.Close</button>
+        </div>
+
+    </div>
+
+
+}
+
+
+<script type="text/javascript">
+
+    // CheckCode  لكل لا يحث تكرار للرقم
+
+    $("#NatCode").keyup(function () {
+
+        var selectedValue = document.getElementById('NatCode').value;
+
+                $.ajax({
+                        type: "POST",
+                    url: '/Nationality/CheckNationalNo',
+                    data: { nationalNo: parseInt(selectedValue) },
+                        dataType: 'json',
+                        success: function (result) {
+                                if (result == false) {
+                                    $("#sub").attr("disabled", true);
+                                    $("#validateColCode").removeAttr("hidden");
+
+                                }
+                                else {
+                                    $("#sub").attr("disabled", false);
+                                    $("#validateColCode").attr("hidden", true);
+                                }
+                        },
+                });
+        });
+
+</script>
+
+
+
